@@ -1,26 +1,199 @@
 @import "tailwindcss";
 
+/* Theme tokens (Daktilo-inspired) */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand & accents */
+  --color-primary: #151617; /* primary accent + text */
+  --color-secondary-1: #f2ded0; /* secondary accent */
+  --color-secondary-2: #bab6aa; /* secondary accent */
+
+  /* Text */
+  --color-text-heading: #151617;
+  --color-text-body: #151617;
+
+  /* Backgrounds */
+  --color-bg-page: #f8ece4;
+  --color-bg-card: #f8ece4;
+
+  /* Derived for borders and subtle UI */
+  --color-border: color-mix(in oklab, var(--color-primary), #ffffff 80%);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* If you're using Tailwind CSS v4, you may map these tokens with `@theme`.
+   We keep plain CSS variables to avoid lint noise here. */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Base styles */
+html, body {
+  background: var(--color-bg-page);
+  color: var(--color-text-body);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading), system-ui, -apple-system, Segoe UI, Roboto,
+    Helvetica, Arial, sans-serif;
+  color: var(--color-text-heading);
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
+}
+
+/* Default heading weights for clarity */
+h1 { font-weight: 800; letter-spacing: -0.015em; }
+h2 { font-weight: 800; letter-spacing: -0.01em; }
+h3 { font-weight: 700; }
+h4 { font-weight: 600; }
+/* Prominent section titles */
+.section-title {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+.kicker {
+  letter-spacing: 0.12em;
+  font-size: 0.8rem;
+  color: var(--color-primary);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+  color: var(--color-text-heading);
+  display: inline-block;
+  border-bottom: 3px solid var(--color-primary);
+  padding-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.stat-title {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.section-subtitle {
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+/* Reusable primitives */
+.container-page {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+.card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  transition: transform 240ms ease, box-shadow 240ms ease, border-color 240ms ease;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 2.75rem;
+  padding-inline: 1rem;
+  border-radius: 0.75rem; /* shape: slightly rounded */
+  border: 1px solid var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-secondary-1);
+  transition: transform 180ms ease, box-shadow 220ms ease, filter 180ms ease, background-color 220ms ease, color 220ms ease;
+}
+
+.btn:hover { filter: brightness(1.05); transform: translateY(-2px); box-shadow: 0 10px 20px color-mix(in oklab, var(--color-primary), #000 80% / 6%); }
+.btn.secondary {
+  background: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-border);
+}
+
+/* Image placeholder block for future line-art illustrations */
+.image-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: repeating-linear-gradient(
+    45deg,
+    color-mix(in oklab, var(--color-secondary-1), #ffffff 20%),
+    color-mix(in oklab, var(--color-secondary-1), #ffffff 20%) 10px,
+    color-mix(in oklab, var(--color-secondary-1), #000000 8%) 10px,
+    color-mix(in oklab, var(--color-secondary-1), #000000 8%) 20px
+  );
+  border: 2px dashed var(--color-border);
+  color: var(--color-secondary-2);
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+/* Shimmer animation over placeholders */
+.image-placeholder::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.25), transparent);
+  transform: translateX(-100%);
+  animation: shimmer 1.8s ease-in-out infinite;
+}
+
+.section {
+  padding-block: 3rem;
+}
+
+.kicker {
+  letter-spacing: 0.2em;
+  font-size: 0.75rem;
+  color: var(--color-secondary-2);
+  text-transform: uppercase;
+}
+
+/* Hover elevation for cards and clickable blocks */
+.hover-lift:hover { transform: translateY(-4px); box-shadow: 0 14px 28px color-mix(in oklab, var(--color-primary), #000 85% / 7%); }
+
+/* Fade‑up animation */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up { animation: fadeUp var(--dur,700ms) cubic-bezier(.2,.8,.2,1) both; animation-delay: var(--delay,0ms); }
+
+/* Shimmer keyframes */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  60%,100% { transform: translateX(100%); }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-up, .image-placeholder::after, .btn, .card { animation: none !important; transition: none !important; }
+}
+
+/* Media: shared responsive image style */
+.media {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0.75rem; /* rounded corners only */
+  overflow: hidden; /* ensure corners clip image */
+  border: 0; /* no card look */
+  background: transparent; /* no backdrop */
+  box-shadow: none; /* remove card shadow */
+  max-height: 320px;
+  object-fit: contain;
+}
+
+/* Keep images comfortably sized on different screens */
+@media (max-width: 639px) { /* mobile */
+  .media { max-height: 220px; }
+}
+@media (min-width: 640px) and (max-width: 1023px) { /* tablet */
+  .media { max-height: 300px; }
+}
+@media (min-width: 1024px) { /* desktop */
+  .media { max-height: 360px; }
 }
