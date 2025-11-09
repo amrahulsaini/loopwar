@@ -1,9 +1,11 @@
 import OptionalImage from "./components/OptionalImage";
 import Typewriter from "./components/Typewriter";
+import StartupModal from "./components/StartupModal";
 
 export default function Home() {
   return (
     <div className="min-h-screen">
+      <StartupModal />
       {/* Hero */}
       <header className="container-page section">
         <div className="grid grid-cols-1 items-start gap-10 md:grid-cols-2">
