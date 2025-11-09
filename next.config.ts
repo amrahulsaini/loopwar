@@ -10,8 +10,6 @@ const nextConfig: NextConfig = {
     }
     return config;
   },
-  // Reduce build time by limiting optimizations
-  swcMinify: true,
   // Output standalone for better performance
   output: 'standalone',
 };
