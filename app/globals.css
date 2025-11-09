@@ -52,13 +52,6 @@ h4 { font-weight: 600; }
   font-weight: 800;
   letter-spacing: -0.01em;
   line-height: 1.2;
-.kicker {
-  letter-spacing: 0.12em;
-  font-size: 0.8rem;
-  color: var(--color-primary);
-  font-weight: 700;
-  text-transform: uppercase;
-}
   color: var(--color-text-heading);
   display: inline-block;
   border-bottom: 3px solid var(--color-primary);
@@ -86,7 +79,7 @@ h4 { font-weight: 600; }
 .card {
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
-  border-radius: 0.75rem;
+  border-radius: 1rem;
   padding: 1.25rem;
   transition: transform 240ms ease, box-shadow 240ms ease, border-color 240ms ease;
 }
@@ -178,7 +171,7 @@ h4 { font-weight: 600; }
   display: block;
   width: 100%;
   height: auto;
-  border-radius: 0.75rem; /* rounded corners only */
+  border-radius: 1rem; /* rounded corners only */
   overflow: hidden; /* ensure corners clip image */
   border: 0; /* no card look */
   background: transparent; /* no backdrop */
@@ -196,4 +189,47 @@ h4 { font-weight: 600; }
 }
 @media (min-width: 1024px) { /* desktop */
   .media { max-height: 360px; }
+}
+
+/* Highlight & typewriter caret for hero line */
+.highlight-pill {
+  background: var(--color-secondary-1);
+  color: var(--color-primary);
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  padding: 0.2rem 0.5rem;
+}
+
+.typewriter-caret {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid var(--color-primary);
+  animation: blinkCaret 1s steps(1, end) infinite;
+}
+
+/* CSS-only typewriter effect (width reveal in character steps) */
+.typewriter {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid var(--color-primary);
+  animation:
+    typing var(--typing-dur, 3s) steps(var(--chars)) 1 both,
+    blinkCaret 1s steps(1, end) infinite;
+}
+
+@keyframes typing {
+  from { width: 0ch; }
+  to { width: calc(var(--chars) * 1ch); }
+}
+
+@keyframes blinkCaret {
+  0%, 49% { border-right-color: var(--color-primary); }
+  50%, 100% { border-right-color: transparent; }
+}
+
+/* Ensure reduced motion users don't get typing animation */
+@media (prefers-reduced-motion: reduce) {
+  .typewriter { animation: none !important; }
 }

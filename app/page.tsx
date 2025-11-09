@@ -1,4 +1,5 @@
 import OptionalImage from "./components/OptionalImage";
+import Typewriter from "./components/Typewriter";
 
 export default function Home() {
   return (
@@ -7,7 +8,13 @@ export default function Home() {
       <header className="container-page section">
         <div className="grid grid-cols-1 items-start gap-10 md:grid-cols-2">
           <div className="space-y-6">
-            <p className="kicker animate-fade-up" style={{ ['--delay' as any]: '0ms' }}>LoopWar — Freelancers Who Design, Build, and Inspire</p>
+            <Typewriter
+              text="LoopWar — Freelancers Who Design, Build, and Inspire"
+              className="kicker animate-fade-up"
+              speed={35}
+              startDelay={100}
+              caret
+            />
             <h1 className="text-4xl md:text-5xl font-bold animate-fade-up" style={{ ['--delay' as any]: '80ms', color: "var(--color-text-heading)", fontFamily: "var(--font-montserrat)" }}>
               We design, build, and ship smart, beautiful digital products
             </h1>
@@ -207,7 +214,7 @@ export default function Home() {
       {/* Food Businesses */}
   <section className="container-page section animate-fade-up" style={{ ['--delay' as any]: '140ms' }}>
         <div className="grid gap-8 md:grid-cols-2 items-start">
-          <div className="space-y-2 order-2 md:order-1">
+          <div className="space-y-2 md:order-1">
             <h2 className="section-title">Food & Hospitality</h2>
             <p className="section-subtitle">Smart websites for cafés and restaurants</p>
             <p>
@@ -219,8 +226,8 @@ export default function Home() {
               <li><strong>Direct Payment Processing</strong> — Keep 100% of your revenue.</li>
             </ul>
           </div>
-          <div className="order-1 md:order-2">
-            <OptionalImage src="/loop5.jpg" alt="Café ordering and menu" prompt="Line art of a café table with menu, phone ordering, and a small receipt; clean outline style" className="media" />
+          <div className="md:order-2">
+            <OptionalImage src="/loop5.jpg" alt="Café ordering and menu" prompt="Line art of a café table with menu, phone ordering, and a small receipt; clean outline style" className="media animate-fade-up" />
           </div>
         </div>
       </section>
@@ -244,7 +251,7 @@ export default function Home() {
       {/* Property Management */}
   <section className="container-page section animate-fade-up" style={{ ['--delay' as any]: '160ms' }}>
         <div className="grid gap-8 md:grid-cols-2 items-start">
-          <div className="space-y-2 order-2 md:order-1">
+          <div className="space-y-2 md:order-1">
             <h2 className="section-title">Property</h2>
             <p className="section-subtitle">Simplifying PG, hostel, and real‑estate workflows</p>
             <ul className="list-disc pl-5 grid sm:grid-cols-2 gap-2">
@@ -256,8 +263,8 @@ export default function Home() {
               Reduce administrative workload by up to 70% with streamlined dashboards.
             </p>
           </div>
-          <div className="order-1 md:order-2">
-            <OptionalImage src="/loop7.jpg" alt="Buildings with dashboards" prompt="Line art of buildings with dashboard panels; minimal outlines; friendly look" className="media" />
+          <div className="md:order-2">
+            <OptionalImage src="/loop7.jpg" alt="Buildings with dashboards" prompt="Line art of buildings with dashboard panels; minimal outlines; friendly look" className="media animate-fade-up" />
           </div>
         </div>
       </section>
@@ -285,7 +292,7 @@ export default function Home() {
       {/* Local Businesses */}
       <section className="container-page section">
         <div className="grid gap-8 md:grid-cols-2 items-start">
-          <div className="space-y-2 order-2 md:order-1">
+          <div className="space-y-2 md:order-1">
             <h2 className="section-title">Local Businesses</h2>
             <p className="section-subtitle">Crafting digital presence for local brands</p>
             <p>
@@ -298,8 +305,8 @@ export default function Home() {
               <li><strong>Local SEO</strong> — Optimization to appear in local search results.</li>
             </ul>
           </div>
-          <div className="order-1 md:order-2">
-            <OptionalImage src="/loop9.jpg" alt="Boutique storefront with pin" prompt="Line art of a boutique storefront with location pin and growth arrow" className="media" />
+          <div className="md:order-2">
+            <OptionalImage src="/loop9.jpg" alt="Boutique storefront with pin" prompt="Line art of a boutique storefront with location pin and growth arrow" className="media animate-fade-up" />
           </div>
         </div>
       </section>
