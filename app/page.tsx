@@ -376,7 +376,18 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="container-page pb-10 text-sm" style={{ color: "var(--color-secondary-2)" }}>
-        © {new Date().getFullYear()} Loopwar
+        <div className="flex flex-wrap justify-center gap-4 mb-4">
+          <a href="/contact" className="hover:underline">Contact Us</a>
+          <span>•</span>
+          <a href="/terms" className="hover:underline">Terms & Conditions</a>
+          <span>•</span>
+          <a href="/refund" className="hover:underline">Refund Policy</a>
+          <span>•</span>
+          <a href="/privacy" className="hover:underline">Privacy Policy</a>
+        </div>
+        <div className="text-center">
+          © {new Date().getFullYear()} Loopwar
+        </div>
       </footer>
     </div>
   );
