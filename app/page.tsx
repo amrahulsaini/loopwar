@@ -52,7 +52,7 @@ export default function Home() {
               <h2 className="section-title">Who We Are</h2>
               <p className="section-subtitle">Next‑Gen Freelancing Studio</p>
             <p>
-              LoopWar is a modern freelancing agency bringing together talented developers,
+              LoopWar Enterprises is a modern freelancing agency bringing together talented developers,
               designers, and creators to build high‑quality digital solutions. From websites to
               mobile apps, we turn ideas into products that perform, engage, and grow your business.
             </p>
@@ -68,6 +68,173 @@ export default function Home() {
             prompt="Minimal line art of a collaborative studio: designer, developer, and strategist around a desk with laptops; warm beige background; thin black lines; modern tech vibes"
             className="media"
           />
+        </div>
+      </section>
+
+      {/* Strategic Partnerships */}
+  <section className="container-page section animate-fade-up" style={{ ['--delay' as any]: '70ms' }}>
+        <div className="space-y-8">
+          <div className="text-center space-y-2">
+            <h2 className="section-title">Strategic Partnerships</h2>
+            <p className="section-subtitle">Powering innovation together</p>
+            <p className="max-w-3xl mx-auto">
+              LoopWar Enterprises works hand-in-hand with industry-leading platforms to deliver 
+              comprehensive digital solutions. Our partnerships enable us to provide specialized 
+              tools and services that drive real business outcomes.
+            </p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2">
+            {/* DinePlus */}
+            <div className="card hover-lift">
+              <div className="space-y-3">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-lg flex items-center justify-center text-2xl font-bold" style={{ backgroundColor: "var(--color-primary)", color: "white" }}>
+                    D+
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-xl">DinePlus</h3>
+                    <p className="text-sm" style={{ color: "var(--color-secondary-2)" }}>Complete Restaurant & Café Management</p>
+                  </div>
+                </div>
+                
+                <p>
+                  Transform your food business with DinePlus — a comprehensive cloud-based POS system 
+                  designed specifically for restaurants, cafés, cloud kitchens, and food chains. Built 
+                  with the same excellence as industry leaders like Petpooja, DinePlus brings enterprise-grade 
+                  features to businesses of all sizes.
+                </p>
+
+                <div className="space-y-2">
+                  <h4 className="font-semibold">Complete Business Solutions:</h4>
+                  <ul className="list-disc pl-5 space-y-1 text-sm">
+                    <li><strong>Smart POS System</strong> — Lightning-fast billing with KOT management, table ordering, and split bills</li>
+                    <li><strong>Kitchen Display System (KDS)</strong> — Real-time order tracking with automated kitchen workflows</li>
+                    <li><strong>Inventory Management</strong> — Track stock levels, recipe costing, vendor management, and waste control</li>
+                    <li><strong>Multi-Channel Ordering</strong> — Unified dashboard for dine-in, takeaway, delivery, and online orders</li>
+                    <li><strong>CRM & Loyalty Programs</strong> — Customer database, automated rewards, and personalized promotions</li>
+                    <li><strong>Delivery Integration</strong> — Seamless sync with Zomato, Swiggy, and your own delivery fleet</li>
+                    <li><strong>Staff Management</strong> — Attendance tracking, shift scheduling, performance analytics, and payroll integration</li>
+                    <li><strong>Financial Reporting</strong> — Comprehensive sales reports, profit margins, tax filing support, and expense tracking</li>
+                    <li><strong>Menu Engineering</strong> — Dynamic pricing, combo offers, happy hours, and seasonal menu management</li>
+                    <li><strong>QR Code Ordering</strong> — Contactless table ordering with digital menus and instant payment</li>
+                  </ul>
+                </div>
+
+                <div className="space-y-2">
+                  <h4 className="font-semibold">Advanced Features:</h4>
+                  <ul className="list-disc pl-5 space-y-1 text-sm">
+                    <li>Multi-location management with centralized control</li>
+                    <li>Real-time analytics and business intelligence dashboards</li>
+                    <li>Automated GST compliance and invoice generation</li>
+                    <li>Customer feedback and review management</li>
+                    <li>Recipe management with ingredient tracking</li>
+                    <li>Table reservation system with waitlist management</li>
+                    <li>Integration with accounting software (Tally, QuickBooks)</li>
+                    <li>24/7 cloud backup with offline mode support</li>
+                  </ul>
+                </div>
+
+                <div className="p-3 rounded border" style={{ borderColor: "var(--color-border)", backgroundColor: "var(--color-bg-secondary)" }}>
+                  <p className="text-sm">
+                    <strong>Perfect for:</strong> Fine dining restaurants, quick-service restaurants (QSR), 
+                    cafés, cloud kitchens, food courts, bakeries, bars & pubs, and multi-chain franchises.
+                  </p>
+                </div>
+
+                <p className="text-sm" style={{ color: "var(--color-secondary-2)" }}>
+                  DinePlus helps you reduce order errors by 95%, increase table turnover by 40%, 
+                  save 15+ hours weekly on manual tasks, and boost customer retention through 
+                  data-driven insights.
+                </p>
+              </div>
+            </div>
+
+            {/* Xirevo */}
+            <div className="card hover-lift">
+              <div className="space-y-3">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-lg flex items-center justify-center text-2xl font-bold" style={{ backgroundColor: "var(--color-accent)", color: "white" }}>
+                    Xi
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-xl">Xirevo.com</h3>
+                    <p className="text-sm" style={{ color: "var(--color-secondary-2)" }}>AI-Powered Visual Content Creation</p>
+                  </div>
+                </div>
+                
+                <p>
+                  Revolutionize your visual content strategy with Xirevo — an advanced AI-powered platform 
+                  offering thousands of pre-built templates for rapid image generation. Harness the power 
+                  of state-of-the-art AI models to create stunning visuals in seconds, not hours.
+                </p>
+
+                <div className="space-y-2">
+                  <h4 className="font-semibold">Comprehensive Template Library:</h4>
+                  <ul className="list-disc pl-5 space-y-1 text-sm">
+                    <li><strong>Marketing & Advertising</strong> — Social media posts, banner ads, product showcases, promotional graphics</li>
+                    <li><strong>Brand Identity</strong> — Logo variations, brand assets, style guides, color palettes, typography systems</li>
+                    <li><strong>E-Commerce</strong> — Product mockups, lifestyle shots, packaging designs, seasonal campaigns</li>
+                    <li><strong>Social Media</strong> — Instagram stories, Facebook covers, LinkedIn posts, Twitter headers, TikTok thumbnails</li>
+                    <li><strong>Business Materials</strong> — Presentation slides, infographics, reports, newsletters, business cards</li>
+                    <li><strong>Food & Hospitality</strong> — Menu designs, food photography styles, restaurant promotions, event posters</li>
+                    <li><strong>Real Estate</strong> — Property showcases, virtual staging, brochures, signage, floor plans</li>
+                    <li><strong>Fashion & Lifestyle</strong> — Lookbooks, catalog layouts, mood boards, editorial spreads</li>
+                  </ul>
+                </div>
+
+                <div className="space-y-2">
+                  <h4 className="font-semibold">AI-Powered Features:</h4>
+                  <ul className="list-disc pl-5 space-y-1 text-sm">
+                    <li><strong>Fast AI Models</strong> — Generate high-quality images in 2-5 seconds using cutting-edge Stable Diffusion, DALL-E, and Midjourney-grade models</li>
+                    <li><strong>Smart Templates</strong> — Industry-specific templates with AI-optimized prompts for consistent results</li>
+                    <li><strong>Style Transfer</strong> — Apply brand aesthetics across all generated content automatically</li>
+                    <li><strong>Batch Generation</strong> — Create hundreds of variations simultaneously for A/B testing</li>
+                    <li><strong>Auto-Optimization</strong> — AI automatically adjusts composition, lighting, and colors for maximum impact</li>
+                    <li><strong>Background Removal & Replacement</strong> — Intelligent object detection and scene composition</li>
+                    <li><strong>Text-to-Image</strong> — Transform detailed descriptions into pixel-perfect visuals</li>
+                    <li><strong>Image Enhancement</strong> — Upscale to 4K, remove noise, fix lighting, and restore details</li>
+                  </ul>
+                </div>
+
+                <div className="space-y-2">
+                  <h4 className="font-semibold">Professional Workflow Tools:</h4>
+                  <ul className="list-disc pl-5 space-y-1 text-sm">
+                    <li>Brand kit management with saved colors, fonts, and logos</li>
+                    <li>Template customization with drag-and-drop editor</li>
+                    <li>Multi-format export (PNG, JPG, SVG, PDF) with size optimization</li>
+                    <li>Team collaboration with shared workspaces and version control</li>
+                    <li>Scheduled content generation for social media calendars</li>
+                    <li>API access for seamless integration with your existing tools</li>
+                    <li>Asset library with unlimited cloud storage</li>
+                    <li>Analytics dashboard tracking engagement and performance</li>
+                  </ul>
+                </div>
+
+                <div className="p-3 rounded border" style={{ borderColor: "var(--color-border)", backgroundColor: "var(--color-bg-secondary)" }}>
+                  <p className="text-sm">
+                    <strong>Perfect for:</strong> Digital marketing agencies, e-commerce brands, social media managers, 
+                    content creators, real estate firms, restaurants, startups, and enterprises needing 
+                    high-volume visual content production.
+                  </p>
+                </div>
+
+                <p className="text-sm" style={{ color: "var(--color-secondary-2)" }}>
+                  Xirevo reduces content creation time by 90%, cuts design costs by 80%, and enables 
+                  businesses to produce 10x more visual content. With over 5,000+ templates and 
+                  growing daily, you'll never run out of creative possibilities.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center p-6 rounded-lg" style={{ backgroundColor: "var(--color-bg-secondary)" }}>
+            <p className="text-lg">
+              These partnerships empower LoopWar Enterprises to deliver end-to-end solutions — from building 
+              your digital presence to managing your operations and creating stunning visual content. 
+              Together, we're redefining what's possible in the digital economy.
+            </p>
+          </div>
         </div>
       </section>
 
