@@ -26,6 +26,9 @@ export default function Home() {
               experiences that captivate users and drive measurable results.
             </p>
             <div className="flex flex-wrap gap-3 animate-fade-up" style={{ ['--delay' as any]: '220ms' }}>
+              <a className="btn hover-lift" href="/portfolio">
+                View Our Portfolio 🚀
+              </a>
               <a className="btn hover-lift" href="/loopwar-final-brochure.pdf" download>
                 Download brochure
               </a>

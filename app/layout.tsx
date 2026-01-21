@@ -45,7 +45,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/favicon.svg" />
       </head>
       <body className={`${montserrat.variable} ${inconsolata.variable}`}>
-        <header className="container-page" style={{ paddingBlock: "0.75rem" }}>
+        <header className="container-page" style={{ paddingBlock: "0.75rem", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <a href="/" className="inline-flex items-center gap-3" aria-label="LoopWar home">
             <img
               src="/favicon.svg"
@@ -58,6 +58,17 @@ export default function RootLayout({
               LoopWar
             </span>
           </a>
+          <nav className="flex gap-6 items-center">
+            <a href="/" className="nav-link" style={{ fontFamily: "var(--font-montserrat)", fontWeight: 600, color: "var(--color-primary)", textDecoration: "none" }}>
+              Home
+            </a>
+            <a href="/portfolio" className="nav-link" style={{ fontFamily: "var(--font-montserrat)", fontWeight: 600, color: "var(--color-primary)", textDecoration: "none" }}>
+              Portfolio
+            </a>
+            <a href="/contact" className="nav-link" style={{ fontFamily: "var(--font-montserrat)", fontWeight: 600, color: "var(--color-primary)", textDecoration: "none" }}>
+              Contact
+            </a>
+          </nav>
         </header>
         {children}
       </body>
