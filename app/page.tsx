@@ -1,564 +1,266 @@
-import OptionalImage from "./components/OptionalImage";
 import Typewriter from "./components/Typewriter";
-import StartupModal from "./components/StartupModal";
+import Reveal from "./components/Reveal";
+import { clientProjects, ventures } from "./data/projects";
+
+const services = [
+  {
+    title: "Web & App Development",
+    body: "Fast, scalable websites and web apps built with modern stacks — Next.js, React, Node and clean, maintainable code.",
+    icon: (
+      <path d="M3 5h18v12H3zM3 19h18M9 9l-2 2 2 2m6-4 2 2-2 2" />
+    ),
+  },
+  {
+    title: "AI & Automation",
+    body: "We embed AI where it counts — assistants, generation, insights and automations that remove busywork and add real value.",
+    icon: <path d="M12 3v3m0 12v3M5 12H2m20 0h-3M6 6l2 2m8 8 2 2M6 18l2-2m8-8 2-2M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z" />,
+  },
+  {
+    title: "E‑Commerce",
+    body: "Conversion‑focused stores with secure payments, catalog & order management, and a checkout tuned to sell.",
+    icon: <path d="M3 4h2l2.4 12.5a1 1 0 0 0 1 .8h8.7a1 1 0 0 0 1-.8L21 8H6m3 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm9 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />,
+  },
+  {
+    title: "UI/UX & Brand",
+    body: "Interfaces people love to use — research‑backed flows, design systems and pixel‑clean execution across devices.",
+    icon: <path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />,
+  },
+  {
+    title: "Cloud & DevOps",
+    body: "Self‑hosted infra, CI/CD, containers and SSL done right — we ship to the cloud and keep it running smoothly.",
+    icon: <path d="M7 18a4 4 0 0 1 0-8 5 5 0 0 1 9.6-1.5A4.5 4.5 0 0 1 17 18H7zM12 12v6m0 0-2-2m2 2 2-2" />,
+  },
+  {
+    title: "Product & Maintenance",
+    body: "From MVP to scale — ongoing optimization, monitoring, support and iteration to keep products performing.",
+    icon: <path d="M10.3 3.2a2 2 0 0 1 3.4 0l1 1.7 2-.2a2 2 0 0 1 2 2.5l-.5 1.9 1.4 1.5a2 2 0 0 1 0 2.8l-1.4 1.5.5 1.9a2 2 0 0 1-2 2.5l-2-.2-1 1.7a2 2 0 0 1-3.4 0l-1-1.7-2 .2a2 2 0 0 1-2-2.5l.5-1.9-1.4-1.5a2 2 0 0 1 0-2.8L4.3 9l-.5-1.9a2 2 0 0 1 2-2.5l2 .2 1-1.7zM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" />,
+  },
+];
+
+const stats = [
+  { value: "7+", label: "Products shipped & live" },
+  { value: "3", label: "In‑house ventures" },
+  { value: "4+", label: "Industries served" },
+  { value: "100%", label: "Owned & operated code" },
+];
+
+const steps = [
+  ["Discover", "We dig into goals, users and constraints to align on what success actually looks like."],
+  ["Design", "Wireframes, UI and a design system — so the product feels right before a line ships."],
+  ["Build", "Agile sprints with frequent demos. Clean, scalable code you actually own."],
+  ["Ship & Scale", "Deploy, monitor, support and iterate — we stay on after launch."],
+];
+
+function Icon({ children }: { children: React.ReactNode }) {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+      {children}
+    </svg>
+  );
+}
 
 export default function Home() {
   return (
-    <div className="min-h-screen">
-      <StartupModal />
-      {/* Hero */}
-      <header className="container-page section">
-        <div className="grid grid-cols-1 items-start gap-10 md:grid-cols-2">
-          <div className="space-y-6">
-            <Typewriter
-              text="LoopWar — Freelancers Who Design, Build, and Inspire"
-              className="kicker animate-fade-up"
-              speed={35}
-              startDelay={100}
-              caret
-            />
-            <h1 className="text-4xl md:text-5xl font-bold animate-fade-up" style={{ ['--delay' as any]: '80ms', color: "var(--color-text-heading)", fontFamily: "var(--font-montserrat)" }}>
-              We design, build, and ship smart, beautiful digital products
+    <div>
+      {/* ============ HERO ============ */}
+      <section className="surface-dark grid-bg" style={{ position: "relative", overflow: "hidden" }}>
+        <div className="glow" style={{ width: "560px", height: "560px", top: "-220px", left: "50%", transform: "translateX(-50%)", opacity: .35 }} />
+        <div className="glow" style={{ width: "320px", height: "320px", bottom: "-160px", right: "-60px", opacity: .25 }} />
+        <div className="container-page" style={{ paddingBlock: "clamp(4.5rem, 11vw, 8.5rem)", position: "relative" }}>
+          <div className="max-w-4xl mx-auto text-center space-y-7">
+            <span className="chip" style={{ background: "rgba(255,255,255,.06)", borderColor: "rgba(255,255,255,.15)", color: "#fff" }}>
+              <span style={{ width: 8, height: 8, borderRadius: 99, background: "#34d399", display: "inline-block" }} />
+              <Typewriter text="A product & engineering studio" speed={32} caret className="text-sm" />
+            </span>
+
+            <h1 className="animate-fade-up" style={{ fontSize: "clamp(2.4rem, 6vw, 4.4rem)", lineHeight: 1.05 }}>
+              We design, build & ship
+              <br className="hidden sm:block" />{" "}
+              <span className="gradient-text">digital products</span> that grow your business
             </h1>
-            <p className="text-lg leading-relaxed animate-fade-up" style={{ ['--delay' as any]: '160ms', color: "var(--color-text-body)" }}>
-              We build high‑performing websites and apps that help your business grow online.
-              Our AI‑powered solutions blend cutting‑edge tech with elegant design to deliver
-              experiences that captivate users and drive measurable results.
+
+            <p className="lead animate-fade-up mx-auto" style={{ ['--delay' as any]: '120ms', color: "#b9bac4", maxWidth: "60ch" }}>
+              LoopWar is a small, senior team building high‑performing websites, apps and AI products for clients —
+              and our own ventures like <strong style={{ color: "#fff" }}>Xirevoa</strong>, <strong style={{ color: "#fff" }}>MyAIDiary</strong> and <strong style={{ color: "#fff" }}>CRMRS</strong>.
             </p>
-            <div className="flex flex-wrap gap-3 animate-fade-up" style={{ ['--delay' as any]: '220ms' }}>
-              <a className="btn hover-lift" href="/portfolio">
-                View Our Portfolio 🚀
-              </a>
-              <a className="btn hover-lift" href="/loopwar-final-brochure.pdf" download>
-                Download brochure
-              </a>
-              <a className="btn secondary hover-lift" href="#brochure">
-                View online
-              </a>
+
+            <div className="flex flex-wrap gap-3 justify-center animate-fade-up" style={{ ['--delay' as any]: '200ms' }}>
+              <a className="btn btn-grad btn-lg" href="/contact">Start a project →</a>
+              <a className="btn btn-ghost-light btn-lg" href="/portfolio">View our work</a>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8 max-w-3xl mx-auto">
+              {stats.map((s) => (
+                <div key={s.label} className="glass" style={{ padding: "1.1rem .75rem" }}>
+                  <div className="stat-value gradient-text">{s.value}</div>
+                  <div className="text-xs mt-1" style={{ color: "#9a9ca8" }}>{s.label}</div>
+                </div>
+              ))}
             </div>
           </div>
-
-          {/* Right column now displays a decorative placeholder instead of color swatches */}
-          <OptionalImage
-            src="/loop1.jpg"
-            alt="Ideas turning into products"
-            prompt="Hero illustration: neat line art of laptop, pen, and spark icon symbolizing ideas‑to‑product; minimal, black strokes on warm beige"
-            className="media"
-          />
         </div>
-      </header>
 
-      {/* Who We Are */}
-  <section className="container-page section animate-fade-up" style={{ ['--delay' as any]: '60ms' }}>
-        <div className="grid gap-8 md:grid-cols-2 items-start">
-          <div className="space-y-4">
-              <h2 className="section-title">Who We Are</h2>
-              <p className="section-subtitle">Next‑Gen Freelancing Studio</p>
-            <p>
-              LoopWar Enterprises is a modern freelancing agency bringing together talented developers,
-              designers, and creators to build high‑quality digital solutions. From websites to
-              mobile apps, we turn ideas into products that perform, engage, and grow your business.
-            </p>
-            <p>
-              Our freelancers combine creativity, technology, and experience to deliver work that’s
-              smart, scalable, and beautifully designed. At LoopWar, we don’t just complete projects —
-              we help you achieve real results.
-            </p>
-          </div>
-          <OptionalImage
-            src="/loop2.jpg"
-            alt="Collaborative studio team"
-            prompt="Minimal line art of a collaborative studio: designer, developer, and strategist around a desk with laptops; warm beige background; thin black lines; modern tech vibes"
-            className="media"
-          />
-        </div>
-      </section>
-
-      {/* Strategic Partnerships */}
-  <section className="container-page section animate-fade-up" style={{ ['--delay' as any]: '70ms' }}>
-        <div className="space-y-8">
-          <div className="text-center space-y-2">
-            <h2 className="section-title">Strategic Partnerships</h2>
-            <p className="section-subtitle">Powering innovation together</p>
-            <p className="max-w-3xl mx-auto">
-              LoopWar Enterprises works hand-in-hand with industry-leading platforms to deliver 
-              comprehensive digital solutions. Our partnerships enable us to provide specialized 
-              tools and services that drive real business outcomes.
-            </p>
-          </div>
-
-          <div className="grid gap-6 md:grid-cols-2">
-            {/* DinePlus */}
-            <div className="card hover-lift">
-              <div className="space-y-3">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-lg flex items-center justify-center text-2xl font-bold" style={{ backgroundColor: "var(--color-primary)", color: "white" }}>
-                    D+
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-xl">DinePlus</h3>
-                    <p className="text-sm" style={{ color: "var(--color-secondary-2)" }}>Complete Restaurant & Café Management</p>
-                  </div>
-                </div>
-                
-                <p>
-                  Transform your food business with DinePlus — a comprehensive cloud-based POS system 
-                  designed specifically for restaurants, cafés, cloud kitchens, and food chains. Built 
-                  with the same excellence as industry leaders like Petpooja, DinePlus brings enterprise-grade 
-                  features to businesses of all sizes.
-                </p>
-
-                <div className="space-y-2">
-                  <h4 className="font-semibold">Complete Business Solutions:</h4>
-                  <ul className="list-disc pl-5 space-y-1 text-sm">
-                    <li><strong>Smart POS System</strong> — Lightning-fast billing with KOT management, table ordering, and split bills</li>
-                    <li><strong>Kitchen Display System (KDS)</strong> — Real-time order tracking with automated kitchen workflows</li>
-                    <li><strong>Inventory Management</strong> — Track stock levels, recipe costing, vendor management, and waste control</li>
-                    <li><strong>Multi-Channel Ordering</strong> — Unified dashboard for dine-in, takeaway, delivery, and online orders</li>
-                    <li><strong>CRM & Loyalty Programs</strong> — Customer database, automated rewards, and personalized promotions</li>
-                    <li><strong>Delivery Integration</strong> — Seamless sync with Zomato, Swiggy, and your own delivery fleet</li>
-                    <li><strong>Staff Management</strong> — Attendance tracking, shift scheduling, performance analytics, and payroll integration</li>
-                    <li><strong>Financial Reporting</strong> — Comprehensive sales reports, profit margins, tax filing support, and expense tracking</li>
-                    <li><strong>Menu Engineering</strong> — Dynamic pricing, combo offers, happy hours, and seasonal menu management</li>
-                    <li><strong>QR Code Ordering</strong> — Contactless table ordering with digital menus and instant payment</li>
-                  </ul>
-                </div>
-
-                <div className="space-y-2">
-                  <h4 className="font-semibold">Advanced Features:</h4>
-                  <ul className="list-disc pl-5 space-y-1 text-sm">
-                    <li>Multi-location management with centralized control</li>
-                    <li>Real-time analytics and business intelligence dashboards</li>
-                    <li>Automated GST compliance and invoice generation</li>
-                    <li>Customer feedback and review management</li>
-                    <li>Recipe management with ingredient tracking</li>
-                    <li>Table reservation system with waitlist management</li>
-                    <li>Integration with accounting software (Tally, QuickBooks)</li>
-                    <li>24/7 cloud backup with offline mode support</li>
-                  </ul>
-                </div>
-
-                <div className="p-3 rounded border" style={{ borderColor: "var(--color-border)", backgroundColor: "var(--color-bg-secondary)" }}>
-                  <p className="text-sm">
-                    <strong>Perfect for:</strong> Fine dining restaurants, quick-service restaurants (QSR), 
-                    cafés, cloud kitchens, food courts, bakeries, bars & pubs, and multi-chain franchises.
-                  </p>
-                </div>
-
-                <p className="text-sm" style={{ color: "var(--color-secondary-2)" }}>
-                  DinePlus helps you reduce order errors by 95%, increase table turnover by 40%, 
-                  save 15+ hours weekly on manual tasks, and boost customer retention through 
-                  data-driven insights.
-                </p>
-              </div>
-            </div>
-
-            {/* Xirevo */}
-            <div className="card hover-lift">
-              <div className="space-y-3">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-lg flex items-center justify-center text-2xl font-bold" style={{ backgroundColor: "var(--color-accent)", color: "white" }}>
-                    Xi
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-xl">Xirevo.com</h3>
-                    <p className="text-sm" style={{ color: "var(--color-secondary-2)" }}>AI-Powered Visual Content Creation</p>
-                  </div>
-                </div>
-                
-                <p>
-                  Revolutionize your visual content strategy with Xirevo — an advanced AI-powered platform 
-                  offering thousands of pre-built templates for rapid image generation. Harness the power 
-                  of state-of-the-art AI models to create stunning visuals in seconds, not hours.
-                </p>
-
-                <div className="space-y-2">
-                  <h4 className="font-semibold">Comprehensive Template Library:</h4>
-                  <ul className="list-disc pl-5 space-y-1 text-sm">
-                    <li><strong>Marketing & Advertising</strong> — Social media posts, banner ads, product showcases, promotional graphics</li>
-                    <li><strong>Brand Identity</strong> — Logo variations, brand assets, style guides, color palettes, typography systems</li>
-                    <li><strong>E-Commerce</strong> — Product mockups, lifestyle shots, packaging designs, seasonal campaigns</li>
-                    <li><strong>Social Media</strong> — Instagram stories, Facebook covers, LinkedIn posts, Twitter headers, TikTok thumbnails</li>
-                    <li><strong>Business Materials</strong> — Presentation slides, infographics, reports, newsletters, business cards</li>
-                    <li><strong>Food & Hospitality</strong> — Menu designs, food photography styles, restaurant promotions, event posters</li>
-                    <li><strong>Real Estate</strong> — Property showcases, virtual staging, brochures, signage, floor plans</li>
-                    <li><strong>Fashion & Lifestyle</strong> — Lookbooks, catalog layouts, mood boards, editorial spreads</li>
-                  </ul>
-                </div>
-
-                <div className="space-y-2">
-                  <h4 className="font-semibold">AI-Powered Features:</h4>
-                  <ul className="list-disc pl-5 space-y-1 text-sm">
-                    <li><strong>Fast AI Models</strong> — Generate high-quality images in 2-5 seconds using cutting-edge Stable Diffusion, DALL-E, and Midjourney-grade models</li>
-                    <li><strong>Smart Templates</strong> — Industry-specific templates with AI-optimized prompts for consistent results</li>
-                    <li><strong>Style Transfer</strong> — Apply brand aesthetics across all generated content automatically</li>
-                    <li><strong>Batch Generation</strong> — Create hundreds of variations simultaneously for A/B testing</li>
-                    <li><strong>Auto-Optimization</strong> — AI automatically adjusts composition, lighting, and colors for maximum impact</li>
-                    <li><strong>Background Removal & Replacement</strong> — Intelligent object detection and scene composition</li>
-                    <li><strong>Text-to-Image</strong> — Transform detailed descriptions into pixel-perfect visuals</li>
-                    <li><strong>Image Enhancement</strong> — Upscale to 4K, remove noise, fix lighting, and restore details</li>
-                  </ul>
-                </div>
-
-                <div className="space-y-2">
-                  <h4 className="font-semibold">Professional Workflow Tools:</h4>
-                  <ul className="list-disc pl-5 space-y-1 text-sm">
-                    <li>Brand kit management with saved colors, fonts, and logos</li>
-                    <li>Template customization with drag-and-drop editor</li>
-                    <li>Multi-format export (PNG, JPG, SVG, PDF) with size optimization</li>
-                    <li>Team collaboration with shared workspaces and version control</li>
-                    <li>Scheduled content generation for social media calendars</li>
-                    <li>API access for seamless integration with your existing tools</li>
-                    <li>Asset library with unlimited cloud storage</li>
-                    <li>Analytics dashboard tracking engagement and performance</li>
-                  </ul>
-                </div>
-
-                <div className="p-3 rounded border" style={{ borderColor: "var(--color-border)", backgroundColor: "var(--color-bg-secondary)" }}>
-                  <p className="text-sm">
-                    <strong>Perfect for:</strong> Digital marketing agencies, e-commerce brands, social media managers, 
-                    content creators, real estate firms, restaurants, startups, and enterprises needing 
-                    high-volume visual content production.
-                  </p>
-                </div>
-
-                <p className="text-sm" style={{ color: "var(--color-secondary-2)" }}>
-                  Xirevo reduces content creation time by 90%, cuts design costs by 80%, and enables 
-                  businesses to produce 10x more visual content. With over 5,000+ templates and 
-                  growing daily, you'll never run out of creative possibilities.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="text-center p-6 rounded-lg" style={{ backgroundColor: "var(--color-bg-secondary)" }}>
-            <p className="text-lg">
-              These partnerships empower LoopWar Enterprises to deliver end-to-end solutions — from building 
-              your digital presence to managing your operations and creating stunning visual content. 
-              Together, we're redefining what's possible in the digital economy.
-            </p>
+        {/* Marquee strip */}
+        <div className="marquee" style={{ borderTop: "1px solid rgba(255,255,255,.1)", padding: "1.1rem 0" }}>
+          <div className="marquee-track" style={{ color: "#7e8090", fontFamily: "var(--font-heading)", fontWeight: 700, letterSpacing: ".02em" }}>
+            {[...clientProjects, ...ventures, ...clientProjects, ...ventures].map((p, i) => (
+              <span key={i} className="inline-flex items-center gap-3">
+                {p.name}
+                <span style={{ color: "var(--accent)" }}>✦</span>
+              </span>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Why Choose LoopWar */}
-  <section className="container-page section animate-fade-up" style={{ ['--delay' as any]: '80ms' }}>
-          <h2 className="section-title">Why LoopWar</h2>
-          <p className="section-subtitle mb-4">A better way to build: flexible, fast, and focused</p>
-        <div className="grid gap-4 md:grid-cols-2">
-          <div className="card">
-            <h3 className="font-semibold text-xl mb-2">Flexible Engagement Models</h3>
-            <p>Adapt to your project needs with scalable teams and flexible contracts for optimal agility.</p>
-          </div>
-          <div className="card">
-            <h3 className="font-semibold text-xl mb-2">Cost‑Effective Solutions</h3>
-            <p>Access top‑tier talent and tech without full‑time overhead, maximizing your budget.</p>
-          </div>
-          <div className="card">
-            <h3 className="font-semibold text-xl mb-2">Direct Communication</h3>
-            <p>Streamlined workflows and direct access to your dedicated team for clarity and speed.</p>
-          </div>
-          <div className="card">
-            <h3 className="font-semibold text-xl mb-2">Faster Turnaround</h3>
-            <p>Agile methods and focused expertise accelerate delivery and time‑to‑market.</p>
-          </div>
-          <div className="card md:col-span-2">
-            <h3 className="font-semibold text-xl mb-2">Personalized Attention</h3>
-            <p>Tailored strategies and bespoke solutions for your goals and challenges.</p>
-            <div className="grid sm:grid-cols-3 gap-4 mt-4">
-              <div className="p-3 rounded border" style={{ borderColor: "var(--color-border)" }}>
-                  <div className="stat-title">Cost Savings</div>
-                <div className="text-lg font-semibold">—</div>
-                <p className="text-sm">Average reduction vs traditional agencies</p>
-              </div>
-              <div className="p-3 rounded border" style={{ borderColor: "var(--color-border)" }}>
-                  <div className="stat-title">Project Completion Rate</div>
-                <div className="text-lg font-semibold">—</div>
-                <p className="text-sm">Delivered on time and on budget</p>
-              </div>
-              <div className="p-3 rounded border" style={{ borderColor: "var(--color-border)" }}>
-                  <div className="stat-title">Client Satisfaction</div>
-                <div className="text-lg font-semibold">—</div>
-                <p className="text-sm">Average rating for service and quality</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* ============ SERVICES ============ */}
+      <section id="services" className="container-page section">
+        <Reveal className="max-w-2xl">
+          <span className="eyebrow">What we do</span>
+          <h2 className="section-title mt-2">Everything you need to launch & grow</h2>
+          <p className="section-subtitle">From a first MVP to a product at scale — one team, end to end.</p>
+        </Reveal>
 
-      {/* Process */}
-      <section className="container-page section">
-          <h2 className="section-title">Process</h2>
-          <p className="section-subtitle mb-4">Simple, transparent, effective</p>
-        <div className="grid gap-4 md:grid-cols-3">
-          {[
-            ["Initial Consultation","Understand goals, requirements, and outcomes for clear alignment."],
-            ["Project Scoping & Proposal","Define scope, deliverables, timeline, costs, and milestones."],
-            ["Team Assembly","Handpick experts with the right blend of skills and experience."],
-            ["Development Phases","Agile sprints with ongoing progress and regular check‑ins."],
-            ["Regular Updates & Feedback","Integrate your feedback at every stage to refine the product."],
-            ["Testing & Delivery","Rigorous QA, seamless deployment, and delivery."],
-            ["Post‑Launch Support","Ongoing maintenance and optimizations for long‑term success."],
-          ].map(([title, body]) => (
-            <div key={String(title)} className="card hover-lift">
-              <h3 className="font-semibold text-lg mb-2">{title}</h3>
-              <p>{body}</p>
-            </div>
-          ))}
-        </div>
-        <p className="mt-4 text-sm" style={{ color: "var(--color-secondary-2)" }}>
-          We offer flexible payment terms and milestone‑based billing for financial clarity.
-        </p>
-      </section>
-
-      {/* Team */}
-  <section className="container-page section animate-fade-up" style={{ ['--delay' as any]: '100ms' }}>
-        <div className="grid gap-8 md:grid-cols-2 items-start">
-          <div className="space-y-4 animate-fade-up" style={{ ['--delay' as any]: '120ms' }}>
-              <h2 className="section-title">Team</h2>
-              <p className="section-subtitle">Meet our expert freelance network</p>
-            <p>
-              LoopWar partners with a curated network of top professionals — innovators and
-              problem‑solvers who bring your projects to life.
-            </p>
-            <ul className="grid sm:grid-cols-2 gap-2 list-disc pl-5">
-              <li><strong>Full‑stack Developers</strong> — End‑to‑end web and app development.</li>
-              <li><strong>UI/UX Designers</strong> — Intuitive and engaging experiences.</li>
-              <li><strong>AI Specialists</strong> — Automation and actionable insights.</li>
-              <li><strong>DevOps Engineers</strong> — Streamlined workflows and operations.</li>
-              <li><strong>Project Managers</strong> — From concept to successful delivery.</li>
-            </ul>
-            <p>
-              Rigorous vetting ensures technical proficiency, proven track record, and excellent
-              communication. Scale effortlessly without full‑time hiring overhead.
-            </p>
-          </div>
-          <OptionalImage
-            src="/loop3.jpg"
-            alt="Network of professionals"
-            prompt="Abstract line art of networked professionals connected by nodes; simple human figures; monochrome on warm beige"
-            className="media"
-          />
-        </div>
-      </section>
-
-      {/* Expertise */}
-  <section className="container-page section animate-fade-up" style={{ ['--delay' as any]: '120ms' }}>
-          <h2 className="section-title">Expertise</h2>
-          <p className="section-subtitle mb-4">Core capabilities</p>
-        <div className="grid gap-4 md:grid-cols-3">
-          {[
-            ["Custom Website & App Development","Tailored solutions built from the ground up."],
-            ["AI & Automation Integration","Streamline operations with intelligent systems."],
-            ["Cloud Infrastructure & DevOps","Scalable, secure hosting with CI/CD."],
-            ["UI/UX Design","Beautiful, intuitive interfaces that drive engagement."],
-            ["Product Optimization & Maintenance","Keep products performing at their peak."],
-          ].map(([title, body]) => (
-            <div key={String(title)} className="card hover-lift">
-              <h3 className="font-semibold text-lg mb-2">{title}</h3>
-              <p>{body}</p>
-            </div>
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3 mt-10">
+          {services.map((s, i) => (
+            <Reveal key={s.title} delay={i * 70}>
+              <div className="card hover-lift h-full">
+                <div className="inline-flex items-center justify-center mb-4"
+                     style={{ width: "3rem", height: "3rem", borderRadius: ".9rem", background: "var(--grad-soft)", color: "var(--accent)" }}>
+                  <Icon>{s.icon}</Icon>
+                </div>
+                <h3 className="text-xl mb-2">{s.title}</h3>
+                <p style={{ color: "var(--text-body)" }}>{s.body}</p>
+              </div>
+            </Reveal>
           ))}
         </div>
       </section>
 
-      {/* E‑Commerce */}
-  <section className="container-page section animate-fade-up" style={{ ['--delay' as any]: '140ms' }}>
-        <div className="grid gap-8 md:grid-cols-2 items-start">
-          <div className="space-y-2">
-            <h2 className="section-title">E‑Commerce</h2>
-            <p className="section-subtitle">Conversion‑focused online stores</p>
-            <p>
-              Secure payments, product dashboards, and responsive design — optimized to guide
-              visitors from browsing to purchase.
-            </p>
-            <ul className="list-disc pl-5 grid sm:grid-cols-2 gap-2">
-              <li><strong>Secure Payment Integration</strong> — Multiple gateways with encryption.</li>
-              <li><strong>Inventory Management</strong> — Real‑time tracking and stock updates.</li>
-              <li><strong>Analytics Dashboard</strong> — Sales insights and customer behavior.</li>
-              <li><strong>Mobile‑First Design</strong> — Seamless experience on all devices.</li>
-            </ul>
-          </div>
-          <OptionalImage src="/loop4.jpg" alt="E‑commerce analytics" prompt="Line art of a shopping cart morphing into analytics charts; minimalist; black stroke on beige" className="media" />
-        </div>
-      </section>
-
-      {/* Food Businesses */}
-  <section className="container-page section animate-fade-up" style={{ ['--delay' as any]: '140ms' }}>
-        <div className="grid gap-8 md:grid-cols-2 items-start">
-          <div className="space-y-2 md:order-1">
-            <h2 className="section-title">Food & Hospitality</h2>
-            <p className="section-subtitle">Smart websites for cafés and restaurants</p>
-            <p>
-              Enable menu updates, online table orders, and direct payments — no middlemen.
-            </p>
-            <ul className="list-disc pl-5 grid sm:grid-cols-2 gap-2">
-              <li><strong>Dynamic Menu Management</strong> — Update dishes and availability in real‑time.</li>
-              <li><strong>Online Table Booking</strong> — Integrated reservations with reminders.</li>
-              <li><strong>Direct Payment Processing</strong> — Keep 100% of your revenue.</li>
-            </ul>
-          </div>
-          <div className="md:order-2">
-            <OptionalImage src="/loop5.jpg" alt="Café ordering and menu" prompt="Line art of a café table with menu, phone ordering, and a small receipt; clean outline style" className="media animate-fade-up" />
-          </div>
-        </div>
-      </section>
-
-      {/* Fitness & Lifestyle */}
-  <section className="container-page section animate-fade-up" style={{ ['--delay' as any]: '140ms' }}>
-        <div className="grid gap-8 md:grid-cols-2 items-start">
-          <div className="space-y-2">
-            <h2 className="section-title">Fitness & Lifestyle</h2>
-            <p className="section-subtitle">Engaging digital experiences</p>
-            <ul className="list-disc pl-5 grid sm:grid-cols-2 gap-2">
-              <li><strong>Membership Portals</strong> — Schedules, progress, personalized plans.</li>
-              <li><strong>Booking & Scheduling</strong> — Real‑time availability and profiles.</li>
-              <li><strong>Event Management</strong> — Ticketing, RSVPs, and promotions.</li>
-            </ul>
-          </div>
-          <OptionalImage src="/loop6.jpg" alt="Calendar dumbbell ticket icons" prompt="Line art of a calendar, dumbbell, and ticket icons interconnected; thin strokes" className="media" />
-        </div>
-      </section>
-
-      {/* Property Management */}
-  <section className="container-page section animate-fade-up" style={{ ['--delay' as any]: '160ms' }}>
-        <div className="grid gap-8 md:grid-cols-2 items-start">
-          <div className="space-y-2 md:order-1">
-            <h2 className="section-title">Property</h2>
-            <p className="section-subtitle">Simplifying PG, hostel, and real‑estate workflows</p>
-            <ul className="list-disc pl-5 grid sm:grid-cols-2 gap-2">
-              <li><strong>PG & Hostel Management</strong> — Rooms, bookings, and maintenance.</li>
-              <li><strong>Real Estate Listings</strong> — Virtual tours and high‑intent lead capture.</li>
-              <li><strong>Tenant Dashboards</strong> — Rent, complaints, and communication.</li>
-            </ul>
-            <p className="text-sm" style={{ color: "var(--color-secondary-2)" }}>
-              Reduce administrative workload by up to 70% with streamlined dashboards.
-            </p>
-          </div>
-          <div className="md:order-2">
-            <OptionalImage src="/loop7.jpg" alt="Buildings with dashboards" prompt="Line art of buildings with dashboard panels; minimal outlines; friendly look" className="media animate-fade-up" />
-          </div>
-        </div>
-      </section>
-
-      {/* Personal Branding */}
-  <section className="container-page section animate-fade-up" style={{ ['--delay' as any]: '160ms' }}>
-        <div className="grid gap-8 md:grid-cols-2 items-start">
-          <div className="space-y-2">
-            <h2 className="section-title">Personal Branding</h2>
-            <p className="section-subtitle">Portfolio sites that amplify your voice</p>
-            <p>
-              Showcase your identity with stunning portfolio websites — perfect for creators,
-              artists, influencers, and professionals.
-            </p>
-            <ul className="list-disc pl-5 grid sm:grid-cols-2 gap-2">
-              <li><strong>Visual Storytelling</strong> — Galleries and media sections.</li>
-              <li><strong>Achievement Highlights</strong> — Awards, press, and milestones.</li>
-              <li><strong>Direct Engagement</strong> — Forms and social integration.</li>
-            </ul>
-          </div>
-          <OptionalImage src="/loop8.jpg" alt="Portfolio homepage line art" prompt="Line art of a personal homepage with gallery frames and a signature; minimal, elegant" className="media" />
-        </div>
-      </section>
-
-      {/* Local Businesses */}
-      <section className="container-page section">
-        <div className="grid gap-8 md:grid-cols-2 items-start">
-          <div className="space-y-2 md:order-1">
-            <h2 className="section-title">Local Businesses</h2>
-            <p className="section-subtitle">Crafting digital presence for local brands</p>
-            <p>
-              From jewelry stores to fashion boutiques, we help local businesses go digital with
-              elegant websites and AI‑powered marketing tools.
-            </p>
-            <ul className="list-disc pl-5 grid sm:grid-cols-2 gap-2">
-              <li><strong>Product Catalogs</strong> — Beautiful showcases with filtering.</li>
-              <li><strong>AI Marketing</strong> — Automated campaigns that reach the right customers.</li>
-              <li><strong>Local SEO</strong> — Optimization to appear in local search results.</li>
-            </ul>
-          </div>
-          <div className="md:order-2">
-            <OptionalImage src="/loop9.jpg" alt="Boutique storefront with pin" prompt="Line art of a boutique storefront with location pin and growth arrow" className="media animate-fade-up" />
-          </div>
-        </div>
-      </section>
-
-      {/* Contact / CTA */}
-      <section className="container-page section">
-        <div className="card">
-          <div className="grid gap-6 md:grid-cols-2 items-center">
-            <div className="space-y-2">
-              <p className="kicker">Let’s Build Your Digital Future</p>
-              <h2 className="text-3xl font-semibold" style={{ fontFamily: "var(--font-montserrat)" }}>
-                Start your project with LoopWar today
-              </h2>
-              <p>
-                We’d love to collaborate and bring your ideas to life. Whether you’re starting from
-                scratch or transforming an existing product, we’re ready to partner with you.
-              </p>
+      {/* ============ FEATURED WORK ============ */}
+      <section id="work" style={{ background: "var(--bg-soft)" }}>
+        <div className="container-page section">
+          <Reveal className="flex flex-wrap items-end justify-between gap-4">
+            <div className="max-w-2xl">
+              <span className="eyebrow">Selected client work</span>
+              <h2 className="section-title mt-2">Real products, shipped for real businesses</h2>
+              <p className="section-subtitle">A few of the websites and platforms we&apos;ve built for our clients.</p>
             </div>
-            <div className="space-y-3">
-              <div>
-                <div className="text-sm" style={{ color: "var(--color-secondary-2)" }}>Email Us</div>
-                <a className="underline" href="mailto:contact@loopwar.dev">contact@loopwar.dev</a>
-                <span className="mx-2">·</span>
-                <a className="underline" href="mailto:admin@loopwar.dev">admin@loopwar.dev</a>
+            <a href="/portfolio" className="btn secondary">See all work →</a>
+          </Reveal>
+
+          <div className="grid gap-7 md:grid-cols-2 mt-10">
+            {clientProjects.map((p, i) => (
+              <Reveal key={p.domain} delay={i * 80}>
+                <a href={p.url} target="_blank" rel="noreferrer" className="project-card block h-full">
+                  <div className={`project-media ${p.contain ? "project-media-contain" : ""}`}>
+                    <img src={p.image} alt={`${p.name} — ${p.category}`} loading="lazy" />
+                    <span className="chip" style={{ position: "absolute", top: "1rem", left: "1rem", backdropFilter: "blur(6px)", background: "rgba(255,255,255,.85)" }}>{p.category}</span>
+                  </div>
+                  <div className="p-6">
+                    <div className="flex items-center justify-between gap-3">
+                      <h3 className="text-2xl">{p.name}</h3>
+                      <span className="text-sm" style={{ color: "var(--muted)" }}>{p.domain}</span>
+                    </div>
+                    <p className="mt-2" style={{ color: "var(--text-body)" }}>{p.description}</p>
+                    <div className="flex flex-wrap gap-2 mt-4">
+                      {p.features.slice(0, 3).map((f) => (
+                        <span key={f} className="chip-accent chip">{f}</span>
+                      ))}
+                    </div>
+                  </div>
+                </a>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============ VENTURES ============ */}
+      <section id="ventures" className="container-page section">
+        <Reveal className="max-w-2xl">
+          <span className="eyebrow">Built by us, for the world</span>
+          <h2 className="section-title mt-2">Our ventures</h2>
+          <p className="section-subtitle">We don&apos;t just build for clients — we build and run our own products.</p>
+        </Reveal>
+
+        <div className="grid gap-7 lg:grid-cols-3 mt-10">
+          {ventures.map((v, i) => (
+            <Reveal key={v.domain} delay={i * 90}>
+              <div className="project-card h-full flex flex-col">
+                <div className={`project-media ${v.contain ? "project-media-contain" : ""}`} style={{ aspectRatio: "16 / 11" }}>
+                  <img src={v.image} alt={`${v.name} — ${v.category}`} loading="lazy" />
+                  <span className="chip" style={{ position: "absolute", top: "1rem", left: "1rem", background: "var(--grad)", color: "#fff", borderColor: "transparent" }}>{v.role}</span>
+                </div>
+                <div className="p-6 flex flex-col flex-1">
+                  <div className="text-xs font-semibold mb-1" style={{ color: "var(--accent)" }}>{v.category}</div>
+                  <h3 className="text-2xl">{v.name}</h3>
+                  <p className="mt-2 flex-1" style={{ color: "var(--text-body)" }}>{v.description}</p>
+                  <a href={v.url} target="_blank" rel="noreferrer" className="btn secondary mt-5 w-full">Visit {v.name} →</a>
+                </div>
               </div>
-              <div>
-                <div className="text-sm" style={{ color: "var(--color-secondary-2)" }}>Call Us</div>
-                <a className="underline" href="tel:+916377362603">+91 63773 62603</a>
-                <div className="text-xs" style={{ color: "var(--color-secondary-2)" }}>Mon–Sat, 9 AM – 7 PM IST</div>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* ============ PROCESS ============ */}
+      <section className="surface-dark">
+        <div className="container-page section">
+          <Reveal className="max-w-2xl">
+            <span className="eyebrow" style={{ color: "#c4b5fd" }}>How we work</span>
+            <h2 className="section-title mt-2" style={{ color: "#fff" }}>A simple, transparent process</h2>
+            <p className="section-subtitle" style={{ color: "#9a9ca8" }}>Clear milestones, frequent demos, no surprises.</p>
+          </Reveal>
+
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4 mt-10">
+            {steps.map(([title, body], i) => (
+              <Reveal key={title} delay={i * 90}>
+                <div className="glass h-full" style={{ padding: "1.5rem" }}>
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="step-no">{i + 1}</span>
+                    <h3 style={{ color: "#fff" }} className="text-lg">{title}</h3>
+                  </div>
+                  <p style={{ color: "#b9bac4" }}>{body}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============ CONTACT CTA ============ */}
+      <section className="container-page section">
+        <Reveal>
+          <div style={{ position: "relative", overflow: "hidden", borderRadius: "var(--radius-lg)", background: "var(--grad)", backgroundSize: "180% 180%" }}>
+            <div className="glow" style={{ width: 360, height: 360, top: -160, right: -80, background: "#fff", opacity: .12 }} />
+            <div className="grid gap-8 md:grid-cols-[1.4fr_1fr] items-center p-8 md:p-12" style={{ color: "#fff", position: "relative" }}>
+              <div className="space-y-4">
+                <h2 style={{ color: "#fff", fontSize: "clamp(1.8rem,3.5vw,2.8rem)" }}>Let&apos;s build your next big thing</h2>
+                <p style={{ color: "rgba(255,255,255,.9)", maxWidth: "52ch" }}>
+                  Whether you&apos;re starting from scratch or scaling an existing product, we&apos;d love to help.
+                  Tell us what you&apos;re building.
+                </p>
+                <div className="flex flex-wrap gap-3 pt-1">
+                  <a href="/contact" className="btn btn-lg" style={{ background: "#fff", color: "var(--ink)", border: "none" }}>Start a project</a>
+                  <a href="mailto:contact@loopwar.dev" className="btn btn-lg btn-ghost-light">Email us</a>
+                </div>
               </div>
-              <div>
-                <div className="text-sm" style={{ color: "var(--color-secondary-2)" }}>Visit Our Website</div>
-                <a className="underline" href="https://loopwar.dev" target="_blank" rel="noreferrer">https://loopwar.dev</a>
-              </div>
-              <div className="pt-2">
-                <a className="btn" href="#contact">Start your project</a>
+              <div className="space-y-3 text-sm md:justify-self-end">
+                <div>
+                  <div style={{ color: "rgba(255,255,255,.7)" }}>Email</div>
+                  <a className="font-semibold hover:underline" href="mailto:contact@loopwar.dev">contact@loopwar.dev</a>
+                </div>
+                <div>
+                  <div style={{ color: "rgba(255,255,255,.7)" }}>Call</div>
+                  <a className="font-semibold hover:underline" href="tel:+916377362603">+91 63773 62603</a>
+                  <div style={{ color: "rgba(255,255,255,.7)" }} className="text-xs">Mon–Sat, 9 AM – 7 PM IST</div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </Reveal>
       </section>
-
-      {/* Brochure embed */}
-  <section id="brochure" className="container-page pb-24 animate-fade-up" style={{ ['--delay' as any]: '180ms' }}>
-        <div className="card">
-          <h2 className="text-2xl font-semibold mb-4" style={{ fontFamily: "var(--font-montserrat)" }}>
-            Brochure
-          </h2>
-          <object
-            data="/loopwar-final-brochure.pdf#view=fitH"
-            type="application/pdf"
-            className="w-full"
-            style={{ height: "75vh", borderRadius: "1rem", border: "1px solid var(--color-border)", overflow: "hidden" }}
-          >
-            <p>
-              Your browser doesn’t support inline PDFs. You can
-              <a href="/loopwar-final-brochure.pdf" className="ml-1 underline" style={{ color: "var(--color-primary)" }}>
-                download the brochure here
-              </a>
-              .
-            </p>
-          </object>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="container-page pb-10 text-sm" style={{ color: "var(--color-secondary-2)" }}>
-        <div className="flex flex-wrap justify-center gap-4 mb-4">
-          <a href="/contact" className="hover:underline">Contact Us</a>
-          <span>•</span>
-          <a href="/terms" className="hover:underline">Terms & Conditions</a>
-          <span>•</span>
-          <a href="/refund" className="hover:underline">Refund Policy</a>
-          <span>•</span>
-          <a href="/privacy" className="hover:underline">Privacy Policy</a>
-        </div>
-        <div className="text-center">
-          © {new Date().getFullYear()} Loopwar
-        </div>
-      </footer>
     </div>
   );
 }

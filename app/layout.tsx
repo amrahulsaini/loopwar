@@ -1,76 +1,56 @@
 import type { Metadata } from "next";
-import { Inconsolata, Montserrat } from "next/font/google";
+import { Inter, Montserrat } from "next/font/google";
 import "./globals.css";
+import SiteHeader from "./components/SiteHeader";
+import SiteFooter from "./components/SiteFooter";
 
-// Fonts: Headings -> Montserrat, Body -> Inconsolata (Daktilo/typewriter vibe)
 const montserrat = Montserrat({
   variable: "--font-montserrat",
   display: "swap",
-  weight: ["400", "600", "700", "800"],
+  weight: ["600", "700", "800"],
   subsets: ["latin"],
 });
 
-const inconsolata = Inconsolata({
-  variable: "--font-inconsolata",
+const inter = Inter({
+  variable: "--font-inter",
   display: "swap",
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "Loopwar",
-  description: "Loopwar – brochure site",
+  metadataBase: new URL("https://loopwar.dev"),
+  title: {
+    default: "LoopWar — Product & Engineering Studio",
+    template: "%s · LoopWar",
+  },
+  description:
+    "LoopWar is a product & engineering studio that designs, builds and ships high‑performing websites, apps and AI products — and our own ventures like Xirevoa, MyAIDiary and CRMRS.",
+  keywords: ["LoopWar", "web development", "app development", "AI products", "UI/UX design", "Xirevoa", "MyAIDiary", "CRMRS"],
+  openGraph: {
+    title: "LoopWar — Product & Engineering Studio",
+    description:
+      "We design, build and ship smart, beautiful digital products — websites, apps, AI tools and ventures.",
+    url: "https://loopwar.dev",
+    siteName: "LoopWar",
+    type: "website",
+  },
   icons: {
-    icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
-    ],
-    shortcut: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
-    ],
-    apple: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
-    ],
+    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
+    shortcut: [{ url: "/favicon.svg", type: "image/svg+xml" }],
+    apple: [{ url: "/favicon.svg", type: "image/svg+xml" }],
   },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <head>
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/favicon.svg" />
-      </head>
-      <body className={`${montserrat.variable} ${inconsolata.variable}`}>
-        <header className="container-page" style={{ paddingBlock: "0.75rem", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <a href="/" className="inline-flex items-center gap-3" aria-label="LoopWar home">
-            <img
-              src="/favicon.svg"
-              alt="LoopWar logo"
-              width={40}
-              height={40}
-              style={{ borderRadius: "12px", objectFit: "cover", border: "1px solid var(--color-border)" }}
-            />
-            <span style={{ fontFamily: "var(--font-montserrat)", fontWeight: 700, color: "var(--color-primary)" }}>
-              LoopWar
-            </span>
-          </a>
-          <nav className="flex gap-6 items-center">
-            <a href="/" className="nav-link" style={{ fontFamily: "var(--font-montserrat)", fontWeight: 600, color: "var(--color-primary)", textDecoration: "none" }}>
-              Home
-            </a>
-            <a href="/portfolio" className="nav-link" style={{ fontFamily: "var(--font-montserrat)", fontWeight: 600, color: "var(--color-primary)", textDecoration: "none" }}>
-              Portfolio
-            </a>
-            <a href="/contact" className="nav-link" style={{ fontFamily: "var(--font-montserrat)", fontWeight: 600, color: "var(--color-primary)", textDecoration: "none" }}>
-              Contact
-            </a>
-          </nav>
-        </header>
-        {children}
+      <body className={`${montserrat.variable} ${inter.variable}`}>
+        <SiteHeader />
+        <main>{children}</main>
+        <SiteFooter />
       </body>
     </html>
   );

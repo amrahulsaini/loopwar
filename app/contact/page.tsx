@@ -219,11 +219,6 @@ export default function Contact() {
           </a>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="container-page pb-10 text-sm text-center" style={{ color: "var(--color-secondary-2)" }}>
-        © {new Date().getFullYear()} Loopwar
-      </footer>
     </div>
   );
 }
