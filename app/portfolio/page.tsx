@@ -5,38 +5,33 @@ import { clientProjects, ventures, type Project } from "../data/projects";
 
 type Tab = "ventures" | "clients";
 
+const Arrow = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M5 12h14M13 6l6 6-6 6" />
+  </svg>
+);
+
 function Card({ p, role }: { p: Project; role?: string }) {
   return (
     <a href={p.url} target="_blank" rel="noreferrer" className="project-card flex flex-col h-full">
       <div className={`project-media ${p.contain ? "project-media-contain" : ""}`}>
         <img src={p.image} alt={`${p.name} — ${p.category}`} loading="lazy" />
-        <span
-          className="chip"
-          style={{
-            position: "absolute", top: "1rem", left: "1rem",
-            background: role ? "var(--grad)" : "rgba(255,255,255,.88)",
-            color: role ? "#fff" : "var(--text-body)",
-            borderColor: "transparent", backdropFilter: "blur(6px)",
-          }}
-        >
-          {role || p.category}
-        </span>
       </div>
-      <div className="p-6 flex flex-col flex-1">
-        <div className="text-xs font-semibold mb-1" style={{ color: "var(--accent)" }}>{p.category}</div>
+      <div className="p-6 flex flex-col flex-1" style={{ borderTop: "1px solid var(--line)" }}>
         <div className="flex items-center justify-between gap-3">
-          <h3 className="text-2xl">{p.name}</h3>
-          <span className="text-xs" style={{ color: "var(--muted)" }}>{p.domain}</span>
+          <span className="label">{p.category}</span>
+          {role ? <span className="chip">{role}</span> : <span className="label" style={{ color: "var(--faint)" }}>{p.domain}</span>}
         </div>
-        <p className="mt-2" style={{ color: "var(--text-body)" }}>{p.description}</p>
-        <ul className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 flex-1">
+        <h3 className="mt-3 text-2xl">{p.name}</h3>
+        <p className="mt-2" style={{ color: "var(--text)" }}>{p.description}</p>
+        <ul className="mt-5 grid grid-cols-2 gap-x-4 gap-y-2 flex-1">
           {p.features.map((f) => (
-            <li key={f} className="flex items-start gap-2 text-sm" style={{ color: "var(--text-body)" }}>
-              <span style={{ color: "var(--accent)", marginTop: 2 }}>▸</span>{f}
+            <li key={f} className="flex items-start gap-2 text-sm" style={{ color: "var(--text)" }}>
+              <span style={{ color: "var(--faint)", marginTop: 1 }}>—</span>{f}
             </li>
           ))}
         </ul>
-        <span className="btn secondary mt-5 w-full">Visit {p.name} →</span>
+        <span className="link-arrow mt-6">Visit {p.name} <Arrow /></span>
       </div>
     </a>
   );
@@ -48,52 +43,42 @@ export default function Portfolio() {
   return (
     <div>
       {/* Hero */}
-      <section className="surface-dark grid-bg" style={{ position: "relative", overflow: "hidden" }}>
-        <div className="glow" style={{ width: 480, height: 480, top: -200, left: "50%", transform: "translateX(-50%)", opacity: .3 }} />
-        <div className="container-page" style={{ paddingBlock: "clamp(3.5rem,8vw,6rem)", position: "relative" }}>
-          <div className="max-w-3xl mx-auto text-center space-y-5">
-            <span className="eyebrow" style={{ color: "#c4b5fd" }}>Our portfolio</span>
-            <h1 style={{ fontSize: "clamp(2.4rem,6vw,4rem)", color: "#fff" }}>
-              Products we&apos;ve <span className="gradient-text">built & shipped</span>
-            </h1>
-            <p className="lead mx-auto" style={{ color: "#b9bac4", maxWidth: "56ch" }}>
-              From in‑house AI ventures to client platforms across e‑commerce, healthcare and logistics — here&apos;s a look at our work.
-            </p>
-          </div>
+      <section className="container-page" style={{ paddingBlock: "clamp(3.5rem, 7vw, 6rem)" }}>
+        <div className="max-w-4xl">
+          <span className="eyebrow">Portfolio</span>
+          <h1 className="mt-6" style={{ fontSize: "clamp(2.6rem, 7vw, 5rem)", lineHeight: ".98", letterSpacing: "-0.045em" }}>
+            Products we&apos;ve built and shipped.
+          </h1>
+          <p className="lead mt-6" style={{ maxWidth: "56ch", color: "var(--text)" }}>
+            From in‑house AI ventures to client platforms across e‑commerce, healthcare and logistics — a closer look at our work.
+          </p>
+        </div>
+
+        {/* Tabs */}
+        <div className="mt-12 flex items-center gap-8" style={{ borderBottom: "1px solid var(--line)" }}>
+          {([["ventures", "Our ventures"], ["clients", "Client work"]] as const).map(([key, label]) => (
+            <button
+              key={key}
+              onClick={() => setTab(key)}
+              className="pb-3"
+              style={{
+                fontFamily: "var(--font-display)", fontWeight: 600, fontSize: "1.05rem", letterSpacing: "-0.02em",
+                color: tab === key ? "var(--ink)" : "var(--muted)",
+                borderBottom: tab === key ? "2px solid var(--ink)" : "2px solid transparent",
+                marginBottom: "-1px",
+              }}
+            >
+              {label}
+              <span className="idx" style={{ fontSize: ".8rem", marginLeft: ".5rem" }}>
+                {key === "ventures" ? ventures.length : clientProjects.length}
+              </span>
+            </button>
+          ))}
         </div>
       </section>
 
-      {/* Tabs */}
-      <section className="container-page section">
-        <div className="flex justify-center mb-12">
-          <div className="inline-flex gap-1 p-1.5 rounded-2xl" style={{ background: "var(--bg-soft)", border: "1px solid var(--color-border)" }}>
-            <button
-              onClick={() => setTab("ventures")}
-              className="px-6 py-3 rounded-xl font-semibold transition-all"
-              style={{
-                fontFamily: "var(--font-heading)",
-                background: tab === "ventures" ? "var(--grad)" : "transparent",
-                color: tab === "ventures" ? "#fff" : "var(--text-body)",
-                boxShadow: tab === "ventures" ? "var(--shadow)" : "none",
-              }}
-            >
-              🚀 Our Ventures
-            </button>
-            <button
-              onClick={() => setTab("clients")}
-              className="px-6 py-3 rounded-xl font-semibold transition-all"
-              style={{
-                fontFamily: "var(--font-heading)",
-                background: tab === "clients" ? "var(--grad)" : "transparent",
-                color: tab === "clients" ? "#fff" : "var(--text-body)",
-                boxShadow: tab === "clients" ? "var(--shadow)" : "none",
-              }}
-            >
-              💼 Client Work
-            </button>
-          </div>
-        </div>
-
+      {/* Grid */}
+      <section className="container-page" style={{ paddingBottom: "clamp(3rem, 6vw, 5rem)" }}>
         {tab === "ventures" ? (
           <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
             {ventures.map((v) => (
@@ -110,13 +95,13 @@ export default function Portfolio() {
       </section>
 
       {/* CTA */}
-      <section className="container-page section-sm" style={{ paddingBottom: "5rem" }}>
-        <div className="card text-center" style={{ padding: "3rem 1.5rem", background: "var(--bg-soft)" }}>
+      <section style={{ background: "var(--paper-2)" }}>
+        <div className="container-page section text-center">
           <h2 className="section-title">Have a project in mind?</h2>
-          <p className="section-subtitle mb-6">Let&apos;s turn your idea into a product people love.</p>
-          <div className="flex flex-wrap gap-3 justify-center">
-            <a href="/contact" className="btn btn-grad btn-lg">Start a project</a>
-            <a href="mailto:contact@loopwar.dev" className="btn secondary btn-lg">Get in touch</a>
+          <p className="section-subtitle mb-8">Let&apos;s turn your idea into a product people love.</p>
+          <div className="flex flex-wrap gap-5 justify-center items-center">
+            <a href="/contact" className="btn btn-lg">Start a project</a>
+            <a href="mailto:contact@loopwar.dev" className="link-arrow">Get in touch <Arrow /></a>
           </div>
         </div>
       </section>

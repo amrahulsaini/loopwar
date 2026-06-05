@@ -1,20 +1,20 @@
 import type { Metadata } from "next";
-import { Inter, Montserrat } from "next/font/google";
+import { Inter, Inter_Tight } from "next/font/google";
 import "./globals.css";
 import SiteHeader from "./components/SiteHeader";
 import SiteFooter from "./components/SiteFooter";
 
-const montserrat = Montserrat({
-  variable: "--font-montserrat",
+const display = Inter_Tight({
+  variable: "--font-display-face",
   display: "swap",
-  weight: ["600", "700", "800"],
+  weight: ["500", "600", "700"],
   subsets: ["latin"],
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const sans = Inter({
+  variable: "--font-sans-face",
   display: "swap",
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600"],
   subsets: ["latin"],
 });
 
@@ -47,7 +47,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${montserrat.variable} ${inter.variable}`}>
+      <body className={`${display.variable} ${sans.variable}`}>
         <SiteHeader />
         <main>{children}</main>
         <SiteFooter />

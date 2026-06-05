@@ -29,21 +29,21 @@ export default function SiteHeader() {
           <img
             src="/favicon.svg"
             alt="LoopWar"
-            width={38}
-            height={38}
-            style={{ borderRadius: "11px", border: "1px solid var(--color-border)" }}
+            width={30}
+            height={30}
+            style={{ borderRadius: "8px" }}
           />
-          <span style={{ fontFamily: "var(--font-heading)", fontWeight: 800, fontSize: "1.18rem", color: "var(--text-heading)", letterSpacing: "-.02em" }}>
-            Loop<span className="gradient-text">War</span>
+          <span style={{ fontFamily: "var(--font-display)", fontWeight: 600, fontSize: "1.12rem", color: "var(--ink)", letterSpacing: "-.03em" }}>
+            LoopWar
           </span>
         </a>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-7">
+        <nav className="hidden md:flex items-center gap-8">
           {links.map((l) => (
             <a key={l.href} href={l.href} className="nav-link">{l.label}</a>
           ))}
-          <a href="/contact" className="btn btn-grad" style={{ height: "2.6rem" }}>Start a project</a>
+          <a href="/contact" className="btn" style={{ height: "2.5rem", paddingInline: "1.05rem" }}>Start a project</a>
         </nav>
 
         {/* Mobile toggle */}
@@ -75,7 +75,7 @@ export default function SiteHeader() {
                 {l.label}
               </a>
             ))}
-            <a href="/contact" onClick={() => setOpen(false)} className="btn btn-grad w-full mt-1">Start a project</a>
+            <a href="/contact" onClick={() => setOpen(false)} className="btn w-full mt-1">Start a project</a>
           </div>
         </div>
       )}

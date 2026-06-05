@@ -1,228 +1,214 @@
-import Typewriter from "./components/Typewriter";
 import Reveal from "./components/Reveal";
 import { clientProjects, ventures } from "./data/projects";
 
 const services = [
-  {
-    title: "Web & App Development",
-    body: "Fast, scalable websites and web apps built with modern stacks — Next.js, React, Node and clean, maintainable code.",
-    icon: (
-      <path d="M3 5h18v12H3zM3 19h18M9 9l-2 2 2 2m6-4 2 2-2 2" />
-    ),
-  },
-  {
-    title: "AI & Automation",
-    body: "We embed AI where it counts — assistants, generation, insights and automations that remove busywork and add real value.",
-    icon: <path d="M12 3v3m0 12v3M5 12H2m20 0h-3M6 6l2 2m8 8 2 2M6 18l2-2m8-8 2-2M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z" />,
-  },
-  {
-    title: "E‑Commerce",
-    body: "Conversion‑focused stores with secure payments, catalog & order management, and a checkout tuned to sell.",
-    icon: <path d="M3 4h2l2.4 12.5a1 1 0 0 0 1 .8h8.7a1 1 0 0 0 1-.8L21 8H6m3 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm9 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />,
-  },
-  {
-    title: "UI/UX & Brand",
-    body: "Interfaces people love to use — research‑backed flows, design systems and pixel‑clean execution across devices.",
-    icon: <path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />,
-  },
-  {
-    title: "Cloud & DevOps",
-    body: "Self‑hosted infra, CI/CD, containers and SSL done right — we ship to the cloud and keep it running smoothly.",
-    icon: <path d="M7 18a4 4 0 0 1 0-8 5 5 0 0 1 9.6-1.5A4.5 4.5 0 0 1 17 18H7zM12 12v6m0 0-2-2m2 2 2-2" />,
-  },
-  {
-    title: "Product & Maintenance",
-    body: "From MVP to scale — ongoing optimization, monitoring, support and iteration to keep products performing.",
-    icon: <path d="M10.3 3.2a2 2 0 0 1 3.4 0l1 1.7 2-.2a2 2 0 0 1 2 2.5l-.5 1.9 1.4 1.5a2 2 0 0 1 0 2.8l-1.4 1.5.5 1.9a2 2 0 0 1-2 2.5l-2-.2-1 1.7a2 2 0 0 1-3.4 0l-1-1.7-2 .2a2 2 0 0 1-2-2.5l.5-1.9-1.4-1.5a2 2 0 0 1 0-2.8L4.3 9l-.5-1.9a2 2 0 0 1 2-2.5l2 .2 1-1.7zM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" />,
-  },
+  { title: "Web & app development", body: "Fast, scalable websites and web apps built on modern stacks — Next.js, React and Node — with clean code you own." },
+  { title: "AI & automation", body: "Assistants, generation, insights and automations that remove busywork and put intelligence where it earns its keep." },
+  { title: "E‑commerce", body: "Conversion‑focused stores with secure payments, catalog and order management, and a checkout tuned to sell." },
+  { title: "UI/UX & brand", body: "Research‑backed flows, design systems and pixel‑clean execution that make products feel effortless." },
+  { title: "Cloud & DevOps", body: "Self‑hosted infrastructure, CI/CD, containers and SSL — we ship to the cloud and keep it running." },
+  { title: "Product & maintenance", body: "From MVP to scale: ongoing optimisation, monitoring and iteration to keep products performing." },
 ];
 
 const stats = [
-  { value: "7+", label: "Products shipped & live" },
+  { value: "7+", label: "Products shipped" },
   { value: "3", label: "In‑house ventures" },
   { value: "4+", label: "Industries served" },
-  { value: "100%", label: "Owned & operated code" },
 ];
 
 const steps = [
-  ["Discover", "We dig into goals, users and constraints to align on what success actually looks like."],
-  ["Design", "Wireframes, UI and a design system — so the product feels right before a line ships."],
+  ["Discover", "We dig into goals, users and constraints to define what success actually looks like."],
+  ["Design", "Wireframes, UI and a design system — so it feels right before a line ships."],
   ["Build", "Agile sprints with frequent demos. Clean, scalable code you actually own."],
-  ["Ship & Scale", "Deploy, monitor, support and iterate — we stay on after launch."],
+  ["Ship & scale", "Deploy, monitor, support and iterate. We stay on after launch."],
 ];
 
-function Icon({ children }: { children: React.ReactNode }) {
-  return (
-    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
-      {children}
-    </svg>
-  );
-}
+const Arrow = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M5 12h14M13 6l6 6-6 6" />
+  </svg>
+);
 
 export default function Home() {
   return (
     <div>
       {/* ============ HERO ============ */}
-      <section className="surface-dark grid-bg" style={{ position: "relative", overflow: "hidden" }}>
-        <div className="glow" style={{ width: "560px", height: "560px", top: "-220px", left: "50%", transform: "translateX(-50%)", opacity: .35 }} />
-        <div className="glow" style={{ width: "320px", height: "320px", bottom: "-160px", right: "-60px", opacity: .25 }} />
-        <div className="container-page" style={{ paddingBlock: "clamp(4.5rem, 11vw, 8.5rem)", position: "relative" }}>
-          <div className="max-w-4xl mx-auto text-center space-y-7">
-            <span className="chip" style={{ background: "rgba(255,255,255,.06)", borderColor: "rgba(255,255,255,.15)", color: "#fff" }}>
-              <span style={{ width: 8, height: 8, borderRadius: 99, background: "#34d399", display: "inline-block" }} />
-              <Typewriter text="A product & engineering studio" speed={32} caret className="text-sm" />
+      <section className="container-page" style={{ paddingBlock: "clamp(4rem, 9vw, 8rem)" }}>
+        <div className="max-w-5xl">
+          <span className="eyebrow animate-fade-up">
+            <span style={{ display: "inline-flex", alignItems: "center", gap: ".45rem" }}>
+              <span style={{ width: 7, height: 7, borderRadius: 99, background: "#1f9d55", display: "inline-block" }} />
+              Available for new projects
             </span>
+          </span>
 
-            <h1 className="animate-fade-up" style={{ fontSize: "clamp(2.4rem, 6vw, 4.4rem)", lineHeight: 1.05 }}>
-              We design, build & ship
-              <br className="hidden sm:block" />{" "}
-              <span className="gradient-text">digital products</span> that grow your business
-            </h1>
+          <h1 className="animate-fade-up mt-6" style={{ ['--delay' as any]: '80ms', fontSize: "clamp(2.6rem, 7.5vw, 6rem)", lineHeight: ".98", letterSpacing: "-0.045em" }}>
+            We design, build and ship digital products that earn their keep.
+          </h1>
 
-            <p className="lead animate-fade-up mx-auto" style={{ ['--delay' as any]: '120ms', color: "#b9bac4", maxWidth: "60ch" }}>
-              LoopWar is a small, senior team building high‑performing websites, apps and AI products for clients —
-              and our own ventures like <strong style={{ color: "#fff" }}>Xirevoa</strong>, <strong style={{ color: "#fff" }}>MyAIDiary</strong> and <strong style={{ color: "#fff" }}>CRMRS</strong>.
-            </p>
+          <p className="lead animate-fade-up mt-7" style={{ ['--delay' as any]: '160ms', maxWidth: "58ch", color: "var(--text)" }}>
+            LoopWar is a small, senior product & engineering studio. We build high‑performing
+            websites, apps and AI products for clients — and our own ventures, Xirevoa, MyAIDiary and CRMRS.
+          </p>
 
-            <div className="flex flex-wrap gap-3 justify-center animate-fade-up" style={{ ['--delay' as any]: '200ms' }}>
-              <a className="btn btn-grad btn-lg" href="/contact">Start a project →</a>
-              <a className="btn btn-ghost-light btn-lg" href="/portfolio">View our work</a>
-            </div>
-
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8 max-w-3xl mx-auto">
-              {stats.map((s) => (
-                <div key={s.label} className="glass" style={{ padding: "1.1rem .75rem" }}>
-                  <div className="stat-value gradient-text">{s.value}</div>
-                  <div className="text-xs mt-1" style={{ color: "#9a9ca8" }}>{s.label}</div>
-                </div>
-              ))}
-            </div>
+          <div className="flex flex-wrap items-center gap-6 animate-fade-up mt-9" style={{ ['--delay' as any]: '240ms' }}>
+            <a className="btn btn-lg" href="/contact">Start a project</a>
+            <a className="link-arrow" href="/portfolio">View our work <Arrow /></a>
           </div>
         </div>
 
-        {/* Marquee strip */}
-        <div className="marquee" style={{ borderTop: "1px solid rgba(255,255,255,.1)", padding: "1.1rem 0" }}>
-          <div className="marquee-track" style={{ color: "#7e8090", fontFamily: "var(--font-heading)", fontWeight: 700, letterSpacing: ".02em" }}>
-            {[...clientProjects, ...ventures, ...clientProjects, ...ventures].map((p, i) => (
-              <span key={i} className="inline-flex items-center gap-3">
-                {p.name}
-                <span style={{ color: "var(--accent)" }}>✦</span>
-              </span>
+        {/* Inline stats */}
+        <div className="mt-16 pt-8" style={{ borderTop: "1px solid var(--line)" }}>
+          <div className="flex flex-wrap gap-x-14 gap-y-6">
+            {stats.map((s) => (
+              <div key={s.label}>
+                <div className="stat-value">{s.value}</div>
+                <div className="label mt-1">{s.label}</div>
+              </div>
             ))}
+            <div className="ml-auto self-end label" style={{ maxWidth: "26ch", textTransform: "none", letterSpacing: 0, fontSize: ".95rem", color: "var(--muted)" }}>
+              Based in India · working with founders &amp; teams worldwide.
+            </div>
           </div>
+        </div>
+      </section>
+
+      {/* ============ QUIET CLIENT LINE ============ */}
+      <section className="container-page section-sm" style={{ paddingBlock: "1.5rem" }}>
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-2 label" style={{ borderTop: "1px solid var(--line)", borderBottom: "1px solid var(--line)", paddingBlock: "1.25rem" }}>
+          <span style={{ color: "var(--faint)" }}>Selected:</span>
+          {[...clientProjects, ...ventures].map((p, i) => (
+            <span key={p.domain} className="inline-flex items-center gap-3" style={{ color: "var(--text)" }}>
+              {i > 0 && <span style={{ color: "var(--faint)" }}>·</span>}
+              {p.name}
+            </span>
+          ))}
         </div>
       </section>
 
       {/* ============ SERVICES ============ */}
       <section id="services" className="container-page section">
-        <Reveal className="max-w-2xl">
-          <span className="eyebrow">What we do</span>
-          <h2 className="section-title mt-2">Everything you need to launch & grow</h2>
-          <p className="section-subtitle">From a first MVP to a product at scale — one team, end to end.</p>
+        <Reveal className="grid gap-6 md:grid-cols-12 mb-10">
+          <div className="md:col-span-5">
+            <span className="eyebrow">What we do</span>
+            <h2 className="section-title mt-4">Everything you need to launch and grow.</h2>
+          </div>
+          <p className="md:col-span-6 md:col-start-7 self-end section-subtitle">
+            One senior team, end to end — from a first MVP to a product at scale.
+          </p>
         </Reveal>
 
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3 mt-10">
+        <div>
           {services.map((s, i) => (
-            <Reveal key={s.title} delay={i * 70}>
-              <div className="card hover-lift h-full">
-                <div className="inline-flex items-center justify-center mb-4"
-                     style={{ width: "3rem", height: "3rem", borderRadius: ".9rem", background: "var(--grad-soft)", color: "var(--accent)" }}>
-                  <Icon>{s.icon}</Icon>
-                </div>
-                <h3 className="text-xl mb-2">{s.title}</h3>
-                <p style={{ color: "var(--text-body)" }}>{s.body}</p>
+            <Reveal key={s.title} delay={i * 50}>
+              <div className="work-row grid gap-3 md:grid-cols-12 items-baseline" style={{ paddingBlock: "1.6rem" }}>
+                <div className="md:col-span-1 idx" style={{ fontSize: "1rem" }}>{String(i + 1).padStart(2, "0")}</div>
+                <h3 className="md:col-span-4 text-2xl" style={{ fontSize: "1.5rem" }}>{s.title}</h3>
+                <p className="md:col-span-6 md:col-start-7" style={{ color: "var(--text)" }}>{s.body}</p>
               </div>
             </Reveal>
           ))}
         </div>
       </section>
 
-      {/* ============ FEATURED WORK ============ */}
-      <section id="work" style={{ background: "var(--bg-soft)" }}>
+      {/* ============ SELECTED WORK ============ */}
+      <section id="work" style={{ background: "var(--paper-2)" }}>
         <div className="container-page section">
-          <Reveal className="flex flex-wrap items-end justify-between gap-4">
+          <Reveal className="flex flex-wrap items-end justify-between gap-6 mb-14">
             <div className="max-w-2xl">
               <span className="eyebrow">Selected client work</span>
-              <h2 className="section-title mt-2">Real products, shipped for real businesses</h2>
-              <p className="section-subtitle">A few of the websites and platforms we&apos;ve built for our clients.</p>
+              <h2 className="section-title mt-4">Real products, shipped for real businesses.</h2>
             </div>
-            <a href="/portfolio" className="btn secondary">See all work →</a>
+            <a href="/portfolio" className="link-arrow">All work <Arrow /></a>
           </Reveal>
 
-          <div className="grid gap-7 md:grid-cols-2 mt-10">
-            {clientProjects.map((p, i) => (
-              <Reveal key={p.domain} delay={i * 80}>
-                <a href={p.url} target="_blank" rel="noreferrer" className="project-card block h-full">
-                  <div className={`project-media ${p.contain ? "project-media-contain" : ""}`}>
-                    <img src={p.image} alt={`${p.name} — ${p.category}`} loading="lazy" />
-                    <span className="chip" style={{ position: "absolute", top: "1rem", left: "1rem", backdropFilter: "blur(6px)", background: "rgba(255,255,255,.85)" }}>{p.category}</span>
-                  </div>
-                  <div className="p-6">
-                    <div className="flex items-center justify-between gap-3">
-                      <h3 className="text-2xl">{p.name}</h3>
-                      <span className="text-sm" style={{ color: "var(--muted)" }}>{p.domain}</span>
+          <div className="space-y-20 md:space-y-28">
+            {clientProjects.map((p, i) => {
+              const flip = i % 2 === 1;
+              return (
+                <Reveal key={p.domain}>
+                  <div className="grid gap-8 md:gap-12 md:grid-cols-2 items-center">
+                    <a href={p.url} target="_blank" rel="noreferrer"
+                       className={`framed block ${flip ? "md:order-2" : ""}`} style={{ aspectRatio: "16 / 11" }}>
+                      <img src={p.image} alt={`${p.name} — ${p.category}`} loading="lazy"
+                           style={{ width: "100%", height: "100%", objectFit: p.contain ? "contain" : "cover", padding: p.contain ? "2rem" : 0, background: "#fff" }} />
+                    </a>
+                    <div className={flip ? "md:order-1" : ""}>
+                      <div className="flex items-center gap-4">
+                        <span className="idx" style={{ fontSize: "1.05rem" }}>{String(i + 1).padStart(2, "0")}</span>
+                        <span className="label">{p.category}</span>
+                      </div>
+                      <h3 className="mt-3" style={{ fontSize: "clamp(1.8rem, 3.4vw, 2.6rem)", letterSpacing: "-0.035em" }}>{p.name}</h3>
+                      <p className="mt-4" style={{ color: "var(--text)", maxWidth: "46ch" }}>{p.description}</p>
+                      <div className="flex flex-wrap gap-x-2 gap-y-2 mt-6 label" style={{ textTransform: "none", letterSpacing: 0, color: "var(--muted)" }}>
+                        {p.features.map((f, k) => (
+                          <span key={f} className="inline-flex items-center gap-2">
+                            {k > 0 && <span style={{ color: "var(--faint)" }}>·</span>}{f}
+                          </span>
+                        ))}
+                      </div>
+                      <a href={p.url} target="_blank" rel="noreferrer" className="link-arrow mt-7">
+                        Visit {p.domain} <Arrow />
+                      </a>
                     </div>
-                    <p className="mt-2" style={{ color: "var(--text-body)" }}>{p.description}</p>
-                    <div className="flex flex-wrap gap-2 mt-4">
-                      {p.features.slice(0, 3).map((f) => (
-                        <span key={f} className="chip-accent chip">{f}</span>
-                      ))}
-                    </div>
                   </div>
-                </a>
-              </Reveal>
-            ))}
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* ============ VENTURES ============ */}
       <section id="ventures" className="container-page section">
-        <Reveal className="max-w-2xl">
-          <span className="eyebrow">Built by us, for the world</span>
-          <h2 className="section-title mt-2">Our ventures</h2>
-          <p className="section-subtitle">We don&apos;t just build for clients — we build and run our own products.</p>
+        <Reveal className="grid gap-6 md:grid-cols-12 mb-12">
+          <div className="md:col-span-7">
+            <span className="eyebrow">Built by us</span>
+            <h2 className="section-title mt-4">Our ventures.</h2>
+          </div>
+          <p className="md:col-span-5 self-end section-subtitle">
+            We don&apos;t only build for clients — we build, own and run our own products.
+          </p>
         </Reveal>
 
-        <div className="grid gap-7 lg:grid-cols-3 mt-10">
+        <div className="grid gap-7 md:grid-cols-3">
           {ventures.map((v, i) => (
-            <Reveal key={v.domain} delay={i * 90}>
-              <div className="project-card h-full flex flex-col">
+            <Reveal key={v.domain} delay={i * 70}>
+              <a href={v.url} target="_blank" rel="noreferrer" className="project-card flex flex-col h-full">
                 <div className={`project-media ${v.contain ? "project-media-contain" : ""}`} style={{ aspectRatio: "16 / 11" }}>
                   <img src={v.image} alt={`${v.name} — ${v.category}`} loading="lazy" />
-                  <span className="chip" style={{ position: "absolute", top: "1rem", left: "1rem", background: "var(--grad)", color: "#fff", borderColor: "transparent" }}>{v.role}</span>
                 </div>
-                <div className="p-6 flex flex-col flex-1">
-                  <div className="text-xs font-semibold mb-1" style={{ color: "var(--accent)" }}>{v.category}</div>
-                  <h3 className="text-2xl">{v.name}</h3>
-                  <p className="mt-2 flex-1" style={{ color: "var(--text-body)" }}>{v.description}</p>
-                  <a href={v.url} target="_blank" rel="noreferrer" className="btn secondary mt-5 w-full">Visit {v.name} →</a>
+                <div className="p-6 flex flex-col flex-1" style={{ borderTop: "1px solid var(--line)" }}>
+                  <div className="flex items-center justify-between">
+                    <span className="label">{v.category}</span>
+                    <span className="chip">{v.role}</span>
+                  </div>
+                  <h3 className="mt-3 text-2xl">{v.name}</h3>
+                  <p className="mt-2 flex-1" style={{ color: "var(--text)" }}>{v.description}</p>
+                  <span className="link-arrow mt-5">Visit {v.name} <Arrow /></span>
                 </div>
-              </div>
+              </a>
             </Reveal>
           ))}
         </div>
       </section>
 
       {/* ============ PROCESS ============ */}
-      <section className="surface-dark">
+      <section style={{ background: "var(--paper-2)" }}>
         <div className="container-page section">
-          <Reveal className="max-w-2xl">
-            <span className="eyebrow" style={{ color: "#c4b5fd" }}>How we work</span>
-            <h2 className="section-title mt-2" style={{ color: "#fff" }}>A simple, transparent process</h2>
-            <p className="section-subtitle" style={{ color: "#9a9ca8" }}>Clear milestones, frequent demos, no surprises.</p>
+          <Reveal className="mb-12 max-w-2xl">
+            <span className="eyebrow">How we work</span>
+            <h2 className="section-title mt-4">A simple, transparent process.</h2>
+            <p className="section-subtitle mt-2">Clear milestones, frequent demos, no surprises.</p>
           </Reveal>
-
-          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4 mt-10">
+          <div className="grid gap-x-10 gap-y-10 md:grid-cols-2 lg:grid-cols-4">
             {steps.map(([title, body], i) => (
-              <Reveal key={title} delay={i * 90}>
-                <div className="glass h-full" style={{ padding: "1.5rem" }}>
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className="step-no">{i + 1}</span>
-                    <h3 style={{ color: "#fff" }} className="text-lg">{title}</h3>
-                  </div>
-                  <p style={{ color: "#b9bac4" }}>{body}</p>
+              <Reveal key={title} delay={i * 70}>
+                <div className="flex items-center gap-3">
+                  <span className="step-no">{i + 1}</span>
+                  <h3 className="text-xl">{title}</h3>
                 </div>
+                <p className="mt-4" style={{ color: "var(--text)" }}>{body}</p>
               </Reveal>
             ))}
           </div>
@@ -231,32 +217,26 @@ export default function Home() {
 
       {/* ============ CONTACT CTA ============ */}
       <section className="container-page section">
-        <Reveal>
-          <div style={{ position: "relative", overflow: "hidden", borderRadius: "var(--radius-lg)", background: "var(--grad)", backgroundSize: "180% 180%" }}>
-            <div className="glow" style={{ width: 360, height: 360, top: -160, right: -80, background: "#fff", opacity: .12 }} />
-            <div className="grid gap-8 md:grid-cols-[1.4fr_1fr] items-center p-8 md:p-12" style={{ color: "#fff", position: "relative" }}>
-              <div className="space-y-4">
-                <h2 style={{ color: "#fff", fontSize: "clamp(1.8rem,3.5vw,2.8rem)" }}>Let&apos;s build your next big thing</h2>
-                <p style={{ color: "rgba(255,255,255,.9)", maxWidth: "52ch" }}>
-                  Whether you&apos;re starting from scratch or scaling an existing product, we&apos;d love to help.
-                  Tell us what you&apos;re building.
-                </p>
-                <div className="flex flex-wrap gap-3 pt-1">
-                  <a href="/contact" className="btn btn-lg" style={{ background: "#fff", color: "var(--ink)", border: "none" }}>Start a project</a>
-                  <a href="mailto:contact@loopwar.dev" className="btn btn-lg btn-ghost-light">Email us</a>
-                </div>
-              </div>
-              <div className="space-y-3 text-sm md:justify-self-end">
-                <div>
-                  <div style={{ color: "rgba(255,255,255,.7)" }}>Email</div>
-                  <a className="font-semibold hover:underline" href="mailto:contact@loopwar.dev">contact@loopwar.dev</a>
-                </div>
-                <div>
-                  <div style={{ color: "rgba(255,255,255,.7)" }}>Call</div>
-                  <a className="font-semibold hover:underline" href="tel:+916377362603">+91 63773 62603</a>
-                  <div style={{ color: "rgba(255,255,255,.7)" }} className="text-xs">Mon–Sat, 9 AM – 7 PM IST</div>
-                </div>
-              </div>
+        <Reveal className="grid gap-10 md:grid-cols-12 items-end">
+          <div className="md:col-span-8">
+            <span className="eyebrow">Let&apos;s talk</span>
+            <h2 className="section-title mt-4" style={{ fontSize: "clamp(2.2rem, 5vw, 3.8rem)" }}>
+              Have something in mind?<br />Let&apos;s build it properly.
+            </h2>
+            <div className="flex flex-wrap items-center gap-6 mt-8">
+              <a href="/contact" className="btn btn-lg">Start a project</a>
+              <a href="mailto:contact@loopwar.dev" className="link-arrow">contact@loopwar.dev <Arrow /></a>
+            </div>
+          </div>
+          <div className="md:col-span-4 md:text-right space-y-4 label" style={{ textTransform: "none", letterSpacing: 0, fontSize: "1rem", color: "var(--text)" }}>
+            <div>
+              <div className="label">Email</div>
+              <a href="mailto:contact@loopwar.dev" className="hover:text-black">contact@loopwar.dev</a>
+            </div>
+            <div>
+              <div className="label">Call</div>
+              <a href="tel:+916377362603" className="hover:text-black">+91 63773 62603</a>
+              <div style={{ color: "var(--muted)" }} className="text-sm">Mon–Sat, 9 AM – 7 PM IST</div>
             </div>
           </div>
         </Reveal>
