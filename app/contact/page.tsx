@@ -7,7 +7,7 @@ export default function Contact() {
           <h1 className="text-4xl md:text-5xl font-bold" style={{ fontFamily: "var(--font-montserrat)", color: "var(--color-primary)" }}>
             Get In Touch
           </h1>
-          <p className="text-lg text-[#c9c9d0]">
+          <p className="text-lg text-[#3a352b]">
             Have a project in mind? We'd love to hear from you. Let's discuss how we can help bring your ideas to life.
           </p>
         </div>
@@ -170,7 +170,7 @@ export default function Contact() {
                 required
                 className="mt-1"
               />
-              <label htmlFor="consent" className="text-sm text-[#a9a9b3]">
+              <label htmlFor="consent" className="text-sm text-[#6f695c]">
                 I agree to the <a href="/privacy" className="underline">Privacy Policy</a> and consent to LoopWar contacting me about this inquiry.
               </label>
             </div>
@@ -199,7 +199,7 @@ export default function Contact() {
             </div>
             <div className="flex justify-between items-center pb-2">
               <span className="font-semibold">Sunday</span>
-              <span className="text-[#8a8a92]">Closed</span>
+              <span className="text-[#8a8275]">Closed</span>
             </div>
           </div>
           <p className="text-sm mt-4 text-center" style={{ color: "var(--color-secondary-2)" }}>
@@ -211,7 +211,7 @@ export default function Contact() {
       {/* Back to Home */}
       <section className="container-page pb-10">
         <div className="text-center">
-          <a href="/" className="inline-flex items-center gap-2 text-[#a9a9b3] hover:text-white transition-colors">
+          <a href="/" className="inline-flex items-center gap-2 text-[#6f695c] hover:text-black transition-colors">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>

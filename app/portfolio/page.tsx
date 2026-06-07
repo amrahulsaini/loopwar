@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { clientProjects, ventures, type Project } from "../data/projects";
-import BrowserFrame from "../components/BrowserFrame";
+import Shot from "../components/Shot";
 
 type Tab = "ventures" | "clients";
 
@@ -14,19 +14,19 @@ const Arrow = () => (
 
 function Card({ p, role }: { p: Project; role?: string }) {
   return (
-    <a href={p.url} target="_blank" rel="noreferrer" className="project-card flex flex-col h-full">
-      <BrowserFrame src={p.image} alt={`${p.name} — ${p.category}`} domain={p.domain} ratio="16 / 10" embed />
-      <div className="p-6 flex flex-col flex-1" style={{ borderTop: "1px solid var(--line)" }}>
+    <a href={p.url} target="_blank" rel="noreferrer" className="card hover-lift flex flex-col h-full" style={{ padding: "1rem" }}>
+      <Shot src={p.image} alt={`${p.name} — ${p.category}`} ratio="16 / 10" pan />
+      <div className="flex flex-col flex-1 px-3 pt-5 pb-2">
         <div className="flex items-center justify-between gap-3">
           <span className="label" style={{ color: "var(--accent)" }}>{p.category}</span>
           {role ? <span className="chip-accent chip">{role}</span> : <span className="label" style={{ color: "var(--faint)" }}>{p.domain}</span>}
         </div>
         <h3 className="mt-3 text-2xl">{p.name}</h3>
-        <p className="mt-2" style={{ color: "var(--text)" }}>{p.description}</p>
+        <p className="mt-2" style={{ color: "var(--muted)" }}>{p.description}</p>
         <ul className="mt-5 grid grid-cols-2 gap-x-4 gap-y-2 flex-1">
           {p.features.map((f) => (
             <li key={f} className="flex items-start gap-2 text-sm" style={{ color: "var(--text)" }}>
-              <span style={{ color: "var(--faint)", marginTop: 1 }}>—</span>{f}
+              <span style={{ color: "var(--accent)", marginTop: 1 }}>—</span>{f}
             </li>
           ))}
         </ul>
@@ -42,9 +42,7 @@ export default function Portfolio() {
   return (
     <div>
       {/* Hero */}
-      <section className="grid-bg" style={{ position: "relative", overflow: "hidden", paddingBlock: "clamp(3.5rem, 7vw, 6rem)" }}>
-        <div className="glow pulse-glow" style={{ width: 520, height: 520, top: -300, left: "20%", opacity: .15 }} />
-        <div className="container-page relative">
+      <section className="container-page" style={{ paddingBlock: "clamp(3.5rem, 7vw, 6rem)" }}>
         <div className="max-w-4xl">
           <span className="eyebrow"><span className="dot" /> Portfolio</span>
           <h1 className="mt-6" style={{ fontSize: "clamp(2.6rem, 7vw, 5rem)", lineHeight: ".98", letterSpacing: "-0.045em" }}>
@@ -64,7 +62,7 @@ export default function Portfolio() {
               className="pb-3"
               style={{
                 fontFamily: "var(--font-display)", fontWeight: 600, fontSize: "1.05rem", letterSpacing: "-0.02em",
-                color: tab === key ? "var(--text)" : "var(--muted)",
+                color: tab === key ? "var(--ink)" : "var(--muted)",
                 borderBottom: tab === key ? "2px solid var(--accent)" : "2px solid transparent",
                 marginBottom: "-1px",
               }}
@@ -76,34 +74,29 @@ export default function Portfolio() {
             </button>
           ))}
         </div>
-        </div>
       </section>
 
       {/* Grid */}
       <section className="container-page" style={{ paddingBottom: "clamp(3rem, 6vw, 5rem)" }}>
         {tab === "ventures" ? (
           <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
-            {ventures.map((v) => (
-              <Card key={v.domain} p={v} role={v.role} />
-            ))}
+            {ventures.map((v) => <Card key={v.domain} p={v} role={v.role} />)}
           </div>
         ) : (
           <div className="grid gap-7 md:grid-cols-2">
-            {clientProjects.map((p) => (
-              <Card key={p.domain} p={p} />
-            ))}
+            {clientProjects.map((p) => <Card key={p.domain} p={p} />)}
           </div>
         )}
       </section>
 
       {/* CTA */}
-      <section style={{ background: "var(--paper-2)" }}>
-        <div className="container-page section text-center">
-          <h2 className="section-title">Have a project in mind?</h2>
-          <p className="section-subtitle mb-8">Let&apos;s turn your idea into a product people love.</p>
-          <div className="flex flex-wrap gap-5 justify-center items-center">
-            <a href="/contact" className="btn btn-lg">Start a project</a>
-            <a href="mailto:contact@loopwar.dev" className="link-arrow">Get in touch <Arrow /></a>
+      <section className="container-page" style={{ paddingBottom: "clamp(3rem,6vw,6rem)" }}>
+        <div className="warm-card" style={{ padding: "clamp(2.2rem, 5vw, 4rem)", textAlign: "center" }}>
+          <h2 style={{ color: "#fff", fontSize: "clamp(2rem, 4.5vw, 3.4rem)", letterSpacing: "-0.04em" }}>Have a project in mind?</h2>
+          <p className="mt-3" style={{ color: "rgba(255,255,255,.9)" }}>Let&apos;s turn your idea into a product people love.</p>
+          <div className="flex flex-wrap gap-4 justify-center mt-7">
+            <a href="/contact" className="btn btn-on-warm btn-lg">Start a project</a>
+            <a href="mailto:contact@loopwar.dev" className="btn btn-ghost-warm btn-lg">Get in touch</a>
           </div>
         </div>
       </section>

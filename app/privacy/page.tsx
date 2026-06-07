@@ -268,7 +268,7 @@ export default function Privacy() {
       {/* Back to Home */}
       <section className="container-page pb-10">
         <div className="text-center">
-          <a href="/" className="inline-flex items-center gap-2 text-[#a9a9b3] hover:text-white transition-colors">
+          <a href="/" className="inline-flex items-center gap-2 text-[#6f695c] hover:text-black transition-colors">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
