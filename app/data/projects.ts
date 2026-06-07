@@ -6,10 +6,9 @@ export type Project = {
   tagline: string;
   description: string;
   features: string[];
-  image: string;
-  /** show image with object-contain (logos) instead of cover */
-  contain?: boolean;
-  accent: string; // hex used for subtle tinting
+  image: string;       // full‑page screenshot
+  logo?: string;       // brand mark for small avatars
+  accent: string;
 };
 
 export type Venture = Project & {
@@ -27,8 +26,8 @@ export const clientProjects: Project[] = [
     description:
       "A direct‑to‑consumer store where customers design their own phone cases in a live editor and order premium, vibrant prints delivered across India.",
     features: ["Design‑your‑own editor", "Secure checkout & payments", "Catalog & order management", "Fast pan‑India delivery"],
-    image: "/projects/casebuddy.png",
-    contain: true,
+    image: "/shots/casebuddy.png",
+    logo: "/projects/casebuddy.png",
     accent: "#2563eb",
   },
   {
@@ -40,7 +39,8 @@ export const clientProjects: Project[] = [
     description:
       "An elegant storefront for a handcrafted décor brand — bespoke ring platters and wedding trays, with a curated catalog, custom‑order requests and rich product galleries.",
     features: ["Product catalog & galleries", "Custom order requests", "Banner / campaign management", "Mobile‑first storefront"],
-    image: "/projects/mridang.jpg",
+    image: "/shots/mridang.png",
+    logo: "/projects/mridang-logo.png",
     accent: "#d97706",
   },
   {
@@ -52,7 +52,8 @@ export const clientProjects: Project[] = [
     description:
       "An online pharmacy and medical‑supplies platform for authentic medicines, wellness essentials, ostomy care and pathology products — with brand carousels and category browsing.",
     features: ["Medicine & product catalog", "Category & brand browsing", "Search & cart", "Wellness + medical supplies"],
-    image: "/projects/tirupatimedix.webp",
+    image: "/shots/tirupatimedix.png",
+    logo: "/projects/tirupatimedix-logo.webp",
     accent: "#059669",
   },
   {
@@ -64,7 +65,8 @@ export const clientProjects: Project[] = [
     description:
       "A logistics and warehousing company site offering vehicle transport, secure storage and door‑to‑door delivery across India, with online order booking and transparent pricing.",
     features: ["Online order booking", "Dedicated & shared transport", "Warehouse / storage solutions", "Door‑to‑door delivery"],
-    image: "/projects/carrypack.webp",
+    image: "/shots/carrypack.png",
+    logo: "/projects/carrypack-logo.webp",
     accent: "#0891b2",
   },
 ];
@@ -81,7 +83,7 @@ export const ventures: Venture[] = [
     description:
       "An AI photo platform that transforms your photos using 500+ ready‑made templates — new hairstyles, outfits and artistic looks in seconds. No prompts, no watermarks.",
     features: ["500+ AI templates", "No prompts needed", "Watermark‑free exports", "Instant transformations"],
-    image: "/projects/xirevoa1.png",
+    image: "/shots/xirevoa.png",
     accent: "#a855f7",
   },
   {
@@ -94,8 +96,8 @@ export const ventures: Venture[] = [
     description:
       "A privacy‑first journaling app built for daily reflection. Capture notes by voice, surface patterns with AI insights, and own your data — with more AI features on the roadmap.",
     features: ["Voice‑to‑text journaling", "AI insights & patterns", "Privacy‑first by design", "Daily reflection flow"],
-    image: "/projects/myaidiary.svg",
-    contain: true,
+    image: "/shots/myaidiary.png",
+    logo: "/projects/myaidiary.svg",
     accent: "#6366f1",
   },
   {
@@ -108,8 +110,8 @@ export const ventures: Venture[] = [
     description:
       "A multi‑tenant loan‑recovery platform with true per‑agency data isolation, live GPS agent tracking, instant offline record search and audit‑grade logging — shipping on Android & Windows.",
     features: ["Multi‑tenant isolation", "Live GPS agent tracking", "Offline record search", "Audit‑grade logging"],
-    image: "/projects/crmrs.png",
-    contain: true,
+    image: "/shots/crmrs.png",
+    logo: "/projects/crmrs-logo.webp",
     accent: "#0ea5e9",
   },
 ];

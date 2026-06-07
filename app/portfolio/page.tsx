@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { clientProjects, ventures, type Project } from "../data/projects";
+import BrowserFrame from "../components/BrowserFrame";
 
 type Tab = "ventures" | "clients";
 
@@ -14,9 +15,7 @@ const Arrow = () => (
 function Card({ p, role }: { p: Project; role?: string }) {
   return (
     <a href={p.url} target="_blank" rel="noreferrer" className="project-card flex flex-col h-full">
-      <div className={`project-media ${p.contain ? "project-media-contain" : ""}`}>
-        <img src={p.image} alt={`${p.name} — ${p.category}`} loading="lazy" />
-      </div>
+      <BrowserFrame src={p.image} alt={`${p.name} — ${p.category}`} domain={p.domain} ratio="16 / 10" embed />
       <div className="p-6 flex flex-col flex-1" style={{ borderTop: "1px solid var(--line)" }}>
         <div className="flex items-center justify-between gap-3">
           <span className="label">{p.category}</span>

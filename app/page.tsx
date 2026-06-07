@@ -1,4 +1,6 @@
 import Reveal from "./components/Reveal";
+import Counter from "./components/Counter";
+import BrowserFrame from "./components/BrowserFrame";
 import { clientProjects, ventures } from "./data/projects";
 
 const services = [
@@ -11,9 +13,9 @@ const services = [
 ];
 
 const stats = [
-  { value: "7+", label: "Products shipped" },
-  { value: "3", label: "In‑house ventures" },
-  { value: "4+", label: "Industries served" },
+  { value: 7, suffix: "+", label: "Products shipped" },
+  { value: 3, suffix: "", label: "In‑house ventures" },
+  { value: 4, suffix: "+", label: "Industries served" },
 ];
 
 const steps = [
@@ -29,11 +31,13 @@ const Arrow = () => (
   </svg>
 );
 
+const showcase = [...clientProjects, ...ventures];
+
 export default function Home() {
   return (
     <div>
       {/* ============ HERO ============ */}
-      <section className="container-page" style={{ paddingBlock: "clamp(4rem, 9vw, 8rem)" }}>
+      <section className="container-page" style={{ paddingBlock: "clamp(3.5rem, 8vw, 7rem)" }}>
         <div className="max-w-5xl">
           <span className="eyebrow animate-fade-up">
             <span style={{ display: "inline-flex", alignItems: "center", gap: ".45rem" }}>
@@ -58,30 +62,28 @@ export default function Home() {
         </div>
 
         {/* Inline stats */}
-        <div className="mt-16 pt-8" style={{ borderTop: "1px solid var(--line)" }}>
+        <div className="mt-14 pt-8" style={{ borderTop: "1px solid var(--line)" }}>
           <div className="flex flex-wrap gap-x-14 gap-y-6">
             {stats.map((s) => (
               <div key={s.label}>
-                <div className="stat-value">{s.value}</div>
+                <Counter className="stat-value" value={s.value} suffix={s.suffix} />
                 <div className="label mt-1">{s.label}</div>
               </div>
             ))}
-            <div className="ml-auto self-end label" style={{ maxWidth: "26ch", textTransform: "none", letterSpacing: 0, fontSize: ".95rem", color: "var(--muted)" }}>
+            <div className="ml-auto self-end" style={{ maxWidth: "26ch", fontSize: ".95rem", color: "var(--muted)" }}>
               Based in India · working with founders &amp; teams worldwide.
             </div>
           </div>
         </div>
       </section>
 
-      {/* ============ QUIET CLIENT LINE ============ */}
-      <section className="container-page section-sm" style={{ paddingBlock: "1.5rem" }}>
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-2 label" style={{ borderTop: "1px solid var(--line)", borderBottom: "1px solid var(--line)", paddingBlock: "1.25rem" }}>
-          <span style={{ color: "var(--faint)" }}>Selected:</span>
-          {[...clientProjects, ...ventures].map((p, i) => (
-            <span key={p.domain} className="inline-flex items-center gap-3" style={{ color: "var(--text)" }}>
-              {i > 0 && <span style={{ color: "var(--faint)" }}>·</span>}
-              {p.name}
-            </span>
+      {/* ============ SCREENSHOT SHOWCASE MARQUEE ============ */}
+      <section aria-label="Recent work" className="marquee" style={{ paddingBlock: "1rem 3rem" }}>
+        <div className="marquee-track">
+          {[...showcase, ...showcase].map((p, i) => (
+            <a key={i} href={p.url} target="_blank" rel="noreferrer" className="marquee-item">
+              <BrowserFrame src={p.image} alt={`${p.name} — ${p.category}`} domain={p.domain} ratio="16 / 10" />
+            </a>
           ))}
         </div>
       </section>
@@ -128,10 +130,8 @@ export default function Home() {
               return (
                 <Reveal key={p.domain}>
                   <div className="grid gap-8 md:gap-12 md:grid-cols-2 items-center">
-                    <a href={p.url} target="_blank" rel="noreferrer"
-                       className={`framed block ${flip ? "md:order-2" : ""}`} style={{ aspectRatio: "16 / 11" }}>
-                      <img src={p.image} alt={`${p.name} — ${p.category}`} loading="lazy"
-                           style={{ width: "100%", height: "100%", objectFit: p.contain ? "contain" : "cover", padding: p.contain ? "2rem" : 0, background: "#fff" }} />
+                    <a href={p.url} target="_blank" rel="noreferrer" className={flip ? "md:order-2" : ""}>
+                      <BrowserFrame src={p.image} alt={`${p.name} — ${p.category}`} domain={p.domain} ratio="16 / 11" className="browser-pan" />
                     </a>
                     <div className={flip ? "md:order-1" : ""}>
                       <div className="flex items-center gap-4">
@@ -140,7 +140,7 @@ export default function Home() {
                       </div>
                       <h3 className="mt-3" style={{ fontSize: "clamp(1.8rem, 3.4vw, 2.6rem)", letterSpacing: "-0.035em" }}>{p.name}</h3>
                       <p className="mt-4" style={{ color: "var(--text)", maxWidth: "46ch" }}>{p.description}</p>
-                      <div className="flex flex-wrap gap-x-2 gap-y-2 mt-6 label" style={{ textTransform: "none", letterSpacing: 0, color: "var(--muted)" }}>
+                      <div className="flex flex-wrap gap-x-2 gap-y-2 mt-6" style={{ color: "var(--muted)", fontSize: ".95rem" }}>
                         {p.features.map((f, k) => (
                           <span key={f} className="inline-flex items-center gap-2">
                             {k > 0 && <span style={{ color: "var(--faint)" }}>·</span>}{f}
@@ -175,9 +175,7 @@ export default function Home() {
           {ventures.map((v, i) => (
             <Reveal key={v.domain} delay={i * 70}>
               <a href={v.url} target="_blank" rel="noreferrer" className="project-card flex flex-col h-full">
-                <div className={`project-media ${v.contain ? "project-media-contain" : ""}`} style={{ aspectRatio: "16 / 11" }}>
-                  <img src={v.image} alt={`${v.name} — ${v.category}`} loading="lazy" />
-                </div>
+                <BrowserFrame src={v.image} alt={`${v.name} — ${v.category}`} domain={v.domain} ratio="16 / 10" embed />
                 <div className="p-6 flex flex-col flex-1" style={{ borderTop: "1px solid var(--line)" }}>
                   <div className="flex items-center justify-between">
                     <span className="label">{v.category}</span>
@@ -228,7 +226,7 @@ export default function Home() {
               <a href="mailto:contact@loopwar.dev" className="link-arrow">contact@loopwar.dev <Arrow /></a>
             </div>
           </div>
-          <div className="md:col-span-4 md:text-right space-y-4 label" style={{ textTransform: "none", letterSpacing: 0, fontSize: "1rem", color: "var(--text)" }}>
+          <div className="md:col-span-4 md:text-right space-y-4" style={{ fontSize: "1rem", color: "var(--text)" }}>
             <div>
               <div className="label">Email</div>
               <a href="mailto:contact@loopwar.dev" className="hover:text-black">contact@loopwar.dev</a>

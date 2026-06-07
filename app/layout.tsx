@@ -3,6 +3,7 @@ import { Inter, Inter_Tight } from "next/font/google";
 import "./globals.css";
 import SiteHeader from "./components/SiteHeader";
 import SiteFooter from "./components/SiteFooter";
+import SmoothScroll from "./components/SmoothScroll";
 
 const display = Inter_Tight({
   variable: "--font-display-face",
@@ -48,6 +49,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${display.variable} ${sans.variable}`}>
+        <SmoothScroll />
         <SiteHeader />
         <main>{children}</main>
         <SiteFooter />
