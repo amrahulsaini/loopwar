@@ -11,18 +11,6 @@ export function middleware(request: NextRequest) {
     return NextResponse.rewrite(newUrl)
   }
 
-  // Serve the Stitch-designed static pages
-  const staticPages: Record<string, string> = {
-    '/': '/home.html',
-    '/portfolio': '/portfolio.html',
-    '/contact': '/contact.html',
-  }
-  if (staticPages[pathname]) {
-    const newUrl = request.nextUrl.clone()
-    newUrl.pathname = staticPages[pathname]
-    return NextResponse.rewrite(newUrl)
-  }
-
   // For other hosts (e.g., loopwar.dev), proceed normally
   return NextResponse.next()
 }
