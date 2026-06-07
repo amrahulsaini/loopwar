@@ -1,4 +1,5 @@
 import Reveal from "./components/Reveal";
+import Counter from "./components/Counter";
 import { clientProjects, ventures, type Project } from "./data/projects";
 
 const Arrow = () => (
@@ -21,6 +22,29 @@ const steps = [
   ["Design", "Sketches, UI and a system — so it feels right before we build."],
   ["Build", "Friendly sprints with frequent demos and clean code you own."],
   ["Ship & scale", "We launch, watch, support and keep making it better."],
+];
+
+const stats: [number, string, string][] = [
+  [7, "+", "Products shipped"],
+  [3, "", "In-house ventures"],
+  [4, "+", "Industries served"],
+  [100, "%", "Code you own"],
+];
+
+const tech = ["Next.js", "React", "Node.js", "TypeScript", "Tailwind", "Python", "PostgreSQL", "AI / LLMs", "Cloud / DevOps", "React Native"];
+
+const testimonials: [string, string, string][] = [
+  ["They turned our idea into a real product faster than we thought possible — and it just works.", "Founder", "CaseBuddy"],
+  ["Clean, thoughtful engineering. Communication was clear the whole way through.", "Owner", "Tirupati Medix"],
+  ["LOOPWAR built and shipped our platform end-to-end. Genuinely a partner, not a vendor.", "Director", "Carry Pack Logistics"],
+];
+
+const faqs: [string, string][] = [
+  ["How long does a typical project take?", "Most websites take 2–5 weeks; apps and AI products run 6–12 weeks depending on scope. We share a clear timeline with milestones before we start."],
+  ["How do you charge?", "Either fixed-price per project or a monthly retainer for ongoing work. We agree everything up front — no surprises."],
+  ["Do we own the code?", "100%. Everything we build is handed over to you — source code, designs and documentation."],
+  ["Do you work with early-stage startups?", "Absolutely — we build our own ventures too, so we love MVPs and moving fast with founders."],
+  ["Can you maintain it after launch?", "Yes. We offer ongoing support, monitoring and iteration so your product keeps performing."],
 ];
 
 function WorkCard({ p, role }: { p: Project; role?: string }) {
@@ -68,6 +92,20 @@ export default function Home() {
         <Reveal className="reveal-zoom"><div className="bigword">LOOPWAR</div></Reveal>
       </div>
 
+      {/* ============ STATS ============ */}
+      <section className="container" style={{ paddingBottom: "clamp(2rem,5vw,3.5rem)" }}>
+        <div className="card" style={{ padding: "clamp(1.5rem,3vw,2.5rem)" }}>
+          <div className="grid grid-cols-2 md:grid-cols-4" style={{ gap: "1.5rem" }}>
+            {stats.map(([n, suf, label], i) => (
+              <Reveal key={label} delay={i * 70} style={{ textAlign: "center" }}>
+                <Counter className="stat-num" value={n} suffix={suf} />
+                <div className="muted" style={{ marginTop: ".3rem", fontSize: "1.05rem" }}>{label}</div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ============ WORK ============ */}
       <section id="work" className="section">
         <div className="container">
@@ -101,8 +139,35 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ============ ABOUT ============ */}
+      <section id="about" className="section">
+        <div className="container">
+          <div className="grid gap-10 lg:grid-cols-[1fr_1.2fr] items-center">
+            <Reveal className="reveal-zoom">
+              <div className="card" style={{ padding: 14 }}>
+                <div style={{ borderRadius: "var(--radius-sm)", overflow: "hidden", aspectRatio: "1/1", background: "var(--white)", display: "grid", placeItems: "center" }}>
+                  <img src="/loopwar-fulllogo.png" alt="LOOPWAR" style={{ width: "70%", height: "70%", objectFit: "contain" }} />
+                </div>
+              </div>
+            </Reveal>
+            <Reveal>
+              <span className="eyebrow">Who we are</span>
+              <h2 className="section-title" style={{ marginTop: "1rem" }}>A small studio with a builder&apos;s heart.</h2>
+              <p className="muted" style={{ marginTop: "1rem", fontSize: "1.15rem" }}>
+                We&apos;re a tight team of designers and engineers who love shipping. We&apos;ve built e-commerce stores,
+                healthcare and logistics platforms for clients — and we run our own products like Xirevoa, MyAIDiary and CRMRS.
+              </p>
+              <p className="muted" style={{ marginTop: "1rem", fontSize: "1.15rem" }}>
+                Because we build our own ventures, we think like owners: fast, pragmatic, and focused on what actually moves the needle.
+              </p>
+              <a href="/contact" className="btn btn-accent" style={{ marginTop: "1.6rem" }}>Work with us <Arrow /></a>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
       {/* ============ SERVICES ============ */}
-      <section id="services" className="section">
+      <section id="services" className="section block" style={{ borderBlock: "2px solid var(--border)" }}>
         <div className="container">
           <Reveal style={{ marginBottom: "2.5rem", maxWidth: "40ch" }}>
             <span className="eyebrow">What we do</span>
@@ -122,6 +187,19 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ============ TECH ============ */}
+      <section className="section">
+        <div className="container" style={{ textAlign: "center" }}>
+          <Reveal>
+            <span className="eyebrow">Our toolkit</span>
+            <h2 className="section-title" style={{ marginTop: "1rem", marginBottom: "1.8rem" }}>Built with tools we love.</h2>
+            <div className="flex flex-wrap justify-center" style={{ gap: ".7rem", maxWidth: 760, marginInline: "auto" }}>
+              {tech.map((t) => <span key={t} className="tag">{t}</span>)}
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ============ PROCESS ============ */}
       <section id="process" className="section block" style={{ borderBlock: "2px solid var(--border)" }}>
         <div className="container">
@@ -136,6 +214,50 @@ export default function Home() {
                 <p className="muted" style={{ marginTop: "1rem", fontSize: "1.02rem" }}>{d}</p>
               </Reveal>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============ TESTIMONIALS ============ */}
+      <section className="section">
+        <div className="container">
+          <Reveal style={{ marginBottom: "2.5rem", maxWidth: "40ch" }}>
+            <span className="eyebrow">Kind words</span>
+            <h2 className="section-title" style={{ marginTop: "1rem" }}>What clients say.</h2>
+          </Reveal>
+          <div className="grid gap-6 md:grid-cols-3">
+            {testimonials.map(([q, who, where], i) => (
+              <Reveal key={where} delay={i * 70} className="reveal-zoom">
+                <figure className="quote" style={{ height: "100%", display: "flex", flexDirection: "column" }}>
+                  <span className="mark" aria-hidden>&ldquo;</span>
+                  <blockquote style={{ fontSize: "1.2rem", marginTop: ".4rem", flex: 1 }}>{q}</blockquote>
+                  <figcaption className="muted" style={{ marginTop: "1.2rem", fontSize: "1rem" }}>
+                    <strong style={{ color: "var(--fg)" }}>{who}</strong> · {where}
+                  </figcaption>
+                </figure>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============ FAQ ============ */}
+      <section className="section block" style={{ borderBlock: "2px solid var(--border)" }}>
+        <div className="container">
+          <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+            <Reveal>
+              <span className="eyebrow">Good to know</span>
+              <h2 className="section-title" style={{ marginTop: "1rem" }}>Frequently asked.</h2>
+              <p className="muted" style={{ marginTop: "1rem" }}>Got another question? <a href="/contact" style={{ textDecoration: "underline" }}>Just ask</a>.</p>
+            </Reveal>
+            <Reveal className="faq">
+              {faqs.map(([q, a]) => (
+                <details key={q}>
+                  <summary>{q}</summary>
+                  <div className="faq-body">{a}</div>
+                </details>
+              ))}
+            </Reveal>
           </div>
         </div>
       </section>

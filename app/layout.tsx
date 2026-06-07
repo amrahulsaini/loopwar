@@ -3,6 +3,7 @@ import { Patrick_Hand } from "next/font/google";
 import "./globals.css";
 import SiteHeader from "./components/SiteHeader";
 import SiteFooter from "./components/SiteFooter";
+import CursorSparkle from "./components/CursorSparkle";
 
 const patrick = Patrick_Hand({ variable: "--font-patrick", weight: "400", subsets: ["latin"], display: "swap" });
 
@@ -32,6 +33,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" className={patrick.variable}>
       <body>
+        <CursorSparkle />
         <SiteHeader />
         <main>{children}</main>
         <SiteFooter />
