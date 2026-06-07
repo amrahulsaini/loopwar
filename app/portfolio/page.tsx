@@ -18,8 +18,8 @@ function Card({ p, role }: { p: Project; role?: string }) {
       <BrowserFrame src={p.image} alt={`${p.name} — ${p.category}`} domain={p.domain} ratio="16 / 10" embed />
       <div className="p-6 flex flex-col flex-1" style={{ borderTop: "1px solid var(--line)" }}>
         <div className="flex items-center justify-between gap-3">
-          <span className="label">{p.category}</span>
-          {role ? <span className="chip">{role}</span> : <span className="label" style={{ color: "var(--faint)" }}>{p.domain}</span>}
+          <span className="label" style={{ color: "var(--accent)" }}>{p.category}</span>
+          {role ? <span className="chip-accent chip">{role}</span> : <span className="label" style={{ color: "var(--faint)" }}>{p.domain}</span>}
         </div>
         <h3 className="mt-3 text-2xl">{p.name}</h3>
         <p className="mt-2" style={{ color: "var(--text)" }}>{p.description}</p>
@@ -42,13 +42,15 @@ export default function Portfolio() {
   return (
     <div>
       {/* Hero */}
-      <section className="container-page" style={{ paddingBlock: "clamp(3.5rem, 7vw, 6rem)" }}>
+      <section className="grid-bg" style={{ position: "relative", overflow: "hidden", paddingBlock: "clamp(3.5rem, 7vw, 6rem)" }}>
+        <div className="glow pulse-glow" style={{ width: 520, height: 520, top: -300, left: "20%", opacity: .15 }} />
+        <div className="container-page relative">
         <div className="max-w-4xl">
-          <span className="eyebrow">Portfolio</span>
+          <span className="eyebrow"><span className="dot" /> Portfolio</span>
           <h1 className="mt-6" style={{ fontSize: "clamp(2.6rem, 7vw, 5rem)", lineHeight: ".98", letterSpacing: "-0.045em" }}>
-            Products we&apos;ve built and shipped.
+            Products we&apos;ve <span className="accent">built and shipped.</span>
           </h1>
-          <p className="lead mt-6" style={{ maxWidth: "56ch", color: "var(--text)" }}>
+          <p className="lead mt-6" style={{ maxWidth: "56ch" }}>
             From in‑house AI ventures to client platforms across e‑commerce, healthcare and logistics — a closer look at our work.
           </p>
         </div>
@@ -62,8 +64,8 @@ export default function Portfolio() {
               className="pb-3"
               style={{
                 fontFamily: "var(--font-display)", fontWeight: 600, fontSize: "1.05rem", letterSpacing: "-0.02em",
-                color: tab === key ? "var(--ink)" : "var(--muted)",
-                borderBottom: tab === key ? "2px solid var(--ink)" : "2px solid transparent",
+                color: tab === key ? "var(--text)" : "var(--muted)",
+                borderBottom: tab === key ? "2px solid var(--accent)" : "2px solid transparent",
                 marginBottom: "-1px",
               }}
             >
@@ -73,6 +75,7 @@ export default function Portfolio() {
               </span>
             </button>
           ))}
+        </div>
         </div>
       </section>
 
