@@ -40,7 +40,7 @@ const SpinBadge = () => (
         <text><textPath href="#circ">LOOPWAR • DESIGN • BUILD • SHIP • </textPath></text>
       </svg>
     </div>
-    <div style={{ position: "absolute", inset: 0, display: "grid", placeItems: "center", color: "#fff" }}>
+    <div style={{ position: "absolute", inset: 0, display: "grid", placeItems: "center", color: "var(--ink)" }}>
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7M17 7H8M17 7v9" /></svg>
     </div>
   </div>
@@ -52,28 +52,45 @@ export default function Home() {
   return (
     <div>
       {/* ============ HERO ============ */}
-      <section className="container-page" style={{ paddingTop: ".5rem" }}>
-        <div className="warm-card" style={{ minHeight: "clamp(540px, 84vh, 800px)", padding: "clamp(1.5rem, 4vw, 3.2rem)", display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
-          <div style={{ position: "absolute", top: "clamp(1.5rem,4vw,3rem)", right: "clamp(1.5rem,4vw,3rem)" }}>
-            <SpinBadge />
+      <section className="container-page" style={{ paddingTop: "clamp(2.5rem, 6vw, 5rem)", paddingBottom: "clamp(1.5rem, 4vw, 3rem)" }}>
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          {/* Copy */}
+          <div className="lg:col-span-6">
+            <span className="eyebrow animate-fade-up"><span className="dot" /> Available for new projects</span>
+            <h1 className="animate-fade-up mt-6" style={{ ['--delay' as any]: '80ms', fontSize: "clamp(2.8rem, 6.2vw, 5.4rem)", lineHeight: ".95", letterSpacing: "-0.045em" }}>
+              We build products that <span className="accent">earn their keep.</span>
+            </h1>
+            <p className="lead animate-fade-up mt-7" style={{ ['--delay' as any]: '160ms', maxWidth: "46ch" }}>
+              A senior product & engineering studio. We design, build and ship websites, apps and
+              AI products — for clients, and as our own ventures.
+            </p>
+            <div className="flex flex-wrap items-center gap-4 animate-fade-up mt-9" style={{ ['--delay' as any]: '240ms' }}>
+              <a className="btn btn-lg" href="/contact">Start a project</a>
+              <a className="btn secondary btn-lg" href="/portfolio">See our work <Arrow /></a>
+            </div>
+            <div className="flex items-center gap-3 mt-9 label">
+              <span style={{ color: "var(--accent)", fontSize: "1rem" }}>★★★★★</span>
+              <span>Trusted across e‑commerce, healthcare, logistics & AI</span>
+            </div>
           </div>
 
-          <div className="relative" style={{ maxWidth: "20ch" }}>
-            <span className="eyebrow eyebrow-light animate-fade-up"><span className="dot" style={{ background: "#fff" }} /> Available for new projects</span>
-          </div>
-
-          <h1 className="animate-fade-up mt-5" style={{ ['--delay' as any]: '80ms', color: "#fff", fontSize: "clamp(2.7rem, 7.4vw, 6.4rem)", lineHeight: ".96", letterSpacing: "-0.045em", maxWidth: "16ch" }}>
-            We build products that earn their keep.
-          </h1>
-
-          <p className="lead animate-fade-up mt-6" style={{ ['--delay' as any]: '160ms', color: "rgba(255,255,255,.9)", maxWidth: "48ch" }}>
-            A senior product & engineering studio. We design, build and ship websites, apps and
-            AI products — for clients, and as our own ventures.
-          </p>
-
-          <div className="flex flex-wrap items-center gap-4 animate-fade-up mt-8" style={{ ['--delay' as any]: '240ms' }}>
-            <a className="btn btn-on-warm btn-lg" href="/contact">Start a project</a>
-            <a className="btn btn-ghost-warm btn-lg" href="/portfolio">See our work <Arrow /></a>
+          {/* Floating screenshots */}
+          <div className="lg:col-span-6 relative animate-fade-up" style={{ ['--delay' as any]: '200ms', minHeight: "clamp(340px, 42vw, 460px)" }}>
+            <div className="softglow" style={{ width: "70%", height: "70%", top: "8%", right: "4%" }} />
+            <div className="relative h-full" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <div className="tiltA" style={{ width: "84%", position: "relative", zIndex: 2 }}>
+                <Shot src="/shots/xirevoa.png" alt="Xirevoa AI" tag="xirevoa.com" ratio="16 / 11" priority />
+              </div>
+              <div className="tiltB" style={{ width: "52%", position: "absolute", left: "-2%", bottom: "-6%", zIndex: 3 }}>
+                <Shot src="/shots/tirupatimedix.png" alt="Tirupati Medix" tag="tirupatimedix.com" ratio="16 / 11" />
+              </div>
+              <div className="float-chip floaty" style={{ top: "2%", right: "0%" }}>
+                <span className="ic">↗</span> 7+ products live
+              </div>
+              <div className="spin-badge" style={{ position: "absolute", bottom: "-4%", right: "6%", zIndex: 4 }}>
+                <SpinBadge />
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -223,21 +240,21 @@ export default function Home() {
       {/* ============ CONTACT CTA ============ */}
       <section className="container-page" style={{ paddingBottom: "clamp(3rem,6vw,6rem)" }}>
         <Reveal>
-          <div className="warm-card" style={{ padding: "clamp(2.2rem, 5vw, 4.5rem)" }}>
-            <div className="relative grid gap-10 md:grid-cols-12 items-end">
+          <div style={{ background: "var(--ink)", borderRadius: "var(--radius-xl)", padding: "clamp(2.2rem, 5vw, 4.5rem)" }}>
+            <div className="grid gap-10 md:grid-cols-12 items-end">
               <div className="md:col-span-8">
-                <span className="eyebrow eyebrow-light"><span className="dot" style={{ background: "#fff" }} /> Let&apos;s talk</span>
+                <span className="eyebrow" style={{ background: "rgba(255,255,255,.08)", borderColor: "rgba(255,255,255,.18)", color: "rgba(255,255,255,.9)" }}><span className="dot" /> Let&apos;s talk</span>
                 <h2 className="mt-5" style={{ color: "#fff", fontSize: "clamp(2.2rem, 5.4vw, 4.2rem)", lineHeight: ".98", letterSpacing: "-0.04em" }}>
-                  Have something in mind? Let&apos;s build it properly.
+                  Have something in mind?<br />Let&apos;s build it <span className="accent">properly.</span>
                 </h2>
                 <div className="flex flex-wrap items-center gap-4 mt-8">
-                  <a href="/contact" className="btn btn-on-warm btn-lg">Start a project</a>
-                  <a href="mailto:contact@loopwar.dev" className="btn btn-ghost-warm btn-lg">contact@loopwar.dev</a>
+                  <a href="/contact" className="btn" style={{ background: "#fff", color: "var(--ink)", borderColor: "#fff" }}>Start a project</a>
+                  <a href="mailto:contact@loopwar.dev" className="btn" style={{ background: "transparent", color: "#fff", borderColor: "rgba(255,255,255,.3)" }}>contact@loopwar.dev</a>
                 </div>
               </div>
-              <div className="md:col-span-4 md:text-right space-y-4" style={{ color: "rgba(255,255,255,.85)" }}>
+              <div className="md:col-span-4 md:text-right space-y-4" style={{ color: "rgba(255,255,255,.7)" }}>
                 <div>
-                  <div className="label" style={{ color: "rgba(255,255,255,.7)" }}>Call</div>
+                  <div className="label" style={{ color: "rgba(255,255,255,.55)" }}>Call</div>
                   <a href="tel:+916377362603" style={{ color: "#fff" }}>+91 63773 62603</a>
                   <div className="text-sm">Mon–Sat, 9 AM – 7 PM IST</div>
                 </div>

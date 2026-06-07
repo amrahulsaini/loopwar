@@ -91,12 +91,12 @@ export default function Portfolio() {
 
       {/* CTA */}
       <section className="container-page" style={{ paddingBottom: "clamp(3rem,6vw,6rem)" }}>
-        <div className="warm-card" style={{ padding: "clamp(2.2rem, 5vw, 4rem)", textAlign: "center" }}>
+        <div style={{ background: "var(--ink)", borderRadius: "var(--radius-xl)", padding: "clamp(2.2rem, 5vw, 4rem)", textAlign: "center" }}>
           <h2 style={{ color: "#fff", fontSize: "clamp(2rem, 4.5vw, 3.4rem)", letterSpacing: "-0.04em" }}>Have a project in mind?</h2>
-          <p className="mt-3" style={{ color: "rgba(255,255,255,.9)" }}>Let&apos;s turn your idea into a product people love.</p>
+          <p className="mt-3" style={{ color: "rgba(255,255,255,.75)" }}>Let&apos;s turn your idea into a product people love.</p>
           <div className="flex flex-wrap gap-4 justify-center mt-7">
-            <a href="/contact" className="btn btn-on-warm btn-lg">Start a project</a>
-            <a href="mailto:contact@loopwar.dev" className="btn btn-ghost-warm btn-lg">Get in touch</a>
+            <a href="/contact" className="btn btn-lg" style={{ background: "#fff", color: "var(--ink)", borderColor: "#fff" }}>Start a project</a>
+            <a href="mailto:contact@loopwar.dev" className="btn btn-lg" style={{ background: "transparent", color: "#fff", borderColor: "rgba(255,255,255,.3)" }}>Get in touch</a>
           </div>
         </div>
       </section>
