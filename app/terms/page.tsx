@@ -207,7 +207,7 @@ export default function Terms() {
                 If you have any questions about these Terms, please contact us:
               </p>
               <ul className="list-none space-y-1">
-                <li>📧 Email: <a href="mailto:contact@loopwar.dev" className="underline">contact@loopwar.dev</a></li>
+                <li>📧 Email: <a href="mailto:rahul@loopwar.dev" className="underline">rahul@loopwar.dev</a></li>
                 <li>📞 Phone: <a href="tel:+916377362603" className="underline">+91 63773 62603</a></li>
                 <li>🌐 Website: <a href="https://loopwar.dev" className="underline">https://loopwar.dev</a></li>
               </ul>

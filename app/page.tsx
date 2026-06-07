@@ -150,7 +150,7 @@ export default function Home() {
               </h2>
               <div className="flex flex-wrap items-center justify-center gap-3" style={{ marginTop: "1.8rem" }}>
                 <a href="/contact" className="btn">Start a project <Arrow /></a>
-                <a href="mailto:contact@loopwar.dev" className="btn btn-outline">contact@loopwar.dev</a>
+                <a href="mailto:rahul@loopwar.dev" className="btn btn-outline">rahul@loopwar.dev</a>
               </div>
             </div>
           </Reveal>

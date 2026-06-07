@@ -62,7 +62,7 @@ export default function Portfolio() {
           <h2 className="display" style={{ fontSize: "clamp(2rem,5vw,3.4rem)", color: "#fff", marginInline: "auto", maxWidth: "16ch" }}>Have a project in mind?</h2>
           <div className="flex flex-wrap items-center justify-center gap-3" style={{ marginTop: "1.8rem" }}>
             <a href="/contact" className="btn btn-accent">Start a project</a>
-            <a href="mailto:contact@loopwar.dev" className="btn btn-outline" style={{ background: "transparent", color: "#fff", borderColor: "#333" }}>Get in touch</a>
+            <a href="mailto:rahul@loopwar.dev" className="btn btn-outline" style={{ background: "transparent", color: "#fff", borderColor: "#333" }}>Get in touch</a>
           </div>
         </div>
       </section>

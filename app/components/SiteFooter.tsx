@@ -23,7 +23,7 @@ export default function SiteFooter() {
             </div>
             <div className="flex flex-col gap-2.5">
               <span style={{ color: "var(--gray-400)" }}>CONTACT</span>
-              <a href="mailto:contact@loopwar.dev" className="nav-link">contact@loopwar.dev</a>
+              <a href="mailto:rahul@loopwar.dev" className="nav-link">rahul@loopwar.dev</a>
               <a href="tel:+916377362603" className="nav-link">+91 63773 62603</a>
             </div>
             <div className="flex flex-col gap-2.5">

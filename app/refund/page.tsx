@@ -163,7 +163,7 @@ export default function Refund() {
                 <li>Supporting documentation (if applicable)</li>
               </ul>
               <p>
-                📧 Email: <a href="mailto:contact@loopwar.dev" className="underline">contact@loopwar.dev</a> or <a href="mailto:admin@loopwar.dev" className="underline">admin@loopwar.dev</a>
+                📧 Email: <a href="mailto:rahul@loopwar.dev" className="underline">rahul@loopwar.dev</a> or <a href="mailto:admin@loopwar.dev" className="underline">admin@loopwar.dev</a>
               </p>
 
               <h3 className="font-semibold text-lg mt-4 mb-2">6.2 Processing Time</h3>
@@ -218,7 +218,7 @@ export default function Refund() {
                 For any questions regarding refunds or this policy, please contact us:
               </p>
               <ul className="list-none space-y-1">
-                <li>📧 Email: <a href="mailto:contact@loopwar.dev" className="underline">contact@loopwar.dev</a></li>
+                <li>📧 Email: <a href="mailto:rahul@loopwar.dev" className="underline">rahul@loopwar.dev</a></li>
                 <li>📧 Email: <a href="mailto:admin@loopwar.dev" className="underline">admin@loopwar.dev</a></li>
                 <li>📞 Phone: <a href="tel:+916377362603" className="underline">+91 63773 62603</a></li>
                 <li>🌐 Website: <a href="https://loopwar.dev" className="underline">https://loopwar.dev</a></li>

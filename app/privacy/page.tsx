@@ -201,7 +201,7 @@ export default function Privacy() {
                 <li><strong>Object:</strong> Object to certain data processing activities</li>
               </ul>
               <p>
-                To exercise these rights, contact us at <a href="mailto:contact@loopwar.dev" className="underline">contact@loopwar.dev</a>
+                To exercise these rights, contact us at <a href="mailto:rahul@loopwar.dev" className="underline">rahul@loopwar.dev</a>
               </p>
             </div>
 
@@ -247,7 +247,7 @@ export default function Privacy() {
                 If you have questions or concerns about this Privacy Policy or our data practices, please contact us:
               </p>
               <ul className="list-none space-y-1">
-                <li>📧 Email: <a href="mailto:contact@loopwar.dev" className="underline">contact@loopwar.dev</a></li>
+                <li>📧 Email: <a href="mailto:rahul@loopwar.dev" className="underline">rahul@loopwar.dev</a></li>
                 <li>📧 Email: <a href="mailto:admin@loopwar.dev" className="underline">admin@loopwar.dev</a></li>
                 <li>📞 Phone: <a href="tel:+916377362603" className="underline">+91 63773 62603</a></li>
                 <li>🌐 Website: <a href="https://loopwar.dev" className="underline">https://loopwar.dev</a></li>

@@ -20,7 +20,7 @@ export default function Contact() {
         <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr]">
           {/* form */}
           <div className="card" style={{ padding: "clamp(1.5rem,3vw,2.5rem)" }}>
-            <form action="mailto:contact@loopwar.dev" method="post" encType="text/plain" className="flex flex-col" style={{ gap: "1.1rem" }}>
+            <form action="mailto:rahul@loopwar.dev" method="post" encType="text/plain" className="flex flex-col" style={{ gap: "1.1rem" }}>
               <div className="grid gap-4 sm:grid-cols-2">
                 <div><label style={labelStyle} htmlFor="name">Full name</label><input style={fieldStyle} id="name" name="name" required placeholder="Jane Doe" /></div>
                 <div><label style={labelStyle} htmlFor="email">Email</label><input style={fieldStyle} id="email" name="email" type="email" required placeholder="jane@company.com" /></div>
@@ -44,7 +44,7 @@ export default function Contact() {
           {/* details */}
           <div className="flex flex-col" style={{ gap: "1rem" }}>
             {[
-              ["Email", "contact@loopwar.dev", "mailto:contact@loopwar.dev"],
+              ["Email", "rahul@loopwar.dev", "mailto:rahul@loopwar.dev"],
               ["Call", "+91 63773 62603", "tel:+916377362603"],
             ].map(([k, v, href]) => (
               <a key={k} href={href} className="card hover-lift" style={{ padding: "1.4rem" }}>
