@@ -11,6 +11,13 @@ export function middleware(request: NextRequest) {
     return NextResponse.rewrite(newUrl)
   }
 
+  // Serve the Stitch-designed landing page at the root
+  if (pathname === '/') {
+    const newUrl = request.nextUrl.clone()
+    newUrl.pathname = '/home.html'
+    return NextResponse.rewrite(newUrl)
+  }
+
   // For other hosts (e.g., loopwar.dev), proceed normally
   return NextResponse.next()
 }

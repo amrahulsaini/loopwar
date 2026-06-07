@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&amp;family=Inter:wght@400;500&amp;family=Geist:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#96d1d3",
+                        "on-primary": "#ffffff",
+                        "on-secondary-container": "#68645b",
+                        "surface-bright": "#fcf9f8",
+                        "on-tertiary-fixed": "#331200",
+                        "inverse-on-surface": "#f3f0ef",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#e8e2d6",
+                        "outline-variant": "#bfc8c8",
+                        "on-surface-variant": "#3f4849",
+                        "surface-variant": "#e5e2e1",
+                        "inverse-primary": "#96d1d3",
+                        "surface": "#fcf9f8",
+                        "on-secondary-fixed-variant": "#49473e",
+                        "primary": "#003334",
+                        "primary-container": "#004b4d",
+                        "tertiary-fixed-dim": "#fbb894",
+                        "secondary": "#615e55",
+                        "on-tertiary-container": "#e1a17e",
+                        "error": "#ba1a1a",
+                        "on-surface": "#1c1b1b",
+                        "outline": "#707979",
+                        "on-background": "#1c1b1b",
+                        "on-primary-fixed-variant": "#084f51",
+                        "tertiary": "#492208",
+                        "tertiary-fixed": "#ffdbca",
+                        "on-secondary-fixed": "#1d1c14",
+                        "on-error-container": "#93000a",
+                        "surface-tint": "#2a6769",
+                        "background": "#fcf9f8",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed": "#002021",
+                        "surface-dim": "#dcd9d9",
+                        "secondary-fixed-dim": "#cbc6bb",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#e8e2d6",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#64371c",
+                        "primary-fixed": "#b1edef",
+                        "surface-container-high": "#eae7e7",
+                        "on-primary-container": "#7fbabc",
+                        "surface-container": "#f0eded",
+                        "on-tertiary-fixed-variant": "#693b20",
+                        "surface-container-highest": "#e5e2e1",
+                        "inverse-surface": "#313030",
+                        "surface-container-low": "#f6f3f2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "24px",
+                        "bento-gap": "32px",
+                        "container-max": "1440px",
+                        "unit": "8px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Montserrat"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Montserrat"],
+                        "display-xl-mobile": ["Montserrat"],
+                        "body-md": ["Inter"],
+                        "display-xl": ["Montserrat"],
+                        "headline-md": ["Montserrat"],
+                        "label-caps": ["Geist"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["64px", {"lineHeight": "72px", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+                        "body-lg": ["20px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["40px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "display-xl-mobile": ["56px", {"lineHeight": "60px", "letterSpacing": "-0.03em", "fontWeight": "800"}],
+                        "body-md": ["16px", {"lineHeight": "26px", "letterSpacing": "0", "fontWeight": "400"}],
+                        "display-xl": ["120px", {"lineHeight": "110px", "letterSpacing": "-0.05em", "fontWeight": "800"}],
+                        "headline-md": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { background-color: #fcf9f8; color: #1c1b1b; }
+        .bento-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .bento-card:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0, 75, 77, 0.1); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style id="lw-dark">
+html.dark body{background-color:#0c1413;color:#e6ecea}
+html.dark .bg-surface,html.dark .bg-surface-bright{background-color:#0c1413!important}
+html.dark .bg-surface-container-lowest{background-color:#0f1a18!important}
+html.dark .bg-surface-container-low{background-color:#101c1a!important}
+html.dark .bg-surface-container{background-color:#13201e!important}
+html.dark .bg-surface-container-high{background-color:#182824!important}
+html.dark .bg-secondary-container{background-color:#1c2723!important}
+html.dark .text-primary{color:#8fd4d4!important}
+html.dark .text-on-surface-variant,html.dark .text-on-secondary-fixed-variant{color:#a6b4b2!important}
+html.dark nav{background-color:rgba(12,20,19,.82)!important;border-color:rgba(143,212,212,.15)!important}
+html.dark .border-primary\/10,html.dark .border-primary\/5,html.dark .border-primary\/20{border-color:rgba(143,212,212,.16)!important}
+</style>
+</head>
+<body class="font-body-md text-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-5xl rounded-full bg-surface/80 backdrop-blur-xl border border-primary/10 shadow-[0_20px_50px_rgba(0,75,77,0.05)] flex justify-between items-center px-8 py-3 z-50 transition-all duration-300">
+<div class="flex items-center gap-2">
+<img alt="LoopWar Logo" class="h-6 w-auto" src="/loopwar-fulllogo.png"/>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-body-md text-body-md text-primary font-bold hover:scale-105 transition-transform duration-300" href="#services">Services</a>
+<a class="font-body-md text-body-md text-on-secondary-container hover:scale-105 transition-transform duration-300" href="#work">Work</a>
+<a class="font-body-md text-body-md text-on-secondary-container hover:scale-105 transition-transform duration-300" href="#ventures">Ventures</a>
+<a class="font-body-md text-body-md text-on-secondary-container hover:scale-105 transition-transform duration-300" href="/portfolio">Portfolio</a>
+</div>
+<button id="theme-toggle" aria-label="Toggle theme" class="w-10 h-10 mr-1 rounded-full flex items-center justify-center text-primary hover:bg-primary/10 transition-all"><span class="material-symbols-outlined" id="theme-icon">dark_mode</span></button><button class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-label-caps text-label-caps hover:scale-105 active:scale-95 transition-all">
+            Get in touch
+        </button>
+</nav>
+<main class="w-full">
+<!-- Hero Section -->
+<section class="relative pt-48 pb-32 px-margin-mobile md:px-margin-desktop overflow-hidden">
+<div class="max-w-container-max mx-auto flex flex-col items-center text-center z-10 relative">
+<div class="inline-block bg-primary/5 px-4 py-1.5 rounded-full mb-8">
+<span class="font-label-caps text-label-caps text-primary uppercase">Crafting the digital future</span>
+</div>
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary max-w-4xl mb-8">
+                    We build products that earn their keep.
+                </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-12">
+                    A senior product &amp; engineering studio — websites, apps and AI products for clients, and our own ventures.
+                </p>
+<div class="flex flex-col md:flex-row gap-4">
+<button class="bg-primary text-on-primary px-10 py-4 rounded-full font-label-caps text-label-caps hover:scale-105 transition-all">
+                        Start a project
+                    </button>
+<button class="border-1.5 border-primary text-primary px-10 py-4 rounded-full font-label-caps text-label-caps hover:scale-105 transition-all border-[1.5px]">
+                        See our work
+                    </button>
+</div>
+</div>
+<!-- Floating Mockups -->
+<div class="absolute -left-20 top-1/2 -translate-y-1/2 hidden lg:block opacity-40 hover:opacity-100 transition-opacity duration-500">
+<img class="w-72 h-96 object-cover rounded-xl shadow-xl rotate-[-6deg]" data-alt="A premium high-fidelity mobile app interface mockup showing a sleek dashboard with generative teal gradients. The aesthetic is modern and editorial, with generous white space and clean sans-serif typography, floating against a soft cream background with soft shadows." src="/shots/crmrs.png"/>
+</div>
+<div class="absolute -right-20 top-1/2 -translate-y-1/2 hidden lg:block opacity-40 hover:opacity-100 transition-opacity duration-500">
+<img class="w-72 h-96 object-cover rounded-xl shadow-xl rotate-[6deg]" data-alt="A professional web platform interface mockup on a desktop screen, showcasing complex data visualizations in a clean bento grid layout. The color palette features deep teal accents on a pristine cream and white background, reflecting a sophisticated engineering studio brand identity." src="/shots/xirevoa.png"/>
+</div>
+</section>
+<!-- Horizontal Scroll Work -->
+<section class="py-16 bg-surface-container-low overflow-hidden">
+<div class="flex gap-bento-gap px-margin-mobile md:px-margin-desktop no-scrollbar overflow-x-auto pb-8 snap-x">
+<div class="flex-none w-[350px] md:w-[600px] snap-center">
+<div class="bg-surface-container-lowest p-8 rounded-lg shadow-[0_20px_50px_rgba(0,75,77,0.05)] aspect-[16/10] overflow-hidden group">
+<img class="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-700" data-alt="A close-up view of a high-end e-commerce mobile application for a luxury brand. The UI is minimalist with focus on high-quality product photography, using a palette of deep teal and warm cream. The design feels architectural and precise, with a sophisticated typography system." src="/shots/casebuddy.png"/>
+</div>
+</div>
+<div class="flex-none w-[350px] md:w-[600px] snap-center">
+<div class="bg-surface-container-lowest p-8 rounded-lg shadow-[0_20px_50px_rgba(0,75,77,0.05)] aspect-[16/10] overflow-hidden group">
+<img class="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-700" data-alt="A clean, modern logistics management dashboard featuring dark teal data visualizations and maps. The interface is highly functional yet visually elegant, utilizing a modular bento grid structure and soft ambient shadows to create depth on a light cream surface." src="/shots/carrypack.png"/>
+</div>
+</div>
+<div class="flex-none w-[350px] md:w-[600px] snap-center">
+<div class="bg-surface-container-lowest p-8 rounded-lg shadow-[0_20px_50px_rgba(0,75,77,0.05)] aspect-[16/10] overflow-hidden group">
+<img class="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-700" data-alt="An AI-powered productivity app interface showcasing a minimalist diary or log entry screen. Soft blurred background elements and glassmorphic cards create a serene and focused user experience. The color scheme is warm and inviting, using light creams and subtle teal highlights." src="/shots/myaidiary.png"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Services Bento -->
+<section class="py-32 px-margin-mobile md:px-margin-desktop bg-surface max-w-container-max mx-auto" id="services">
+<div class="mb-16">
+<span class="font-label-caps text-label-caps text-primary tracking-widest uppercase mb-4 block">Expertise</span>
+<h2 class="font-headline-md text-headline-md text-primary max-w-xl">Deep engineering meets high-craft design.</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-bento-gap">
+<!-- Service 1 -->
+<div class="md:col-span-8 bg-surface-container-low p-12 rounded-lg bento-card flex flex-col justify-between h-[400px]">
+<span class="material-symbols-outlined text-primary text-4xl">devices</span>
+<div>
+<h3 class="font-headline-md text-[28px] text-primary mb-4">Web &amp; app development</h3>
+<p class="font-body-md text-on-surface-variant max-w-md">Performance-first React, Next.js, and mobile apps that feel native and lightning fast.</p>
+</div>
+</div>
+<!-- Service 2 -->
+<div class="md:col-span-4 bg-primary text-on-primary p-12 rounded-lg bento-card flex flex-col justify-between h-[400px]">
+<span class="material-symbols-outlined text-on-primary text-4xl">auto_awesome</span>
+<div>
+<h3 class="font-headline-md text-[28px] text-on-primary mb-4">AI &amp; automation</h3>
+<p class="font-body-md text-on-primary/70">Custom LLM integrations and workflow automations that save hundreds of hours.</p>
+</div>
+</div>
+<!-- Service 3 -->
+<div class="md:col-span-4 bg-surface-container p-12 rounded-lg bento-card flex flex-col justify-between h-[400px]">
+<span class="material-symbols-outlined text-primary text-4xl">shopping_cart</span>
+<div>
+<h3 class="font-headline-md text-[28px] text-primary mb-4">E-commerce</h3>
+<p class="font-body-md text-on-surface-variant">Bespoke Shopify and headless commerce solutions designed for high conversion.</p>
+</div>
+</div>
+<!-- Service 4 -->
+<div class="md:col-span-4 bg-secondary-container p-12 rounded-lg bento-card flex flex-col justify-between h-[400px]">
+<span class="material-symbols-outlined text-primary text-4xl">brush</span>
+<div>
+<h3 class="font-headline-md text-[28px] text-primary mb-4">UI/UX &amp; brand</h3>
+<p class="font-body-md text-on-secondary-fixed-variant">Editorial design systems that give your brand a premium, high-fidelity edge.</p>
+</div>
+</div>
+<!-- Service 5 & 6 Stack -->
+<div class="md:col-span-4 flex flex-col gap-bento-gap h-[400px]">
+<div class="flex-1 bg-surface-container-high p-8 rounded-lg bento-card flex items-center gap-6">
+<span class="material-symbols-outlined text-primary text-3xl">cloud</span>
+<div>
+<h4 class="font-headline-md text-body-lg font-bold text-primary">Cloud &amp; DevOps</h4>
+</div>
+</div>
+<div class="flex-1 bg-surface-container-lowest border border-primary/5 p-8 rounded-lg bento-card flex items-center gap-6">
+<span class="material-symbols-outlined text-primary text-3xl">settings_suggest</span>
+<div>
+<h4 class="font-headline-md text-body-lg font-bold text-primary">Product Maintenance</h4>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Selected Work -->
+<section class="py-32 px-margin-mobile md:px-margin-desktop bg-surface-bright" id="work">
+<div class="max-w-container-max mx-auto">
+<div class="flex justify-between items-end mb-24">
+<div>
+<span class="font-label-caps text-label-caps text-primary tracking-widest uppercase mb-4 block">Case Studies</span>
+<h2 class="font-headline-md text-headline-md text-primary">Selected Work</h2>
+</div>
+<a class="hidden md:block font-label-caps text-label-caps text-primary border-b border-primary/20 pb-1 hover:border-primary transition-colors" href="/portfolio">View all projects</a>
+</div>
+<div class="space-y-48">
+<!-- Project 01 -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-16 items-center">
+<div class="md:col-span-7 rounded-lg overflow-hidden shadow-2xl group">
+<img class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A high-fidelity mockup of the CaseBuddy e-commerce platform. The design features large editorial typography and an asymmetric layout highlighting premium products. The aesthetic is clean and high-craft, using a professional palette of deep teal, slate, and cream." src="/shots/casebuddy.png"/>
+</div>
+<div class="md:col-span-5 flex flex-col gap-6">
+<div class="flex items-center gap-4">
+<span class="font-display-xl-mobile text-primary/10">01</span>
+<span class="font-label-caps text-label-caps text-primary/60 uppercase">E-commerce</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary">CaseBuddy</h3>
+<p class="font-body-lg text-body-lg text-on-surface-variant">A fully automated e-commerce engine with real-time inventory and custom headless front-end.</p>
+<button class="w-fit text-primary font-bold border-b-2 border-primary/10 pb-1 hover:border-primary transition-all">Case study coming soon</button>
+</div>
+</div>
+<!-- Project 02 -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-16 items-center">
+<div class="md:col-span-5 md:order-1 order-2 flex flex-col gap-6">
+<div class="flex items-center gap-4">
+<span class="font-display-xl-mobile text-primary/10">02</span>
+<span class="font-label-caps text-label-caps text-primary/60 uppercase">D2C Brand</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary">Mridang</h3>
+<p class="font-body-lg text-body-lg text-on-surface-variant">E-commerce experience for handcrafted platters, focusing on storytelling and high-fidelity visuals.</p>
+<button class="w-fit text-primary font-bold border-b-2 border-primary/10 pb-1 hover:border-primary transition-all">View live project</button>
+</div>
+<div class="md:col-span-7 md:order-2 order-1 rounded-lg overflow-hidden shadow-2xl group">
+<img class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A beautiful website design for Mridang, showcasing organic textures and handcrafted wooden products. The layout uses editorial principles with large serif headings and a warm, tactile color palette. The UI feels like a high-end magazine, prioritizing visual narrative." src="/shots/mridang.png"/>
+</div>
+</div>
+<!-- Project 03 -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-16 items-center">
+<div class="md:col-span-7 rounded-lg overflow-hidden shadow-2xl group">
+<img class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A professional healthcare pharmacy management system for Tirupati Medix. The UI is focused on clarity and efficiency, utilizing a clean grid of teal and white elements. The typography is precise and functional, reflecting a trustworthy medical brand environment." src="/shots/tirupatimedix.png"/>
+</div>
+<div class="md:col-span-5 flex flex-col gap-6">
+<div class="flex items-center gap-4">
+<span class="font-display-xl-mobile text-primary/10">03</span>
+<span class="font-label-caps text-label-caps text-primary/60 uppercase">Pharmacy / Tech</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary">Tirupati Medix</h3>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Digital transformation for a leading pharmacy group, featuring real-time stock and B2B ordering.</p>
+<button class="w-fit text-primary font-bold border-b-2 border-primary/10 pb-1 hover:border-primary transition-all">Read more</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Our Ventures -->
+<section class="py-32 px-margin-mobile md:px-margin-desktop bg-surface-container-lowest" id="ventures">
+<div class="max-w-container-max mx-auto">
+<div class="text-center mb-24">
+<span class="font-label-caps text-label-caps text-primary tracking-widest uppercase mb-4 block">Own Products</span>
+<h2 class="font-headline-md text-headline-md text-primary">Our Ventures</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-bento-gap">
+<!-- Venture 1 -->
+<div class="p-12 rounded-lg bg-surface-container shadow-[0_20px_50px_rgba(0,75,77,0.05)] bento-card group">
+<div class="flex justify-between items-start mb-8">
+<div class="w-16 h-16 bg-primary text-on-primary rounded-xl flex items-center justify-center font-bold text-2xl">X</div>
+<span class="px-4 py-1.5 bg-primary/10 text-primary font-label-caps text-[10px] rounded-full uppercase">Founder</span>
+</div>
+<h3 class="font-headline-md text-body-lg font-bold text-primary mb-4">Xirevoa AI</h3>
+<p class="font-body-md text-on-surface-variant mb-8">500+ AI photo templates - new looks, outfits and styles in seconds. No prompts, no watermarks.</p>
+<div class="pt-6 border-t border-primary/10 flex items-center text-primary group-hover:gap-4 gap-2 transition-all cursor-pointer">
+<span class="font-label-caps text-label-caps">Visit xirevoa.com</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</div>
+</div>
+<!-- Venture 2 -->
+<div class="p-12 rounded-lg bg-surface-container shadow-[0_20px_50px_rgba(0,75,77,0.05)] bento-card group">
+<div class="flex justify-between items-start mb-8">
+<div class="w-16 h-16 bg-primary text-on-primary rounded-xl flex items-center justify-center font-bold text-2xl">M</div>
+<span class="px-4 py-1.5 bg-primary/10 text-primary font-label-caps text-[10px] rounded-full uppercase">Founder</span>
+</div>
+<h3 class="font-headline-md text-body-lg font-bold text-primary mb-4">MyAIDiary</h3>
+<p class="font-body-md text-on-surface-variant mb-8">A privacy-first diary with AI voice and insights, built for daily reflection.</p>
+<div class="pt-6 border-t border-primary/10 flex items-center text-primary group-hover:gap-4 gap-2 transition-all cursor-pointer">
+<span class="font-label-caps text-label-caps">Visit myaidiary.me</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</div>
+</div>
+<!-- Venture 3 -->
+<div class="p-12 rounded-lg bg-surface-container shadow-[0_20px_50px_rgba(0,75,77,0.05)] bento-card group">
+<div class="flex justify-between items-start mb-8">
+<div class="w-16 h-16 bg-primary text-on-primary rounded-xl flex items-center justify-center font-bold text-2xl">C</div><span class="px-4 py-1.5 bg-primary/10 text-primary font-label-caps text-[10px] rounded-full uppercase">CTO</span>
+</div>
+<h3 class="font-headline-md text-body-lg font-bold text-primary mb-4">CRMRS</h3>
+<p class="font-body-md text-on-surface-variant mb-8">Multi-tenant loan-recovery and repossession platform with live GPS tracking and audit-grade logging.</p>
+<div class="pt-6 border-t border-primary/10 flex items-center text-primary group-hover:gap-4 gap-2 transition-all cursor-pointer">
+<span class="font-label-caps text-label-caps">Visit crmrecoverysoftware.com</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Process Section -->
+<section class="py-32 px-margin-mobile md:px-margin-desktop bg-surface">
+<div class="max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-24">
+<div>
+<span class="font-label-caps text-label-caps text-primary tracking-widest uppercase mb-4 block">The Studio Way</span>
+<h2 class="font-headline-md text-headline-md text-primary mb-8">How we work.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-md">We don't just build features; we build businesses. Our process is designed for clarity, speed, and uncompromising quality.</p>
+</div>
+<div class="space-y-16">
+<div class="flex gap-8 group">
+<div class="flex-none w-12 h-12 rounded-full border border-primary/20 flex items-center justify-center font-bold text-primary group-hover:bg-primary group-hover:text-on-primary transition-all duration-300">1</div>
+<div>
+<h3 class="font-headline-md text-[20px] text-primary mb-2">Discover</h3>
+<p class="font-body-md text-on-surface-variant">We dive deep into your business logic, user needs, and market gaps to define the MVP.</p>
+</div>
+</div>
+<div class="flex gap-8 group">
+<div class="flex-none w-12 h-12 rounded-full border border-primary/20 flex items-center justify-center font-bold text-primary group-hover:bg-primary group-hover:text-on-primary transition-all duration-300">2</div>
+<div>
+<h3 class="font-headline-md text-[20px] text-primary mb-2">Design</h3>
+<p class="font-body-md text-on-surface-variant">Rapid prototyping and editorial UI design that elevates your brand and simplifies UX.</p>
+</div>
+</div>
+<div class="flex gap-8 group">
+<div class="flex-none w-12 h-12 rounded-full border border-primary/20 flex items-center justify-center font-bold text-primary group-hover:bg-primary group-hover:text-on-primary transition-all duration-300">3</div>
+<div>
+<h3 class="font-headline-md text-[20px] text-primary mb-2">Build</h3>
+<p class="font-body-md text-on-surface-variant">High-performance engineering using modern stacks like Next.js, Node, and Python.</p>
+</div>
+</div>
+<div class="flex gap-8 group">
+<div class="flex-none w-12 h-12 rounded-full border border-primary/20 flex items-center justify-center font-bold text-primary group-hover:bg-primary group-hover:text-on-primary transition-all duration-300">4</div>
+<div>
+<h3 class="font-headline-md text-[20px] text-primary mb-2">Ship &amp; scale</h3>
+<p class="font-body-md text-on-surface-variant">Deployment to robust cloud infrastructure and ongoing product evolution.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Dark CTA Section -->
+<section class="px-margin-mobile md:px-margin-desktop mb-16">
+<div class="max-w-container-max mx-auto bg-primary rounded-lg p-16 md:p-32 text-center text-on-primary relative overflow-hidden">
+<!-- Atmospheric Glows -->
+<div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+<div class="absolute -top-48 -left-48 w-96 h-96 bg-primary-fixed-dim blur-[100px] rounded-full"></div>
+<div class="absolute -bottom-48 -right-48 w-96 h-96 bg-primary-fixed-dim blur-[100px] rounded-full"></div>
+</div>
+<div class="relative z-10">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-8">Ready to build something iconic?</h2>
+<p class="font-body-lg text-body-lg text-on-primary/70 mb-12 max-w-xl mx-auto">Let's discuss your product vision today.</p>
+<button class="bg-surface text-primary px-12 py-5 rounded-full font-label-caps text-label-caps hover:scale-105 active:scale-95 transition-all shadow-xl">
+                        Start a project
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full bg-primary px-margin-mobile md:px-margin-desktop py-16 flex flex-col md:flex-row justify-between items-start gap-bento-gap rounded-t-lg">
+<div class="flex flex-col gap-8 max-w-sm">
+<img alt="LoopWar Studio" class="h-8 w-auto" src="/loopwar-fulllogo.png"/>
+<p class="font-body-md text-on-primary/70">A senior product &amp; engineering studio specializing in high-craft digital experiences and AI ventures.</p>
+<a class="font-body-md text-on-primary hover:text-primary-fixed-dim transition-colors" href="mailto:contact@loopwar.dev">contact@loopwar.dev</a>
+</div>
+<div class="grid grid-cols-2 gap-16 md:gap-32">
+<div class="flex flex-col gap-4">
+<span class="font-label-caps text-[10px] text-on-primary/40 uppercase tracking-widest">Main</span>
+<a class="font-body-md text-on-primary/70 hover:text-on-primary transition-colors" href="#services">Services</a>
+<a class="font-body-md text-on-primary/70 hover:text-on-primary transition-colors" href="#work">Work</a>
+<a class="font-body-md text-on-primary/70 hover:text-on-primary transition-colors" href="#ventures">Ventures</a>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-label-caps text-[10px] text-on-primary/40 uppercase tracking-widest">Connect</span>
+<a class="font-body-md text-on-primary/70 hover:text-on-primary transition-colors" href="#">Twitter</a>
+<a class="font-body-md text-on-primary/70 hover:text-on-primary transition-colors" href="#">LinkedIn</a>
+<a class="font-body-md text-on-primary/70 hover:text-on-primary transition-colors" href="#">Instagram</a>
+</div>
+</div>
+<div class="w-full mt-16 pt-8 border-t border-on-primary/10 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-body-md text-label-caps text-on-primary/50">© 2026 LoopWar. All rights reserved.</p>
+<div class="flex gap-8">
+<a class="font-body-md text-label-caps text-on-primary/50 hover:text-on-primary" href="/privacy">Privacy Policy</a>
+<a class="font-body-md text-label-caps text-on-primary/50 hover:text-on-primary" href="/terms">Terms of Service</a>
+</div>
+</div>
+</footer>
+<script>
+        // Smooth reveal on scroll interaction
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('opacity-100', 'translate-y-0');
+                        entry.target.classList.remove('opacity-0', 'translate-y-10');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('section > div').forEach(section => {
+                section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
+                observer.observe(section);
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('py-2', 'w-[80%]', 'max-w-4xl');
+                nav.classList.remove('py-3', 'w-[90%]', 'max-w-5xl');
+            } else {
+                nav.classList.add('py-3', 'w-[90%]', 'max-w-5xl');
+                nav.classList.remove('py-2', 'w-[80%]', 'max-w-4xl');
+            }
+        });
+    </script>
+<script>
+(function(){
+  var r=document.documentElement, ic=document.getElementById('theme-icon');
+  function set(d){ if(d){r.classList.add('dark');r.classList.remove('light');if(ic)ic.textContent='light_mode';} else {r.classList.add('light');r.classList.remove('dark');if(ic)ic.textContent='dark_mode';} }
+  set(localStorage.getItem('lw-theme')==='dark');
+  var t=document.getElementById('theme-toggle');
+  if(t)t.addEventListener('click',function(){var d=!r.classList.contains('dark');set(d);localStorage.setItem('lw-theme',d?'dark':'light');});
+  document.querySelectorAll('button,a').forEach(function(el){
+    var x=(el.textContent||'').trim().toLowerCase();
+    if(x==='get in touch'||x==='start a project'){el.style.cursor='pointer';el.addEventListener('click',function(){location.href='/contact';});}
+    else if(x==='see our work'){el.addEventListener('click',function(){location.href='/portfolio';});}
+  });
+  var imgs=document.querySelectorAll('section img');
+  function zoom(){var vh=innerHeight;imgs.forEach(function(im){var b=im.getBoundingClientRect();var c=b.top+b.height/2;var p=1-Math.min(1,Math.abs(c-vh/2)/vh);im.style.transform='scale('+(1+p*0.05).toFixed(3)+')';});}
+  addEventListener('scroll',function(){requestAnimationFrame(zoom);},{passive:true});zoom();
+})();
+</script>
+</body></html>
