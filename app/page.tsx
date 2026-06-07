@@ -63,18 +63,9 @@ export default function Home() {
 
       </section>
 
-      {/* big LOOPWAR marquee */}
-      <div className="marquee" aria-hidden style={{ marginTop: "clamp(1rem,3vw,2rem)" }}>
-        <div className="marquee-track">
-          {[0, 1].map((g) => (
-            <div className="marquee-item" key={g}>
-              <span>LOOPWAR</span><span className="star">✦</span>
-              <span className="ghost">LOOPWAR</span><span className="star">✦</span>
-              <span>LOOPWAR</span><span className="star">✦</span>
-              <span className="ghost">LOOPWAR</span><span className="star">✦</span>
-            </div>
-          ))}
-        </div>
+      {/* single big LOOPWAR wordmark */}
+      <div className="container" aria-hidden style={{ overflow: "hidden", paddingBlock: "clamp(1.5rem,4vw,3rem)" }}>
+        <Reveal className="reveal-zoom"><div className="bigword">LOOPWAR</div></Reveal>
       </div>
 
       {/* ============ WORK ============ */}
@@ -165,6 +156,11 @@ export default function Home() {
           </Reveal>
         </div>
       </section>
+
+      {/* big LOOPWAR wordmark at the bottom */}
+      <div className="container" aria-hidden style={{ overflow: "hidden", paddingBottom: "clamp(2rem,5vw,4rem)" }}>
+        <Reveal className="reveal-zoom"><div className="bigword outline">LOOPWAR</div></Reveal>
+      </div>
     </div>
   );
 }
