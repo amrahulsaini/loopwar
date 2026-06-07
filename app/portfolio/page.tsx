@@ -10,7 +10,7 @@ const UpRight = () => (
 function Card({ p, role }: { p: Project; role?: string }) {
   return (
     <a href={p.url} target="_blank" rel="noreferrer" className="card hover-lift" style={{ overflow: "hidden", display: "block" }}>
-      <div className="frame-shot" style={{ aspectRatio: "16/10" }}>
+      <div className="shot" style={{ aspectRatio: "16/10" }}>
         <img src={p.image} alt={`${p.name} — ${p.category}`} loading="lazy" />
       </div>
       <div style={{ padding: "1.4rem", borderTop: "1px solid var(--border)" }}>
