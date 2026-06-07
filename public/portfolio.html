@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Work | LoopWar Studio</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&amp;family=Inter:wght@400;500;600&amp;family=Geist:wght@600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#fcf9f8",
+                        "tertiary": "#492208",
+                        "on-tertiary-container": "#e1a17e",
+                        "secondary-fixed-dim": "#cbc6bb",
+                        "primary-fixed-dim": "#96d1d3",
+                        "surface-container": "#f0eded",
+                        "surface-variant": "#e5e2e1",
+                        "primary-fixed": "#b1edef",
+                        "on-surface-variant": "#3f4849",
+                        "tertiary-container": "#64371c",
+                        "on-tertiary-fixed-variant": "#693b20",
+                        "on-secondary-fixed": "#1d1c14",
+                        "inverse-primary": "#96d1d3",
+                        "inverse-surface": "#313030",
+                        "error-container": "#ffdad6",
+                        "on-error": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "surface-container-highest": "#e5e2e1",
+                        "surface": "#fcf9f8",
+                        "secondary-fixed": "#e8e2d6",
+                        "on-tertiary-fixed": "#331200",
+                        "on-surface": "#1c1b1b",
+                        "surface-container-high": "#eae7e7",
+                        "secondary": "#615e55",
+                        "secondary-container": "#e8e2d6",
+                        "primary-container": "#004b4d",
+                        "tertiary-fixed-dim": "#fbb894",
+                        "surface-tint": "#2a6769",
+                        "surface-container-low": "#f6f3f2",
+                        "on-primary-fixed-variant": "#084f51",
+                        "outline": "#707979",
+                        "on-secondary-fixed-variant": "#49473e",
+                        "on-primary-fixed": "#002021",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#7fbabc",
+                        "on-background": "#1c1b1b",
+                        "surface-bright": "#fcf9f8",
+                        "primary": "#003334",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#dcd9d9",
+                        "on-secondary-container": "#68645b",
+                        "on-secondary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed": "#ffdbca",
+                        "outline-variant": "#bfc8c8",
+                        "inverse-on-surface": "#f3f0ef",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "margin-desktop": "64px",
+                        "container-max": "1440px",
+                        "bento-gap": "32px",
+                        "margin-mobile": "24px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "display-xl-mobile": ["Montserrat"],
+                        "display-xl": ["Montserrat"],
+                        "headline-lg-mobile": ["Montserrat"],
+                        "headline-lg": ["Montserrat"],
+                        "label-caps": ["Geist"],
+                        "headline-md": ["Montserrat"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["20px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "400"}],
+                        "display-xl-mobile": ["56px", {"lineHeight": "60px", "letterSpacing": "-0.03em", "fontWeight": "800"}],
+                        "display-xl": ["120px", {"lineHeight": "110px", "letterSpacing": "-0.05em", "fontWeight": "800"}],
+                        "headline-lg-mobile": ["40px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["64px", {"lineHeight": "72px", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "headline-md": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "26px", "letterSpacing": "0", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #fcf9f8;
+            color: #1c1b1b;
+            scroll-behavior: smooth;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-shadow {
+            box-shadow: 0 20px 50px rgba(0, 75, 77, 0.05);
+        }
+        .scale-interaction:active {
+            transform: scale(0.98);
+            transition: transform 0.2s ease;
+        }
+    </style>
+<style id="lw-dark">
+html.dark body{background-color:#0c1413;color:#e6ecea}
+html.dark .bg-surface,html.dark .bg-surface-bright{background-color:#0c1413!important}
+html.dark .bg-surface-container-lowest{background-color:#0f1a18!important}
+html.dark .bg-surface-container-low{background-color:#101c1a!important}
+html.dark .bg-surface-container{background-color:#13201e!important}
+html.dark .bg-surface-container-high{background-color:#182824!important}
+html.dark .bg-secondary-container{background-color:#1c2723!important}
+html.dark .text-primary{color:#8fd4d4!important}
+html.dark .text-on-surface-variant,html.dark .text-on-secondary-fixed-variant{color:#a6b4b2!important}
+html.dark nav{background-color:rgba(12,20,19,.82)!important;border-color:rgba(143,212,212,.15)!important}
+html.dark .border-primary\/10,html.dark .border-primary\/5,html.dark .border-primary\/20{border-color:rgba(143,212,212,.16)!important}
+html.dark input,html.dark textarea,html.dark select{background-color:#0f1a18!important;color:#e6ecea!important;border-color:rgba(143,212,212,.2)!important}
+</style>
+</head>
+<body class="font-body-md text-body-md overflow-x-hidden">
+<!-- 1. Floating Pill Nav (TopNavBar) -->
+<nav class="fixed top-8 left-1/2 -translate-x-1/2 z-50 flex items-center gap-gutter px-6 py-3 rounded-full max-w-fit mx-auto backdrop-blur-xl border border-primary/10 bg-surface/80 shadow-[0_20px_50px_rgba(0,75,77,0.05)] scale-interaction">
+<div class="font-headline-md text-headline-md font-extrabold tracking-tighter text-primary">LoopWar</div>
+<div class="hidden md:flex items-center gap-8 px-4">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-body-md text-body-md tracking-tight" href="/#services">Services</a>
+<a class="text-primary font-bold transition-colors duration-300 font-body-md text-body-md tracking-tight" href="/#work">Work</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-body-md text-body-md tracking-tight" href="/#ventures">Ventures</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-body-md text-body-md tracking-tight" href="/portfolio">Portfolio</a>
+</div>
+<button class="bg-primary text-white px-6 py-2 rounded-full font-body-md text-body-md hover:bg-primary-container hover:text-on-primary-container transition-all">
+            Get in touch
+        </button>
+</nav>
+<main class="pt-48 pb-margin-desktop">
+<!-- 2. Hero Section -->
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mb-32">
+<div class="max-w-4xl">
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-8 animate-fade-in">
+                    Products we've built and shipped.
+                </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                    From in-house AI ventures to client platforms across e-commerce, healthcare and logistics. Our studio blends architectural precision with high-craft engineering.
+                </p>
+</div>
+</section>
+<!-- 3. Client Work Section -->
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop space-y-32 mb-32">
+<!-- CaseBuddy -->
+<div class="grid md:grid-cols-2 gap-bento-gap items-center group">
+<div class="rounded-xl overflow-hidden bento-shadow h-[500px] relative order-1 md:order-1">
+<img alt="E-commerce Customization Platform" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A premium close-up of high-quality custom phone cases organized in a minimalist, aesthetically pleasing grid. The scene is bathed in soft, warm daylight, emphasizing the textures of the materials and the vibrant yet sophisticated color palette of deep teal and cream. The photography style is editorial, with a shallow depth of field, suggesting a luxury e-commerce experience." src="/shots/casebuddy.png"/>
+</div>
+<div class="flex flex-col justify-center order-2 md:order-2 space-y-6 md:pl-12">
+<div class="flex items-center gap-4">
+<span class="font-display-xl-mobile text-primary/10 select-none">01</span>
+<span class="font-label-caps text-label-caps uppercase text-primary bg-primary/5 px-3 py-1 rounded-full">E-commerce</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary">CaseBuddy</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                        A bespoke platform for creating and ordering custom phone cases. We engineered a seamless 3D visualization engine that allows users to see their designs in real-time.
+                    </p>
+<a class="flex items-center gap-2 text-primary font-bold group/link" href="#">
+                        View Case Study <span class="material-symbols-outlined transition-transform group-hover/link:translate-x-1">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Mridang -->
+<div class="grid md:grid-cols-2 gap-bento-gap items-center group">
+<div class="flex flex-col justify-center order-2 md:order-1 space-y-6 md:pr-12">
+<div class="flex items-center gap-4">
+<span class="font-display-xl-mobile text-primary/10 select-none">02</span>
+<span class="font-label-caps text-label-caps uppercase text-primary bg-primary/5 px-3 py-1 rounded-full">D2C</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary">Mridang</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                        High-craft digital experience for handcrafted wedding platters. Our focus was on editorial storytelling and high-fidelity photography to match the physical product's mastery.
+                    </p>
+<a class="flex items-center gap-2 text-primary font-bold group/link" href="#">
+                        View Case Study <span class="material-symbols-outlined transition-transform group-hover/link:translate-x-1">arrow_forward</span>
+</a>
+</div>
+<div class="rounded-xl overflow-hidden bento-shadow h-[500px] relative order-1 md:order-2">
+<img alt="Handcrafted Luxury Goods" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="An elegant arrangement of handcrafted luxury wedding platters featuring intricate gold and wood details. The setting is a bright, sunlit room with clean white walls and marble surfaces, creating a high-end D2C brand atmosphere. The lighting is soft and flattering, highlighting the artisanal quality of the products in a studio-led visual narrative." src="/shots/casebuddy.png"/>
+</div>
+</div>
+<!-- Tirupati Medix -->
+<div class="grid md:grid-cols-2 gap-bento-gap items-center group">
+<div class="rounded-xl overflow-hidden bento-shadow h-[500px] relative order-1">
+<img alt="Healthcare Online Pharmacy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A clean, modern medical setting featuring high-tech laboratory equipment and neatly organized pharmaceutical products. The color scheme is dominated by white and soft teal accents, conveying trust and professional healthcare excellence. The mood is clinical yet warm, with bright, even lighting that emphasizes clarity and digital innovation in medicine." src="/shots/tirupatimedix.png"/>
+</div>
+<div class="flex flex-col justify-center order-2 space-y-6 md:pl-12">
+<div class="flex items-center gap-4">
+<span class="font-display-xl-mobile text-primary/10 select-none">03</span>
+<span class="font-label-caps text-label-caps uppercase text-primary bg-primary/5 px-3 py-1 rounded-full">Healthcare</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary">Tirupati Medix</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                        An integrated online pharmacy platform. We solved complex regulatory and logistics workflows to deliver a user-centric healthcare experience that prioritizes privacy and speed.
+                    </p>
+<a class="flex items-center gap-2 text-primary font-bold group/link" href="#">
+                        View Case Study <span class="material-symbols-outlined transition-transform group-hover/link:translate-x-1">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Carry Pack Logistics -->
+<div class="grid md:grid-cols-2 gap-bento-gap items-center group">
+<div class="flex flex-col justify-center order-2 md:order-1 space-y-6 md:pr-12">
+<div class="flex items-center gap-4">
+<span class="font-display-xl-mobile text-primary/10 select-none">04</span>
+<span class="font-label-caps text-label-caps uppercase text-primary bg-primary/5 px-3 py-1 rounded-full">Logistics</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary">Carry Pack</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                        Transforming traditional warehousing into a tech-first operation. We built an end-to-end transport management system for real-time fleet tracking and warehouse automation.
+                    </p>
+<a class="flex items-center gap-2 text-primary font-bold group/link" href="#">
+                        View Case Study <span class="material-symbols-outlined transition-transform group-hover/link:translate-x-1">arrow_forward</span>
+</a>
+</div>
+<div class="rounded-xl overflow-hidden bento-shadow h-[500px] relative order-1 md:order-2">
+<img alt="Modern Logistics Warehouse" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A vast, high-tech logistics warehouse with organized rows of shelves and automated transport vehicles moving through the space. The lighting is cinematic, with blue and teal highlights that emphasize technological advancement. The overall mood is efficient, grand, and modern, illustrating architectural mastery in complex supply chain engineering." src="/shots/carrypack.png"/>
+</div>
+</div>
+</section>
+<!-- 4. Our Ventures Section -->
+<section class="bg-surface-container-low py-32 mb-32">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="mb-16">
+<span class="font-label-caps text-label-caps text-primary uppercase tracking-widest block mb-4">In-House Innovation</span>
+<h2 class="font-headline-lg-mobile md:font-headline-md text-primary">Studio Ventures</h2>
+</div>
+<div class="grid md:grid-cols-3 gap-bento-gap">
+<!-- Xirevoa AI -->
+<div class="bg-white p-10 rounded-xl bento-shadow flex flex-col justify-between group hover:-translate-y-2 transition-transform duration-300">
+<div>
+<div class="flex justify-between items-start mb-8">
+<div class="w-12 h-12 rounded-lg bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">auto_fix_high</span>
+</div>
+<span class="font-label-caps text-label-caps bg-secondary-container text-secondary px-3 py-1 rounded-full">Founder</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-4">Xirevoa AI</h3>
+<p class="text-on-surface-variant font-body-md mb-8">
+                                Next-generation AI photo templates for creative professionals. High-craft generative visuals delivered through a seamless API.
+                            </p>
+</div>
+<a class="text-primary font-bold flex items-center gap-2" href="#">Explore venture <span class="material-symbols-outlined">north_east</span></a>
+</div>
+<!-- MyAIDiary -->
+<div class="bg-white p-10 rounded-xl bento-shadow flex flex-col justify-between group hover:-translate-y-2 transition-transform duration-300">
+<div>
+<div class="flex justify-between items-start mb-8">
+<div class="w-12 h-12 rounded-lg bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">book</span>
+</div>
+<span class="font-label-caps text-label-caps bg-secondary-container text-secondary px-3 py-1 rounded-full">Founder</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-4">MyAIDiary</h3>
+<p class="text-on-surface-variant font-body-md mb-8">
+                                Privacy-first, encrypted AI personal diary. We prioritize data sovereignty and emotional intelligence in this long-term studio bet.
+                            </p>
+</div>
+<a class="text-primary font-bold flex items-center gap-2" href="#">Explore venture <span class="material-symbols-outlined">north_east</span></a>
+</div>
+<!-- CRMRS -->
+<div class="bg-white p-10 rounded-xl bento-shadow flex flex-col justify-between group hover:-translate-y-2 transition-transform duration-300">
+<div>
+<div class="flex justify-between items-start mb-8">
+<div class="w-12 h-12 rounded-lg bg-tertiary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+</div>
+<span class="font-label-caps text-label-caps bg-secondary-container text-secondary px-3 py-1 rounded-full">CTO</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-4">CRMRS</h3>
+<p class="text-on-surface-variant font-body-md mb-8">
+                                A specialized SaaS for automated loan recovery. Architectural mastery applied to complex financial data and legal workflows.
+                            </p>
+</div>
+<a class="text-primary font-bold flex items-center gap-2" href="#">Explore venture <span class="material-symbols-outlined">north_east</span></a>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. CTA Card -->
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mb-32">
+<div class="bg-primary rounded-xl p-16 md:p-32 text-center text-white relative overflow-hidden bento-shadow">
+<!-- Abstract visual element -->
+<div class="absolute top-0 right-0 w-96 h-96 bg-primary-container rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 opacity-50"></div>
+<div class="relative z-10">
+<h2 class="font-headline-lg-mobile md:font-headline-lg mb-8">Have a project in mind?</h2>
+<p class="font-body-lg text-primary-fixed-dim max-w-xl mx-auto mb-12">
+                        Whether you are looking for an architectural audit or a full-scale product launch, our team is ready to bring precision to your vision.
+                    </p>
+<button class="bg-surface text-primary px-12 py-5 rounded-full font-headline-md text-body-lg hover:bg-primary-fixed hover:scale-105 transition-all duration-300 shadow-xl scale-interaction">
+                        Start a project
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- 6. Footer -->
+<footer class="w-full py-margin-desktop px-margin-desktop flex flex-col md:flex-row justify-between items-start gap-bento-gap bg-surface dark:bg-surface-container-lowest border-t border-primary/5">
+<div class="flex flex-col gap-6 max-w-md">
+<div class="font-headline-lg text-headline-lg font-black tracking-tighter text-primary">LoopWar</div>
+<p class="font-body-md text-on-surface-variant">
+                © 2026 LoopWar. Architectural Mastery in Code.
+            </p>
+<div class="flex gap-4">
+<a class="text-primary font-semibold hover:opacity-70 transition-opacity" href="mailto:contact@loopwar.dev">contact@loopwar.dev</a>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-12">
+<div class="flex flex-col gap-4">
+<span class="font-label-caps uppercase text-on-surface-variant opacity-50">Menu</span>
+<a class="text-on-surface-variant hover:opacity-70 transition-opacity" href="/#services">Services</a>
+<a class="text-primary font-semibold hover:opacity-70 transition-opacity" href="/#work">Work</a>
+<a class="text-on-surface-variant hover:opacity-70 transition-opacity" href="/#ventures">Ventures</a>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-label-caps uppercase text-on-surface-variant opacity-50">Company</span>
+<a class="text-on-surface-variant hover:opacity-70 transition-opacity" href="/portfolio">Portfolio</a>
+<a class="text-on-surface-variant hover:opacity-70 transition-opacity" href="#">Contact</a>
+<a class="text-on-surface-variant hover:opacity-70 transition-opacity" href="/privacy">Privacy</a>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-label-caps uppercase text-on-surface-variant opacity-50">Social</span>
+<a class="text-on-surface-variant hover:opacity-70 transition-opacity" href="#">LinkedIn</a>
+<a class="text-on-surface-variant hover:opacity-70 transition-opacity" href="#">Twitter</a>
+<a class="text-on-surface-variant hover:opacity-70 transition-opacity" href="#">GitHub</a>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interactions and scroll effects
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('opacity-100', 'translate-y-0');
+                        entry.target.classList.remove('opacity-0', 'translate-y-10');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.add('transition-all', 'duration-1000', 'ease-out');
+            });
+        });
+    </script>
+<script>
+(function(){
+  var r=document.documentElement, ic=document.getElementById('theme-icon');
+  function set(d){ if(d){r.classList.add('dark');r.classList.remove('light');if(ic)ic.textContent='light_mode';} else {r.classList.add('light');r.classList.remove('dark');if(ic)ic.textContent='dark_mode';} }
+  set(localStorage.getItem('lw-theme')==='dark');
+  var t=document.getElementById('theme-toggle');
+  if(t)t.addEventListener('click',function(){var d=!r.classList.contains('dark');set(d);localStorage.setItem('lw-theme',d?'dark':'light');});
+  document.querySelectorAll('button,a').forEach(function(el){
+    var x=(el.textContent||'').trim().toLowerCase();
+    if(x==='get in touch'||x==='start a project'){el.style.cursor='pointer';el.addEventListener('click',function(e){if(el.tagName==='BUTTON'){location.href='/contact';}});}
+    else if(x==='see our work'||x==='view all projects'){el.addEventListener('click',function(){location.href='/portfolio';});}
+    else if(x==='send message'||x==='send'){el.addEventListener('click',function(e){e.preventDefault();location.href='mailto:contact@loopwar.dev';});}
+  });
+})();
+</script>
+</body></html>

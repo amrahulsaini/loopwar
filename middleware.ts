@@ -11,10 +11,15 @@ export function middleware(request: NextRequest) {
     return NextResponse.rewrite(newUrl)
   }
 
-  // Serve the Stitch-designed landing page at the root
-  if (pathname === '/') {
+  // Serve the Stitch-designed static pages
+  const staticPages: Record<string, string> = {
+    '/': '/home.html',
+    '/portfolio': '/portfolio.html',
+    '/contact': '/contact.html',
+  }
+  if (staticPages[pathname]) {
     const newUrl = request.nextUrl.clone()
-    newUrl.pathname = '/home.html'
+    newUrl.pathname = staticPages[pathname]
     return NextResponse.rewrite(newUrl)
   }
 
