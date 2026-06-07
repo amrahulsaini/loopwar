@@ -30,15 +30,9 @@ export default function SiteHeader() {
     <header className="site-header" data-scrolled={scrolled}>
       <div className="container flex items-center justify-between" style={{ height: 64 }}>
         {/* Brand */}
-        <a href="/" className="flex items-center gap-2" aria-label="LOOPWAR home" onClick={() => setOpen(false)}>
-          <span
-            aria-hidden
-            style={{
-              width: 22, height: 22, borderRadius: 6, display: "inline-block",
-              background: "var(--fg)", position: "relative", flex: "none",
-            }}
-          >
-            <span style={{ position: "absolute", inset: 0, display: "grid", placeItems: "center", color: "var(--accent)", fontWeight: 800, fontSize: 14, lineHeight: 1 }}>L</span>
+        <a href="/" className="flex items-center gap-2.5" aria-label="LOOPWAR home" onClick={() => setOpen(false)}>
+          <span className="logo-tile" style={{ width: 40, height: 40, borderRadius: 11 }}>
+            <img src="/loopwar-shortlogoforfaviconsadnicons.png" alt="LOOPWAR" />
           </span>
           <span className="wordmark">LOOPWAR</span>
         </a>

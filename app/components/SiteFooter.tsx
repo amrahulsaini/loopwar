@@ -5,12 +5,9 @@ export default function SiteFooter() {
       <div className="container" style={{ paddingBlock: "3.5rem" }}>
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
           <div>
-            <div className="flex items-center gap-2">
-              <span aria-hidden style={{ width: 22, height: 22, borderRadius: 6, background: "var(--fg)", position: "relative", display: "inline-block" }}>
-                <span style={{ position: "absolute", inset: 0, display: "grid", placeItems: "center", color: "var(--accent)", fontWeight: 800, fontSize: 14 }}>L</span>
-              </span>
-              <span className="wordmark">LOOPWAR</span>
-            </div>
+            <span className="logo-tile" style={{ width: 92, height: 92, borderRadius: 18 }}>
+              <img src="/loopwar-fulllogo.png" alt="LOOPWAR" />
+            </span>
             <p className="muted" style={{ marginTop: 14, maxWidth: "34ch" }}>
               A product &amp; engineering studio building high-performing websites, apps and AI products.
             </p>

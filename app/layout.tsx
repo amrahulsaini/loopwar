@@ -21,7 +21,11 @@ export const metadata: Metadata = {
     siteName: "LOOPWAR",
     type: "website",
   },
-  icons: { icon: [{ url: "/favicon.svg", type: "image/svg+xml" }] },
+  icons: {
+    icon: [{ url: "/loopwar-shortlogoforfaviconsadnicons.png", type: "image/png" }],
+    shortcut: [{ url: "/loopwar-shortlogoforfaviconsadnicons.png", type: "image/png" }],
+    apple: [{ url: "/loopwar-shortlogoforfaviconsadnicons.png" }],
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

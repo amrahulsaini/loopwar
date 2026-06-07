@@ -61,15 +61,21 @@ export default function Home() {
           </div>
         </div>
 
-        {/* big clear hero image */}
-        <Reveal className="reveal-zoom" delay={120}>
-          <div className="card" style={{ marginTop: "clamp(2.5rem,5vw,4rem)", padding: 12 }}>
-            <div style={{ borderRadius: "var(--radius-sm)", overflow: "hidden", aspectRatio: "16/9", background: "var(--block)" }}>
-              <img src="/shots/xirevoa.png" alt="A product LOOPWAR designed and built" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center" }} />
-            </div>
-          </div>
-        </Reveal>
       </section>
+
+      {/* big LOOPWAR marquee */}
+      <div className="marquee" aria-hidden style={{ marginTop: "clamp(1rem,3vw,2rem)" }}>
+        <div className="marquee-track">
+          {[0, 1].map((g) => (
+            <div className="marquee-item" key={g}>
+              <span>LOOPWAR</span><span className="star">✦</span>
+              <span className="ghost">LOOPWAR</span><span className="star">✦</span>
+              <span>LOOPWAR</span><span className="star">✦</span>
+              <span className="ghost">LOOPWAR</span><span className="star">✦</span>
+            </div>
+          ))}
+        </div>
+      </div>
 
       {/* ============ WORK ============ */}
       <section id="work" className="section">
