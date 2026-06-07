@@ -158,6 +158,37 @@ a { color: inherit; text-decoration: none; }
   .animate-fade-up, .reveal { animation: none !important; transition: none !important; opacity: 1 !important; transform: none !important; }
 }
 
+/* ===================== Framed screenshot ===================== */
+.frame { border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; background: var(--bg-subtle); }
+.frame-bar { display: flex; align-items: center; gap: 6px; padding: .55rem .8rem; border-bottom: 1px solid var(--border); background: var(--bg-subtle); }
+.frame-dot { width: 9px; height: 9px; border-radius: 99px; background: var(--border-strong); }
+.frame-shot { aspect-ratio: 16/10; overflow: hidden; background: var(--bg-subtle); }
+.frame-shot img { width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform .8s cubic-bezier(.2,.7,.2,1); }
+.frame:hover .frame-shot img { transform: scale(1.05); }
+
+/* ===================== 3D flip card ===================== */
+.flip { perspective: 1400px; }
+.flip-inner { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform .75s cubic-bezier(.2,.7,.2,1); }
+.flip:hover .flip-inner, .flip:focus-within .flip-inner, .flip.is-flipped .flip-inner { transform: rotateY(180deg); }
+.flip-face { position: absolute; inset: 0; -webkit-backface-visibility: hidden; backface-visibility: hidden; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border); background: var(--bg); }
+.flip-back { transform: rotateY(180deg); }
+@media (prefers-reduced-motion: reduce) { .flip-inner { transition: none; } }
+
+/* ===================== Section header ===================== */
+.section-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1.5rem; }
+.index { font-family: var(--font-mono); color: var(--accent); font-size: .8rem; }
+
+/* dark band */
+.band-dark { background: var(--fg); color: #fff; }
+.band-dark .muted { color: #999; }
+
+/* number pill for steps */
+.step-num { width: 40px; height: 40px; border-radius: 10px; border: 1px solid var(--border); display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-weight: 600; flex: none; }
+
+/* reveal scale variant */
+.reveal-zoom { opacity: 0; transform: scale(.97) translateY(16px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+.reveal-zoom.in-view { opacity: 1; transform: none; }
+
 /* ===================== Legacy class compat (older pages) ===================== */
 .container-page { max-width: var(--maxw); margin-inline: auto; padding-inline: 1.5rem; }
 .section-subtitle { color: var(--gray-500); }

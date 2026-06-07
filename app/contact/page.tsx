@@ -1,222 +1,63 @@
+const fieldStyle: React.CSSProperties = {
+  width: "100%", height: 46, padding: "0 .9rem", borderRadius: 8,
+  border: "1px solid var(--border-strong)", background: "var(--bg)", color: "var(--fg)",
+  fontSize: ".95rem", outline: "none",
+};
+const labelStyle: React.CSSProperties = { display: "block", fontSize: ".8rem", fontWeight: 500, marginBottom: ".4rem" };
+
+export const metadata = { title: "Contact" };
+
 export default function Contact() {
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="container-page section">
-        <div className="text-center space-y-4 max-w-3xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold" style={{ fontFamily: "var(--font-montserrat)", color: "var(--color-primary)" }}>
-            Get In Touch
-          </h1>
-          <p className="text-lg text-[#3a352b]">
-            Have a project in mind? We'd love to hear from you. Let's discuss how we can help bring your ideas to life.
-          </p>
-        </div>
+    <div>
+      <section className="container" style={{ paddingTop: "clamp(3rem,7vw,5.5rem)", paddingBottom: "1rem" }}>
+        <span className="eyebrow">Contact</span>
+        <h1 className="display" style={{ marginTop: "1.2rem", maxWidth: "15ch" }}>Let&apos;s build something <span className="accent">great.</span></h1>
+        <p className="lead" style={{ marginTop: "1.3rem", maxWidth: "48ch" }}>Tell us about your project — we usually reply within 24 hours.</p>
       </section>
 
-      {/* Contact Methods */}
-      <section className="container-page section">
-        <div className="grid gap-6 md:grid-cols-3 max-w-4xl mx-auto">
-          <div className="card text-center hover-lift">
-            <div className="text-4xl mb-3">📧</div>
-            <h3 className="font-semibold text-lg mb-2" style={{ color: "var(--color-primary)" }}>Email Us</h3>
-            <div className="space-y-1 text-sm">
-              <div>
-                <a href="mailto:contact@loopwar.dev" className="underline hover:no-underline">
-                  contact@loopwar.dev
-                </a>
+      <section className="container" style={{ paddingBottom: "clamp(3rem,6vw,5rem)" }}>
+        <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr]">
+          {/* form */}
+          <div className="card" style={{ padding: "clamp(1.5rem,3vw,2.5rem)" }}>
+            <form action="mailto:contact@loopwar.dev" method="post" encType="text/plain" className="flex flex-col" style={{ gap: "1.1rem" }}>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div><label style={labelStyle} htmlFor="name">Full name</label><input style={fieldStyle} id="name" name="name" required placeholder="Jane Doe" /></div>
+                <div><label style={labelStyle} htmlFor="email">Email</label><input style={fieldStyle} id="email" name="email" type="email" required placeholder="jane@company.com" /></div>
               </div>
-              <div>
-                <a href="mailto:admin@loopwar.dev" className="underline hover:no-underline">
-                  admin@loopwar.dev
-                </a>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div><label style={labelStyle} htmlFor="company">Company <span style={{ color: "var(--gray-400)" }}>(optional)</span></label><input style={fieldStyle} id="company" name="company" placeholder="Company" /></div>
+                <div><label style={labelStyle} htmlFor="budget">Budget</label>
+                  <select style={fieldStyle} id="budget" name="budget" defaultValue="">
+                    <option value="" disabled>Select a range</option>
+                    <option>Under ₹1L</option><option>₹1L – ₹5L</option><option>₹5L – ₹15L</option><option>₹15L+</option>
+                  </select>
+                </div>
               </div>
-            </div>
-            <p className="text-xs mt-3" style={{ color: "var(--color-secondary-2)" }}>
-              We typically respond within 24 hours
-            </p>
+              <div><label style={labelStyle} htmlFor="message">Project details</label>
+                <textarea style={{ ...fieldStyle, height: "auto", padding: ".8rem .9rem", minHeight: 140, resize: "vertical" }} id="message" name="message" required placeholder="What are you building?" />
+              </div>
+              <button type="submit" className="btn btn-accent" style={{ alignSelf: "flex-start" }}>Send message</button>
+            </form>
           </div>
 
-          <div className="card text-center hover-lift">
-            <div className="text-4xl mb-3">📞</div>
-            <h3 className="font-semibold text-lg mb-2" style={{ color: "var(--color-primary)" }}>Call Us</h3>
-            <div className="space-y-1">
-              <a href="tel:+916377362603" className="text-lg font-semibold underline hover:no-underline">
-                +91 63773 62603
+          {/* details */}
+          <div className="flex flex-col" style={{ gap: "1rem" }}>
+            {[
+              ["Email", "contact@loopwar.dev", "mailto:contact@loopwar.dev"],
+              ["Call", "+91 63773 62603", "tel:+916377362603"],
+            ].map(([k, v, href]) => (
+              <a key={k} href={href} className="card hover-lift" style={{ padding: "1.4rem" }}>
+                <div className="mono" style={{ fontSize: ".72rem", color: "var(--gray-400)", textTransform: "uppercase", letterSpacing: ".06em" }}>{k}</div>
+                <div style={{ fontSize: "1.05rem", marginTop: ".4rem", fontWeight: 500 }}>{v}</div>
               </a>
-            </div>
-            <p className="text-xs mt-3" style={{ color: "var(--color-secondary-2)" }}>
-              Mon–Sat, 9 AM – 7 PM IST
-            </p>
-          </div>
-
-          <div className="card text-center hover-lift">
-            <div className="text-4xl mb-3">🌐</div>
-            <h3 className="font-semibold text-lg mb-2" style={{ color: "var(--color-primary)" }}>Visit Website</h3>
-            <div className="space-y-1">
-              <a href="https://loopwar.dev" target="_blank" rel="noreferrer" className="underline hover:no-underline break-all">
-                https://loopwar.dev
-              </a>
-            </div>
-            <p className="text-xs mt-3" style={{ color: "var(--color-secondary-2)" }}>
-              Available 24/7
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Form */}
-      <section className="container-page section">
-        <div className="card max-w-2xl mx-auto">
-          <h2 className="text-2xl font-bold mb-6 text-center" style={{ fontFamily: "var(--font-montserrat)", color: "var(--color-primary)" }}>
-            Send Us a Message
-          </h2>
-          <form className="space-y-5">
-            <div className="grid gap-4 md:grid-cols-2">
-              <div>
-                <label htmlFor="name" className="block text-sm font-semibold mb-2">
-                  Full Name *
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-                  placeholder="John Doe"
-                />
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-semibold mb-2">
-                  Email Address *
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-                  placeholder="john@example.com"
-                />
-              </div>
-            </div>
-
-            <div className="grid gap-4 md:grid-cols-2">
-              <div>
-                <label htmlFor="phone" className="block text-sm font-semibold mb-2">
-                  Phone Number
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-                  placeholder="+91 98765 43210"
-                />
-              </div>
-              <div>
-                <label htmlFor="service" className="block text-sm font-semibold mb-2">
-                  Service Interested In
-                </label>
-                <select
-                  id="service"
-                  name="service"
-                  className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-                >
-                  <option value="">Select a service</option>
-                  <option value="web-development">Web Development</option>
-                  <option value="app-development">App Development</option>
-                  <option value="ai-automation">AI & Automation</option>
-                  <option value="cloud-hosting">Cloud Hosting</option>
-                  <option value="ui-ux-design">UI/UX Design</option>
-                  <option value="ecommerce">E-Commerce</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-            </div>
-
-            <div>
-              <label htmlFor="subject" className="block text-sm font-semibold mb-2">
-                Subject *
-              </label>
-              <input
-                type="text"
-                id="subject"
-                name="subject"
-                required
-                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-                placeholder="Project inquiry"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="message" className="block text-sm font-semibold mb-2">
-                Message *
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                required
-                rows={6}
-                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent resize-none"
-                placeholder="Tell us about your project..."
-              />
-            </div>
-
-            <div className="flex items-start gap-2">
-              <input
-                type="checkbox"
-                id="consent"
-                name="consent"
-                required
-                className="mt-1"
-              />
-              <label htmlFor="consent" className="text-sm text-[#6f695c]">
-                I agree to the <a href="/privacy" className="underline">Privacy Policy</a> and consent to LoopWar contacting me about this inquiry.
-              </label>
-            </div>
-
-            <button type="submit" className="btn w-full hover-lift">
-              Send Message
-            </button>
-          </form>
-        </div>
-      </section>
-
-      {/* Business Hours */}
-      <section className="container-page section">
-        <div className="card max-w-2xl mx-auto">
-          <h2 className="text-2xl font-bold mb-4 text-center" style={{ fontFamily: "var(--font-montserrat)", color: "var(--color-primary)" }}>
-            Business Hours
-          </h2>
-          <div className="space-y-3">
-            <div className="flex justify-between items-center pb-2 border-b" style={{ borderColor: "var(--color-border)" }}>
-              <span className="font-semibold">Monday – Friday</span>
-              <span>9:00 AM – 7:00 PM IST</span>
-            </div>
-            <div className="flex justify-between items-center pb-2 border-b" style={{ borderColor: "var(--color-border)" }}>
-              <span className="font-semibold">Saturday</span>
-              <span>9:00 AM – 7:00 PM IST</span>
-            </div>
-            <div className="flex justify-between items-center pb-2">
-              <span className="font-semibold">Sunday</span>
-              <span className="text-[#8a8275]">Closed</span>
+            ))}
+            <div className="card" style={{ padding: "1.4rem" }}>
+              <div className="mono" style={{ fontSize: ".72rem", color: "var(--gray-400)", textTransform: "uppercase", letterSpacing: ".06em" }}>Hours</div>
+              <div style={{ marginTop: ".4rem" }}>Mon–Sat · 9 AM – 7 PM IST</div>
+              <div className="muted" style={{ fontSize: ".88rem", marginTop: ".3rem" }}>Email answered 24/7</div>
             </div>
           </div>
-          <p className="text-sm mt-4 text-center" style={{ color: "var(--color-secondary-2)" }}>
-            📧 Email inquiries are answered 24/7 within 24 hours
-          </p>
-        </div>
-      </section>
-
-      {/* Back to Home */}
-      <section className="container-page pb-10">
-        <div className="text-center">
-          <a href="/" className="inline-flex items-center gap-2 text-[#6f695c] hover:text-black transition-colors">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-            <span>Back to Home</span>
-          </a>
         </div>
       </section>
     </div>
