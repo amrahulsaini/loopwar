@@ -65,12 +65,12 @@ a { color: inherit; text-decoration: none; }
 .section { padding-block: clamp(3.5rem, 8vw, 7rem); }
 
 .eyebrow {
-  display: inline-flex; align-items: center; gap: .5rem;
-  font-size: 1rem; color: var(--muted);
-  background: var(--card); border: 2px solid var(--border); border-radius: var(--radius-pill);
-  padding: .35rem .9rem; box-shadow: var(--shadow-hard);
+  display: inline-flex; align-items: center; gap: .65rem;
+  font-size: 1.15rem; color: var(--muted);
+  background: none; border: 0; box-shadow: none; padding: 0;
 }
-.eyebrow::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--accent); border: 1px solid var(--border); }
+.eyebrow::before { content: ""; width: 30px; height: 3px; border-radius: 3px; background: var(--fg); flex: none; }
+.eyebrow .dot { display: none; }
 
 .display { font-weight: 400; line-height: 1.02; font-size: clamp(2.8rem, 7.5vw, 6rem); }
 .section-title { font-weight: 400; font-size: clamp(2.1rem, 4.5vw, 3.4rem); line-height: 1.06; }
