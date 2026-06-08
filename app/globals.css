@@ -65,11 +65,17 @@ a { color: inherit; text-decoration: none; }
 .section { padding-block: clamp(3.5rem, 8vw, 7rem); }
 
 .eyebrow {
-  display: inline-flex; align-items: center; gap: .65rem;
-  font-size: 1.15rem; color: var(--muted);
-  background: none; border: 0; box-shadow: none; padding: 0;
+  display: inline-block;
+  font-size: 1.2rem; color: var(--fg);
+  border: 0; box-shadow: none;
+  padding: 0 .15em 13px;
+  line-height: 1.25;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='9' viewBox='0 0 22 9'%3E%3Cpath d='M0 7 L5.5 2 L11 7 L16.5 2 L22 7' fill='none' stroke='%23383838' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: left bottom;
+  background-size: 22px 9px;
 }
-.eyebrow::before { content: ""; width: 30px; height: 3px; border-radius: 3px; background: var(--fg); flex: none; }
+.eyebrow::before { content: none; }
 .eyebrow .dot { display: none; }
 
 .display { font-weight: 400; line-height: 1.02; font-size: clamp(2.8rem, 7.5vw, 6rem); }
