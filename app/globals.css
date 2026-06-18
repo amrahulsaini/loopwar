@@ -271,12 +271,12 @@ a { color: inherit; text-decoration: none; }
 }
 .hero-visual .frame:hover { transform: rotate(0deg) translateY(-4px) !important; }
 .hero-badge {
-  position: absolute; z-index: 2; bottom: -18px; left: -14px;
-  display: inline-flex; align-items: center; gap: .55rem;
+  position: absolute; z-index: 2; bottom: -16px; left: 12px;
+  display: inline-flex; align-items: center; gap: .55rem; max-width: calc(100% - 24px);
   background: var(--card); border: 2px solid var(--border); border-radius: var(--radius-pill);
   box-shadow: var(--shadow-hard); padding: .5rem .95rem .5rem .55rem; font-size: 1rem; color: var(--fg);
+  white-space: nowrap;
 }
-@media (max-width: 640px) { .hero-badge { left: 50%; transform: translateX(-50%); } }
 
 /* ===================== Big wordmark — shimmer + draw ===================== */
 .bigword { background-size: 200% 100%; }
@@ -368,13 +368,34 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ===================== Toolkit (categorised stacks) ===================== */
-.toolkit { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1.25rem, 3vw, 2rem); }
-@media (max-width: 860px) { .toolkit { grid-template-columns: 1fr; } }
-.toolkit-col { background: var(--card); border: 2px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow-hard); padding: clamp(1.4rem, 2.5vw, 2rem); }
+.toolkit { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: clamp(1.25rem, 3vw, 2rem); align-items: start; }
+.toolkit-col { background: var(--card); border: 2px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow-hard); padding: clamp(1.4rem, 2.5vw, 2rem); height: 100%; }
 .toolkit-head { display: flex; align-items: center; gap: .7rem; margin-bottom: 1.2rem; }
 .toolkit-head .num { width: 38px; height: 38px; border-radius: 11px; border: 2px solid var(--border); background: var(--white); box-shadow: 3px 3px 0 var(--border); display: inline-flex; align-items: center; justify-content: center; font-size: .95rem; flex: none; }
 .toolkit-head h3 { font-size: 1.5rem; }
 .toolkit-tags { display: flex; flex-wrap: wrap; gap: .55rem; }
+
+/* ===================== Responsive refinements ===================== */
+@media (max-width: 900px) {
+  /* stacked slideshow: center the framed screenshot, calm the tilt */
+  .showcase-media { max-width: 620px; margin-inline: auto; }
+  .frame { transform: rotate(0deg); }
+  .hero-visual .frame { transform: rotate(0deg) !important; }
+  .showcase-info { text-align: left; }
+}
+@media (max-width: 600px) {
+  .showcase-index { font-size: clamp(3.6rem, 18vw, 6rem); top: -.3em; }
+  .showcase-name { font-size: clamp(1.95rem, 8vw, 2.5rem); }
+  .showcase-desc { font-size: 1rem; }
+  .showcase-controls { gap: .9rem; margin-top: 1.75rem; }
+  .showcase-nav { width: 46px; height: 46px; }
+  .dot { width: 26px; } .dot.on { width: 42px; }
+  /* legal pages: don't let prose tables/words blow out the viewport */
+  .prose { font-size: 1rem; }
+}
+@media (max-width: 380px) {
+  .btn { padding-inline: 1.25rem; font-size: 1.02rem; }
+}
 
 /* ===================== Legacy / prose ===================== */
 .container-page { max-width: var(--maxw); margin-inline: auto; padding-inline: 1.5rem; }
