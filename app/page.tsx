@@ -1,5 +1,7 @@
 import Reveal from "./components/Reveal";
 import Counter from "./components/Counter";
+import Magnetic from "./components/Magnetic";
+import Parallax from "./components/Parallax";
 import { clientProjects, ventures, type Project } from "./data/projects";
 
 const Arrow = () => (
@@ -70,8 +72,19 @@ export default function Home() {
   return (
     <div>
       {/* ============ HERO (image-forward) ============ */}
-      <section className="container" style={{ paddingTop: "clamp(2.5rem,6vw,4.5rem)", paddingBottom: "clamp(2.5rem,5vw,4rem)" }}>
-        <div style={{ textAlign: "center", maxWidth: 820, marginInline: "auto" }}>
+      <section className="container" style={{ position: "relative", paddingTop: "clamp(2.5rem,6vw,4.5rem)", paddingBottom: "clamp(2.5rem,5vw,4rem)" }}>
+        {/* floating hand-drawn decorations */}
+        <span className="hero-deco float-y" style={{ top: "8%", left: "6%" }} aria-hidden>
+          <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"><path d="M12 2v6M12 16v6M2 12h6M16 12h6" /></svg>
+        </span>
+        <span className="hero-deco spin" style={{ top: "14%", right: "8%" }} aria-hidden>
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3l2.4 5.6L20 9l-4.5 3.9L17 19l-5-3-5 3 1.5-6.1L4 9l5.6-.4z" /></svg>
+        </span>
+        <span className="hero-deco float-y slow" style={{ bottom: "10%", left: "12%" }} aria-hidden>
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"><circle cx="12" cy="12" r="9" /></svg>
+        </span>
+
+        <div style={{ position: "relative", zIndex: 1, textAlign: "center", maxWidth: 820, marginInline: "auto" }}>
           <span className="eyebrow animate-fade-up">Hello — we&apos;re LOOPWAR ✦</span>
           <h1 className="display animate-fade-up" style={{ ["--delay" as any]: "70ms", marginTop: "1.4rem" }}>
             We make products that <span style={{ textDecoration: "underline", textDecorationColor: "var(--accent)", textDecorationThickness: 6, textUnderlineOffset: 8 }}>earn their keep.</span>
@@ -80,8 +93,8 @@ export default function Home() {
             A small studio that designs, builds and ships websites, apps and AI products — for clients, and as our own ventures.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3 animate-fade-up" style={{ ["--delay" as any]: "230ms", marginTop: "2rem" }}>
-            <a href="/contact" className="btn btn-accent">Start a project <Arrow /></a>
-            <a href="/portfolio" className="btn btn-outline">See our work</a>
+            <Magnetic><a href="/contact" className="btn btn-accent">Start a project <Arrow /></a></Magnetic>
+            <Magnetic><a href="/portfolio" className="btn btn-outline">See our work</a></Magnetic>
           </div>
         </div>
 
@@ -89,7 +102,7 @@ export default function Home() {
 
       {/* single big LOOPWAR wordmark */}
       <div className="container" aria-hidden style={{ overflow: "hidden", paddingBlock: "clamp(1.5rem,4vw,3rem)" }}>
-        <Reveal className="reveal-zoom"><div className="bigword">LOOPWAR</div></Reveal>
+        <Reveal from="zoom"><Parallax speed={40}><div className="bigword shimmer">LOOPWAR</div></Parallax></Reveal>
       </div>
 
       {/* ============ STATS ============ */}
@@ -109,12 +122,12 @@ export default function Home() {
       {/* ============ WORK ============ */}
       <section id="work" className="section">
         <div className="container">
-          <Reveal className="flex flex-wrap items-end justify-between" style={{ gap: "1.25rem", marginBottom: "2.5rem" }}>
+          <Reveal from="left" className="flex flex-wrap items-end justify-between" style={{ gap: "1.25rem", marginBottom: "2.5rem" }}>
             <div>
               <span className="eyebrow">Selected work</span>
               <h2 className="section-title" style={{ marginTop: "1rem" }}>Things we&apos;ve made for clients.</h2>
             </div>
-            <a href="/portfolio" className="btn btn-outline btn-sm">All work <Arrow /></a>
+            <Magnetic><a href="/portfolio" className="btn btn-outline btn-sm">All work <Arrow /></a></Magnetic>
           </Reveal>
           <div className="grid gap-7 md:grid-cols-2">
             {clientProjects.map((p, i) => (
@@ -127,7 +140,7 @@ export default function Home() {
       {/* ============ VENTURES ============ */}
       <section id="ventures" className="section block" style={{ borderBlock: "2px solid var(--border)" }}>
         <div className="container">
-          <Reveal style={{ marginBottom: "2.5rem", maxWidth: "40ch" }}>
+          <Reveal from="left" style={{ marginBottom: "2.5rem", maxWidth: "40ch" }}>
             <span className="eyebrow">Built by us</span>
             <h2 className="section-title" style={{ marginTop: "1rem" }}>Our own little ventures.</h2>
           </Reveal>
@@ -143,14 +156,14 @@ export default function Home() {
       <section id="about" className="section">
         <div className="container">
           <div className="grid gap-10 lg:grid-cols-[1fr_1.2fr] items-center">
-            <Reveal className="reveal-zoom">
+            <Reveal from="left">
               <div className="card" style={{ padding: 14 }}>
                 <div style={{ borderRadius: "var(--radius-sm)", overflow: "hidden", aspectRatio: "1/1", background: "var(--white)", display: "grid", placeItems: "center" }}>
                   <img src="/loopwar-fulllogo.png" alt="LOOPWAR" style={{ width: "70%", height: "70%", objectFit: "contain" }} />
                 </div>
               </div>
             </Reveal>
-            <Reveal>
+            <Reveal from="right">
               <span className="eyebrow">Who we are</span>
               <h2 className="section-title" style={{ marginTop: "1rem" }}>A small studio with a builder&apos;s heart.</h2>
               <p className="muted" style={{ marginTop: "1rem", fontSize: "1.15rem" }}>
@@ -160,7 +173,7 @@ export default function Home() {
               <p className="muted" style={{ marginTop: "1rem", fontSize: "1.15rem" }}>
                 Because we build our own ventures, we think like owners: fast, pragmatic, and focused on what actually moves the needle.
               </p>
-              <a href="/contact" className="btn btn-accent" style={{ marginTop: "1.6rem" }}>Work with us <Arrow /></a>
+              <Magnetic style={{ marginTop: "1.6rem" }}><a href="/contact" className="btn btn-accent">Work with us <Arrow /></a></Magnetic>
             </Reveal>
           </div>
         </div>
@@ -169,7 +182,7 @@ export default function Home() {
       {/* ============ SERVICES ============ */}
       <section id="services" className="section block" style={{ borderBlock: "2px solid var(--border)" }}>
         <div className="container">
-          <Reveal style={{ marginBottom: "2.5rem", maxWidth: "40ch" }}>
+          <Reveal from="left" style={{ marginBottom: "2.5rem", maxWidth: "40ch" }}>
             <span className="eyebrow">What we do</span>
             <h2 className="section-title" style={{ marginTop: "1rem" }}>Everything to launch &amp; grow.</h2>
           </Reveal>
@@ -194,7 +207,7 @@ export default function Home() {
             <span className="eyebrow">Our toolkit</span>
             <h2 className="section-title" style={{ marginTop: "1rem", marginBottom: "1.8rem" }}>Built with tools we love.</h2>
             <div className="flex flex-wrap justify-center" style={{ gap: ".7rem", maxWidth: 760, marginInline: "auto" }}>
-              {tech.map((t) => <span key={t} className="tag">{t}</span>)}
+              {tech.map((t, i) => <Reveal key={t} as="span" from="blur" delay={i * 45} className="tag">{t}</Reveal>)}
             </div>
           </Reveal>
         </div>
@@ -203,7 +216,7 @@ export default function Home() {
       {/* ============ PROCESS ============ */}
       <section id="process" className="section block" style={{ borderBlock: "2px solid var(--border)" }}>
         <div className="container">
-          <Reveal style={{ marginBottom: "2.5rem", maxWidth: "40ch" }}>
+          <Reveal from="left" style={{ marginBottom: "2.5rem", maxWidth: "40ch" }}>
             <span className="eyebrow">How we work</span>
             <h2 className="section-title" style={{ marginTop: "1rem" }}>A simple, friendly process.</h2>
           </Reveal>
@@ -221,7 +234,7 @@ export default function Home() {
       {/* ============ TESTIMONIALS ============ */}
       <section className="section">
         <div className="container">
-          <Reveal style={{ marginBottom: "2.5rem", maxWidth: "40ch" }}>
+          <Reveal from="left" style={{ marginBottom: "2.5rem", maxWidth: "40ch" }}>
             <span className="eyebrow">Kind words</span>
             <h2 className="section-title" style={{ marginTop: "1rem" }}>What clients say.</h2>
           </Reveal>
@@ -271,8 +284,8 @@ export default function Home() {
                 Got something in mind? Let&apos;s build it.
               </h2>
               <div className="flex flex-wrap items-center justify-center gap-3" style={{ marginTop: "1.8rem" }}>
-                <a href="/contact" className="btn">Start a project <Arrow /></a>
-                <a href="mailto:rahul@loopwar.dev" className="btn btn-outline">rahul@loopwar.dev</a>
+                <Magnetic><a href="/contact" className="btn">Start a project <Arrow /></a></Magnetic>
+                <Magnetic><a href="mailto:rahul@loopwar.dev" className="btn btn-outline">rahul@loopwar.dev</a></Magnetic>
               </div>
             </div>
           </Reveal>
@@ -281,7 +294,7 @@ export default function Home() {
 
       {/* big LOOPWAR wordmark at the bottom */}
       <div className="container" aria-hidden style={{ overflow: "hidden", paddingBottom: "clamp(2rem,5vw,4rem)" }}>
-        <Reveal className="reveal-zoom"><div className="bigword outline">LOOPWAR</div></Reveal>
+        <Reveal from="zoom"><Parallax speed={-40}><div className="bigword outline">LOOPWAR</div></Parallax></Reveal>
       </div>
     </div>
   );
