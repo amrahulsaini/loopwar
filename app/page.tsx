@@ -2,13 +2,11 @@ import Reveal from "./components/Reveal";
 import Counter from "./components/Counter";
 import Magnetic from "./components/Magnetic";
 import Parallax from "./components/Parallax";
-import { clientProjects, ventures, type Project } from "./data/projects";
+import ProjectShowcase from "./components/ProjectShowcase";
+import { clientProjects, ventures } from "./data/projects";
 
 const Arrow = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-);
-const UpRight = () => (
-  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17 17 7M8 7h9v9" /></svg>
 );
 
 const services = [
@@ -33,7 +31,11 @@ const stats: [number, string, string][] = [
   [100, "%", "Code you own"],
 ];
 
-const tech = ["Next.js", "React", "Node.js", "TypeScript", "Tailwind", "Python", "PostgreSQL", "AI / LLMs", "Cloud / DevOps", "React Native"];
+const stacks: [string, string, string[]][] = [
+  ["01", "Languages", ["JavaScript", "TypeScript", "PHP", "C#", "Kotlin", "Dart"]],
+  ["02", "Frameworks", ["React", "Angular", "Express", "Django", "ASP.NET Core", "Next.js", "Flutter"]],
+  ["03", "Windows & Desktop", ["WPF", "WinUI 3", ".NET MAUI", "Win32"]],
+];
 
 const testimonials: [string, string, string][] = [
   ["They turned our idea into a real product faster than we thought possible — and it just works.", "Founder", "CaseBuddy"],
@@ -49,55 +51,50 @@ const faqs: [string, string][] = [
   ["Can you maintain it after launch?", "Yes. We offer ongoing support, monitoring and iteration so your product keeps performing."],
 ];
 
-function WorkCard({ p, role }: { p: Project; role?: string }) {
-  return (
-    <a href={p.url} target="_blank" rel="noreferrer" className="card hover-lift" style={{ overflow: "hidden", display: "block" }}>
-      <div className="shot" style={{ aspectRatio: "16/10", borderRadius: 0 }}>
-        <img src={p.image} alt={`${p.name} — ${p.category}`} loading="lazy" />
-      </div>
-      <div style={{ padding: "1.4rem 1.5rem 1.6rem", borderTop: "2px solid var(--border)" }}>
-        <div className="flex items-center justify-between" style={{ gap: ".75rem" }}>
-          <span className="muted" style={{ fontSize: ".95rem" }}>{p.category}</span>
-          {role ? <span className="chip">{role}</span> : <span className="muted"><UpRight /></span>}
-        </div>
-        <h3 style={{ fontSize: "1.8rem", marginTop: ".3rem" }}>{p.name}</h3>
-        <p className="muted" style={{ marginTop: ".4rem", fontSize: "1.02rem" }}>{p.description}</p>
-        <div className="flex items-center gap-1.5" style={{ marginTop: "1rem", fontSize: "1.05rem" }}>Visit {p.domain} <UpRight /></div>
-      </div>
-    </a>
-  );
-}
-
 export default function Home() {
+  const featured = clientProjects[0];
   return (
     <div>
-      {/* ============ HERO (image-forward) ============ */}
-      <section className="container" style={{ position: "relative", paddingTop: "clamp(2.5rem,6vw,4.5rem)", paddingBottom: "clamp(2.5rem,5vw,4rem)" }}>
-        {/* floating hand-drawn decorations */}
-        <span className="hero-deco float-y" style={{ top: "8%", left: "6%" }} aria-hidden>
-          <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"><path d="M12 2v6M12 16v6M2 12h6M16 12h6" /></svg>
-        </span>
-        <span className="hero-deco spin" style={{ top: "14%", right: "8%" }} aria-hidden>
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3l2.4 5.6L20 9l-4.5 3.9L17 19l-5-3-5 3 1.5-6.1L4 9l5.6-.4z" /></svg>
-        </span>
-        <span className="hero-deco float-y slow" style={{ bottom: "10%", left: "12%" }} aria-hidden>
-          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"><circle cx="12" cy="12" r="9" /></svg>
-        </span>
+      {/* ============ HERO (asymmetric, left-led) ============ */}
+      <section className="section" style={{ paddingTop: "clamp(2rem,5vw,4rem)", paddingBottom: "clamp(2rem,4vw,3rem)" }}>
+        <div className="container">
+          <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+            {/* copy */}
+            <div>
+              <span className="eyebrow animate-fade-up">Product &amp; engineering studio ✦</span>
+              <h1 className="display animate-fade-up" style={{ ["--delay" as never]: "70ms", marginTop: "1.4rem" }}>
+                We build products that{" "}
+                <span style={{ textDecoration: "underline", textDecorationColor: "var(--accent)", textDecorationThickness: 6, textUnderlineOffset: 8 }}>earn their keep.</span>
+              </h1>
+              <p className="lead animate-fade-up" style={{ ["--delay" as never]: "150ms", marginTop: "1.4rem", maxWidth: "46ch" }}>
+                A small studio that designs, builds and ships websites, apps and AI products — for clients, and as our own ventures.
+              </p>
+              <div className="flex flex-wrap items-center gap-3 animate-fade-up" style={{ ["--delay" as never]: "230ms", marginTop: "2rem" }}>
+                <Magnetic><a href="/contact" className="btn btn-accent">Start a project <Arrow /></a></Magnetic>
+                <Magnetic><a href="/portfolio" className="btn btn-outline">See our work</a></Magnetic>
+              </div>
+              <div className="flex flex-wrap items-center gap-x-6 gap-y-2 animate-fade-up" style={{ ["--delay" as never]: "310ms", marginTop: "2.2rem", color: "var(--muted)", fontSize: "1.02rem" }}>
+                <span>★★★★★ trusted by founders</span>
+                <span>7+ products shipped</span>
+                <span>100% code you own</span>
+              </div>
+            </div>
 
-        <div style={{ position: "relative", zIndex: 1, textAlign: "center", maxWidth: 820, marginInline: "auto" }}>
-          <span className="eyebrow animate-fade-up">Hello — we&apos;re LOOPWAR ✦</span>
-          <h1 className="display animate-fade-up" style={{ ["--delay" as any]: "70ms", marginTop: "1.4rem" }}>
-            We make products that <span style={{ textDecoration: "underline", textDecorationColor: "var(--accent)", textDecorationThickness: 6, textUnderlineOffset: 8 }}>earn their keep.</span>
-          </h1>
-          <p className="lead animate-fade-up" style={{ ["--delay" as any]: "150ms", marginTop: "1.4rem", maxWidth: "44ch", marginInline: "auto" }}>
-            A small studio that designs, builds and ships websites, apps and AI products — for clients, and as our own ventures.
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-3 animate-fade-up" style={{ ["--delay" as any]: "230ms", marginTop: "2rem" }}>
-            <Magnetic><a href="/contact" className="btn btn-accent">Start a project <Arrow /></a></Magnetic>
-            <Magnetic><a href="/portfolio" className="btn btn-outline">See our work</a></Magnetic>
+            {/* visual */}
+            <Reveal from="right" className="hero-visual">
+              <div className="frame" style={{ ["--accent" as never]: featured.accent, transform: "rotate(2deg)" }}>
+                <div className="frame-bar"><i /><i /><i /><span className="frame-url">{featured.domain}</span></div>
+                <div className="frame-view"><img src={featured.image} alt={`${featured.name} — ${featured.category}`} /></div>
+              </div>
+              <span className="hero-badge float-y">
+                <span className="logo-tile" style={{ width: 34, height: 34, borderRadius: 9 }}>
+                  <img src="/loopwar-shortlogoforfaviconsadnicons.png" alt="" />
+                </span>
+                Shipped by LOOPWAR
+              </span>
+            </Reveal>
           </div>
         </div>
-
       </section>
 
       {/* single big LOOPWAR wordmark */}
@@ -119,7 +116,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ WORK ============ */}
+      {/* ============ WORK (slideshow) ============ */}
       <section id="work" className="section">
         <div className="container">
           <Reveal from="left" className="flex flex-wrap items-end justify-between" style={{ gap: "1.25rem", marginBottom: "2.5rem" }}>
@@ -129,26 +126,18 @@ export default function Home() {
             </div>
             <Magnetic><a href="/portfolio" className="btn btn-outline btn-sm">All work <Arrow /></a></Magnetic>
           </Reveal>
-          <div className="grid gap-7 md:grid-cols-2">
-            {clientProjects.map((p, i) => (
-              <Reveal key={p.domain} delay={i * 70} className="reveal-zoom"><WorkCard p={p} /></Reveal>
-            ))}
-          </div>
+          <Reveal from="none"><ProjectShowcase items={clientProjects} /></Reveal>
         </div>
       </section>
 
-      {/* ============ VENTURES ============ */}
+      {/* ============ VENTURES (slideshow) ============ */}
       <section id="ventures" className="section block" style={{ borderBlock: "2px solid var(--border)" }}>
         <div className="container">
-          <Reveal from="left" style={{ marginBottom: "2.5rem", maxWidth: "40ch" }}>
+          <Reveal from="left" style={{ marginBottom: "2.5rem", maxWidth: "44ch" }}>
             <span className="eyebrow">Built by us</span>
             <h2 className="section-title" style={{ marginTop: "1rem" }}>Our own little ventures.</h2>
           </Reveal>
-          <div className="grid gap-7 md:grid-cols-3">
-            {ventures.map((v, i) => (
-              <Reveal key={v.domain} delay={i * 70} className="reveal-zoom"><WorkCard p={v} role={v.role} /></Reveal>
-            ))}
-          </div>
+          <Reveal from="none"><ProjectShowcase items={ventures} autoMs={7000} /></Reveal>
         </div>
       </section>
 
@@ -188,7 +177,7 @@ export default function Home() {
           </Reveal>
           <div className="grid gap-6" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))" }}>
             {services.map(([t, d], i) => (
-              <Reveal key={t} delay={i * 50} className="reveal-zoom">
+              <Reveal key={t} delay={i * 50} from="zoom">
                 <div className="card hover-lift" style={{ padding: "1.8rem", height: "100%" }}>
                   <span className="step-num" style={{ width: 44, height: 44, fontSize: "1.1rem" }}>{String(i + 1).padStart(2, "0")}</span>
                   <h3 style={{ fontSize: "1.5rem", marginTop: "1rem" }}>{t}</h3>
@@ -200,16 +189,29 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ TECH ============ */}
+      {/* ============ TOOLKIT (categorised) ============ */}
       <section className="section">
-        <div className="container" style={{ textAlign: "center" }}>
-          <Reveal>
+        <div className="container">
+          <Reveal from="left" style={{ marginBottom: "2.5rem", maxWidth: "46ch" }}>
             <span className="eyebrow">Our toolkit</span>
-            <h2 className="section-title" style={{ marginTop: "1rem", marginBottom: "1.8rem" }}>Built with tools we love.</h2>
-            <div className="flex flex-wrap justify-center" style={{ gap: ".7rem", maxWidth: 760, marginInline: "auto" }}>
-              {tech.map((t, i) => <Reveal key={t} as="span" from="blur" delay={i * 45} className="tag">{t}</Reveal>)}
-            </div>
+            <h2 className="section-title" style={{ marginTop: "1rem" }}>The stacks we build on.</h2>
+            <p className="muted" style={{ marginTop: "1rem", fontSize: "1.1rem" }}>From web and mobile to native Windows apps — we pick the right tool for the job.</p>
           </Reveal>
+          <div className="toolkit">
+            {stacks.map(([num, title, items], i) => (
+              <Reveal key={title} delay={i * 90} from="up">
+                <div className="toolkit-col">
+                  <div className="toolkit-head">
+                    <span className="num">{num}</span>
+                    <h3>{title}</h3>
+                  </div>
+                  <div className="toolkit-tags">
+                    {items.map((t) => <span key={t} className="tag">{t}</span>)}
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -222,7 +224,7 @@ export default function Home() {
           </Reveal>
           <div className="grid gap-x-10 gap-y-10 md:grid-cols-2 lg:grid-cols-4">
             {steps.map(([t, d], i) => (
-              <Reveal key={t} delay={i * 70}>
+              <Reveal key={t} delay={i * 70} from="up">
                 <div className="flex items-center gap-3"><span className="step-num">{i + 1}</span><h3 style={{ fontSize: "1.5rem" }}>{t}</h3></div>
                 <p className="muted" style={{ marginTop: "1rem", fontSize: "1.02rem" }}>{d}</p>
               </Reveal>
@@ -240,7 +242,7 @@ export default function Home() {
           </Reveal>
           <div className="grid gap-6 md:grid-cols-3">
             {testimonials.map(([q, who, where], i) => (
-              <Reveal key={where} delay={i * 70} className="reveal-zoom">
+              <Reveal key={where} delay={i * 70} from="zoom">
                 <figure className="quote" style={{ height: "100%", display: "flex", flexDirection: "column" }}>
                   <span className="mark" aria-hidden>&ldquo;</span>
                   <blockquote style={{ fontSize: "1.2rem", marginTop: ".4rem", flex: 1 }}>{q}</blockquote>
@@ -258,12 +260,12 @@ export default function Home() {
       <section className="section block" style={{ borderBlock: "2px solid var(--border)" }}>
         <div className="container">
           <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
-            <Reveal>
+            <Reveal from="left">
               <span className="eyebrow">Good to know</span>
               <h2 className="section-title" style={{ marginTop: "1rem" }}>Frequently asked.</h2>
               <p className="muted" style={{ marginTop: "1rem" }}>Got another question? <a href="/contact" style={{ textDecoration: "underline" }}>Just ask</a>.</p>
             </Reveal>
-            <Reveal className="faq">
+            <Reveal from="right" className="faq">
               {faqs.map(([q, a]) => (
                 <details key={q}>
                   <summary>{q}</summary>
@@ -278,14 +280,16 @@ export default function Home() {
       {/* ============ CTA ============ */}
       <section className="section">
         <div className="container">
-          <Reveal>
-            <div className="card band-dark" style={{ padding: "clamp(2.5rem,5vw,4.5rem)", textAlign: "center", borderColor: "var(--fg)" }}>
-              <h2 className="display" style={{ fontSize: "clamp(2.2rem,5.5vw,4rem)", color: "var(--card)", marginInline: "auto", maxWidth: "18ch" }}>
-                Got something in mind? Let&apos;s build it.
-              </h2>
-              <div className="flex flex-wrap items-center justify-center gap-3" style={{ marginTop: "1.8rem" }}>
-                <Magnetic><a href="/contact" className="btn">Start a project <Arrow /></a></Magnetic>
-                <Magnetic><a href="mailto:rahul@loopwar.dev" className="btn btn-outline">rahul@loopwar.dev</a></Magnetic>
+          <Reveal from="zoom">
+            <div className="card band-dark" style={{ padding: "clamp(2.25rem,5vw,4rem)", borderColor: "var(--fg)" }}>
+              <div className="grid gap-8 items-center lg:grid-cols-[1.3fr_0.7fr]">
+                <h2 className="display" style={{ fontSize: "clamp(2.1rem,5vw,3.6rem)", color: "var(--card)", maxWidth: "16ch" }}>
+                  Got something in mind? Let&apos;s build it.
+                </h2>
+                <div className="flex flex-wrap items-center gap-3 lg:justify-end">
+                  <Magnetic><a href="/contact" className="btn">Start a project <Arrow /></a></Magnetic>
+                  <Magnetic><a href="mailto:rahul@loopwar.dev" className="btn btn-outline">rahul@loopwar.dev</a></Magnetic>
+                </div>
               </div>
             </div>
           </Reveal>
