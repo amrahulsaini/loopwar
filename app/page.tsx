@@ -82,7 +82,7 @@ export default function Home() {
 
             {/* visual */}
             <Reveal from="right" className="hero-visual">
-              <div className="frame" style={{ ["--accent" as never]: featured.accent, transform: "rotate(2deg)" }}>
+              <div className="frame">
                 <div className="frame-bar"><i /><i /><i /><span className="frame-url">{featured.domain}</span></div>
                 <div className="frame-view"><img src={featured.image} alt={`${featured.name} — ${featured.category}`} /></div>
               </div>

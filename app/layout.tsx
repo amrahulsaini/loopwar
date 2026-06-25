@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { Patrick_Hand } from "next/font/google";
+import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
 import SiteHeader from "./components/SiteHeader";
 import SiteFooter from "./components/SiteFooter";
-import CursorSparkle from "./components/CursorSparkle";
 import SmoothScroll from "./components/SmoothScroll";
 import ScrollProgress from "./components/ScrollProgress";
 
-const patrick = Patrick_Hand({ variable: "--font-patrick", weight: "400", subsets: ["latin"], display: "swap" });
+const display = Fraunces({ variable: "--font-display", subsets: ["latin"], display: "swap", axes: ["opsz"] });
+const sans = Inter({ variable: "--font-sans", subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://loopwar.dev"),
@@ -33,11 +33,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={patrick.variable}>
+    <html lang="en" className={`${display.variable} ${sans.variable}`}>
       <body>
         <SmoothScroll />
         <ScrollProgress />
-        <CursorSparkle />
         <SiteHeader />
         <main>{children}</main>
         <SiteFooter />
