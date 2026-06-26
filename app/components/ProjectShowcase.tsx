@@ -1,6 +1,5 @@
 import type { Project } from "../data/projects";
 import Reveal from "./Reveal";
-import Parallax from "./Parallax";
 
 type Item = Project & { role?: string };
 
@@ -22,10 +21,9 @@ export default function ProjectShowcase({ items, startIndex = 0 }: { items: Item
         return (
           <article key={p.domain} className="feature" data-flip={flip ? "1" : "0"} style={{ ["--accent" as never]: p.accent }}>
             <Reveal from={flip ? "right" : "left"} className="feature-media-wrap">
-              <a href={p.url} target="_blank" rel="noreferrer" className="feature-media" tabIndex={-1} aria-hidden>
-                <Parallax speed={22} className="feature-media-inner">
-                  <img src={p.image} alt={`${p.name} — ${p.category}`} loading={idx < 2 ? "eager" : "lazy"} />
-                </Parallax>
+              <a href={p.url} target="_blank" rel="noreferrer" className="feature-frame" tabIndex={-1} aria-hidden>
+                <span className="frame-bar"><i /><i /><i /><span className="frame-url">{p.domain}</span></span>
+                <span className="frame-view"><img src={p.image} alt={`${p.name} — ${p.category}`} loading={idx < 2 ? "eager" : "lazy"} /></span>
               </a>
             </Reveal>
 
