@@ -55,45 +55,40 @@ export default function Home() {
   const featured = clientProjects[0];
   return (
     <div>
-      {/* ============ HERO (asymmetric, left-led) ============ */}
-      <section className="section" style={{ paddingTop: "clamp(2rem,5vw,4rem)", paddingBottom: "clamp(2rem,4vw,3rem)" }}>
-        <div className="container">
-          <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
-            {/* copy */}
-            <div>
-              <span className="eyebrow animate-fade-up">Product &amp; engineering studio ✦</span>
-              <h1 className="display animate-fade-up" style={{ ["--delay" as never]: "70ms", marginTop: "1.4rem" }}>
-                We build products that{" "}
-                <span style={{ textDecoration: "underline", textDecorationColor: "var(--accent)", textDecorationThickness: 6, textUnderlineOffset: 8 }}>earn their keep.</span>
-              </h1>
-              <p className="lead animate-fade-up" style={{ ["--delay" as never]: "150ms", marginTop: "1.4rem", maxWidth: "46ch" }}>
-                A small studio that designs, builds and ships websites, apps and AI products — for clients, and as our own ventures.
-              </p>
-              <div className="flex flex-wrap items-center gap-3 animate-fade-up" style={{ ["--delay" as never]: "230ms", marginTop: "2rem" }}>
-                <Magnetic><a href="/contact" className="btn btn-accent">Start a project <Arrow /></a></Magnetic>
-                <Magnetic><a href="/portfolio" className="btn btn-outline">See our work</a></Magnetic>
-              </div>
-              <div className="flex flex-wrap items-center gap-x-6 gap-y-2 animate-fade-up" style={{ ["--delay" as never]: "310ms", marginTop: "2.2rem", color: "var(--muted)", fontSize: "1.02rem" }}>
-                <span>★★★★★ trusted by founders</span>
-                <span>7+ products shipped</span>
-                <span>100% code you own</span>
-              </div>
-            </div>
-
-            {/* visual */}
-            <Reveal from="right" className="hero-visual">
-              <div className="frame">
-                <div className="frame-bar"><i /><i /><i /><span className="frame-url">{featured.domain}</span></div>
-                <div className="frame-view"><img src={featured.image} alt={`${featured.name} — ${featured.category}`} /></div>
-              </div>
-              <span className="hero-badge float-y">
-                <span className="logo-tile" style={{ width: 34, height: 34, borderRadius: 9 }}>
-                  <img src="/loopwar-shortlogoforfaviconsadnicons.png" alt="" />
-                </span>
-                Shipped by LOOPWAR
-              </span>
-            </Reveal>
+      {/* ============ HERO (full-bleed, edge-to-edge) ============ */}
+      <section className="hero-full">
+        {/* copy */}
+        <div className="hero-copy">
+          <span className="eyebrow animate-fade-up">Product &amp; engineering studio</span>
+          <h1 className="display animate-fade-up" style={{ ["--delay" as never]: "70ms", marginTop: "1.4rem" }}>
+            We build products that{" "}
+            <span style={{ textDecoration: "underline", textDecorationColor: "var(--accent)", textDecorationThickness: 5, textUnderlineOffset: 8 }}>earn their keep.</span>
+          </h1>
+          <p className="lead animate-fade-up" style={{ ["--delay" as never]: "150ms", marginTop: "1.4rem" }}>
+            A small studio that designs, builds and ships websites, apps and AI products — for clients, and as our own ventures.
+          </p>
+          <div className="flex flex-wrap items-center gap-3 animate-fade-up" style={{ ["--delay" as never]: "230ms", marginTop: "2rem" }}>
+            <Magnetic><a href="/contact" className="btn btn-accent">Start a project <Arrow /></a></Magnetic>
+            <Magnetic><a href="/portfolio" className="btn btn-outline">See our work</a></Magnetic>
           </div>
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 animate-fade-up" style={{ ["--delay" as never]: "310ms", marginTop: "2.2rem", color: "var(--muted)", fontSize: "1rem" }}>
+            <span>★★★★★ trusted by founders</span>
+            <span>7+ products shipped</span>
+            <span>100% code you own</span>
+          </div>
+        </div>
+
+        {/* full-bleed visual */}
+        <div className="hero-art">
+          <Parallax speed={26} className="hero-art-inner">
+            <img src={featured.image} alt={`${featured.name} — ${featured.category}`} />
+          </Parallax>
+          <span className="hero-badge float-y">
+            <span className="logo-tile" style={{ width: 34, height: 34, borderRadius: 9 }}>
+              <img src="/loopwar-shortlogoforfaviconsadnicons.png" alt="" />
+            </span>
+            Shipped by LOOPWAR
+          </span>
         </div>
       </section>
 
@@ -116,29 +111,29 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ WORK (slideshow) ============ */}
-      <section id="work" className="section">
-        <div className="container">
-          <Reveal from="left" className="flex flex-wrap items-end justify-between" style={{ gap: "1.25rem", marginBottom: "2.5rem" }}>
+      {/* ============ WORK (edge-to-edge feature rows) ============ */}
+      <section id="work">
+        <div className="container" style={{ paddingTop: "clamp(3.5rem,8vw,7rem)", paddingBottom: "clamp(2.25rem,4vw,3.25rem)" }}>
+          <Reveal from="left" className="flex flex-wrap items-end justify-between" style={{ gap: "1.25rem" }}>
             <div>
               <span className="eyebrow">Selected work</span>
               <h2 className="section-title" style={{ marginTop: "1rem" }}>Things we&apos;ve made for clients.</h2>
             </div>
             <Magnetic><a href="/portfolio" className="btn btn-outline btn-sm">All work <Arrow /></a></Magnetic>
           </Reveal>
-          <Reveal from="none"><ProjectShowcase items={clientProjects} /></Reveal>
         </div>
+        <ProjectShowcase items={clientProjects} />
       </section>
 
-      {/* ============ VENTURES (slideshow) ============ */}
-      <section id="ventures" className="section block" style={{ borderBlock: "2px solid var(--border)" }}>
-        <div className="container">
-          <Reveal from="left" style={{ marginBottom: "2.5rem", maxWidth: "44ch" }}>
+      {/* ============ VENTURES (edge-to-edge feature rows) ============ */}
+      <section id="ventures" className="block" style={{ borderTop: "1px solid var(--border)" }}>
+        <div className="container" style={{ paddingTop: "clamp(3.5rem,8vw,7rem)", paddingBottom: "clamp(2.25rem,4vw,3.25rem)" }}>
+          <Reveal from="left" style={{ maxWidth: "44ch" }}>
             <span className="eyebrow">Built by us</span>
             <h2 className="section-title" style={{ marginTop: "1rem" }}>Our own little ventures.</h2>
           </Reveal>
-          <Reveal from="none"><ProjectShowcase items={ventures} autoMs={7000} /></Reveal>
         </div>
+        <ProjectShowcase items={ventures} />
       </section>
 
       {/* ============ ABOUT ============ */}
