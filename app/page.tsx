@@ -78,17 +78,20 @@ export default function Home() {
           </div>
         </div>
 
-        {/* full-bleed visual */}
-        <div className="hero-art">
-          <Parallax speed={26} className="hero-art-inner">
-            <img src={featured.image} alt={`${featured.name} — ${featured.category}`} />
-          </Parallax>
-          <span className="hero-badge float-y">
-            <span className="logo-tile" style={{ width: 34, height: 34, borderRadius: 9 }}>
-              <img src="/loopwar-shortlogoforfaviconsadnicons.png" alt="" />
+        {/* full-bleed tinted panel with a framed site preview */}
+        <div className="hero-art" style={{ ["--accent" as never]: featured.accent }}>
+          <Reveal from="right" className="hero-art-stage">
+            <a href={featured.url} target="_blank" rel="noreferrer" className="feature-frame hero-frame">
+              <span className="frame-bar"><i /><i /><i /><span className="frame-url">{featured.domain}</span></span>
+              <span className="frame-view"><img src={featured.image} alt={`${featured.name} — ${featured.category}`} /></span>
+            </a>
+            <span className="hero-badge float-y">
+              <span className="logo-tile" style={{ width: 34, height: 34, borderRadius: 9 }}>
+                <img src="/loopwar-shortlogoforfaviconsadnicons.png" alt="" />
+              </span>
+              Shipped by LOOPWAR
             </span>
-            Shipped by LOOPWAR
-          </span>
+          </Reveal>
         </div>
       </section>
 
