@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import SiteHeader from "./components/SiteHeader";
 import SiteFooter from "./components/SiteFooter";
 import SmoothScroll from "./components/SmoothScroll";
 import ScrollProgress from "./components/ScrollProgress";
 
-const display = Fraunces({ variable: "--font-display", subsets: ["latin"], display: "swap", axes: ["opsz"] });
-const sans = Inter({ variable: "--font-sans", subsets: ["latin"], display: "swap" });
+const display = Plus_Jakarta_Sans({ variable: "--font-serif-next", subsets: ["latin"], display: "swap", style: ["normal", "italic"] });
+const sans = Plus_Jakarta_Sans({ variable: "--font-sans-next", subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://loopwar.dev"),

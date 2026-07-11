@@ -7,6 +7,7 @@ export type Project = {
   description: string;
   features: string[];
   image: string;       // full‑page screenshot
+  heroImage?: string;  // cropped, chrome-free shot for large panels
   logo?: string;       // brand mark for small avatars
   accent: string;
 };
@@ -27,6 +28,7 @@ export const clientProjects: Project[] = [
       "A direct‑to‑consumer store where customers design their own phone cases in a live editor and order premium, vibrant prints delivered across India.",
     features: ["Design‑your‑own editor", "Secure checkout & payments", "Catalog & order management", "Fast pan‑India delivery"],
     image: "/shots/casebuddy.png",
+    heroImage: "/shots/casebuddy-hero.png",
     logo: "/projects/casebuddy.png",
     accent: "#2563eb",
   },

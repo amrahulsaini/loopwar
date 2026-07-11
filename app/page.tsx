@@ -59,39 +59,37 @@ export default function Home() {
       <section className="hero-full">
         {/* copy */}
         <div className="hero-copy">
-          <span className="eyebrow animate-fade-up">Product &amp; engineering studio</span>
-          <h1 className="display animate-fade-up" style={{ ["--delay" as never]: "70ms", marginTop: "1.4rem" }}>
-            We build products that{" "}
-            <span style={{ textDecoration: "underline", textDecorationColor: "var(--accent)", textDecorationThickness: 5, textUnderlineOffset: 8 }}>earn their keep.</span>
+          <h1 className="display animate-fade-up" style={{ ["--delay" as never]: "70ms" }}>
+            We build products that <em className="hero-em">earn their keep.</em>
           </h1>
-          <p className="lead animate-fade-up" style={{ ["--delay" as never]: "150ms", marginTop: "1.4rem" }}>
-            A small studio that designs, builds and ships websites, apps and AI products — for clients, and as our own ventures.
+          <p className="lead animate-fade-up" style={{ ["--delay" as never]: "150ms", marginTop: "1.6rem" }}>
+            Websites, apps and AI products — designed, built and shipped end-to-end. For clients, and as ventures we run ourselves.
           </p>
-          <div className="flex flex-wrap items-center gap-3 animate-fade-up" style={{ ["--delay" as never]: "230ms", marginTop: "2rem" }}>
+          <div className="flex flex-wrap items-center gap-6 animate-fade-up" style={{ ["--delay" as never]: "230ms", marginTop: "2.4rem" }}>
             <Magnetic><a href="/contact" className="btn btn-accent">Start a project <Arrow /></a></Magnetic>
-            <Magnetic><a href="/portfolio" className="btn btn-outline">See our work</a></Magnetic>
+            <a href="/portfolio" className="link-arrow">
+              <span className="la-label">See our work</span>
+              <Arrow />
+            </a>
           </div>
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 animate-fade-up" style={{ ["--delay" as never]: "310ms", marginTop: "2.2rem", color: "var(--muted)", fontSize: "1rem" }}>
-            <span>★★★★★ trusted by founders</span>
-            <span>7+ products shipped</span>
-            <span>100% code you own</span>
+          <div className="hero-proof animate-fade-up" style={{ ["--delay" as never]: "310ms", marginTop: "2.6rem" }}>
+            <span className="avatar-stack" aria-hidden="true">
+              <span className="av"><img src="/projects/casebuddy.png" alt="" /></span>
+              <span className="av"><img src="/projects/mridang-logo.png" alt="" /></span>
+              <span className="av"><img src="/projects/tirupatimedix-logo.webp" alt="" /></span>
+              <span className="av"><img src="/projects/carrypack-logo.webp" alt="" /></span>
+            </span>
+            <span className="hero-proof-text">
+              <strong>7+ products shipped</strong> for founders across four industries — and every line of code is yours.
+            </span>
           </div>
         </div>
 
-        {/* full-bleed tinted panel with a framed site preview */}
-        <div className="hero-art" style={{ ["--accent" as never]: featured.accent }}>
-          <Reveal from="right" className="hero-art-stage">
-            <a href={featured.url} target="_blank" rel="noreferrer" className="feature-frame hero-frame">
-              <span className="frame-bar"><i /><i /><i /><span className="frame-url">{featured.domain}</span></span>
-              <span className="frame-view"><img src={featured.image} alt={`${featured.name} — ${featured.category}`} /></span>
-            </a>
-            <span className="hero-badge float-y">
-              <span className="logo-tile" style={{ width: 34, height: 34, borderRadius: 9 }}>
-                <img src="/loopwar-shortlogoforfaviconsadnicons.png" alt="" />
-              </span>
-              Shipped by LOOPWAR
-            </span>
-          </Reveal>
+        {/* studio image — framed card on tinted panel */}
+        <div className="hero-art">
+          <div className="hero-card animate-fade-up" style={{ ["--delay" as never]: "200ms" }}>
+            <img src="/studio-hero.jpg" alt="Inside the LOOPWAR studio" fetchPriority="high" />
+          </div>
         </div>
       </section>
 
